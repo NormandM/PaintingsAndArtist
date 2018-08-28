@@ -37,8 +37,8 @@ struct FontsAndConstraints {
         }else if surfaceScreen > 200000 && surfaceScreen < 304600 {
             screenDimension = "average"
             bioTextConstraint = 50
-            fontSize = UIFont(name: "HelveticaNeue-Italic", size: 16)!
-            fontSize2 = UIFont(name: "HelveticaNeue-Bold", size: 18)!
+            fontSize = UIFont(name: "HelveticaNeue-Italic", size: 15)!
+            fontSize2 = UIFont(name: "HelveticaNeue-Bold", size: 15)!
             fontSize3 =  UIFont(name: "Helvetica-LightOblique", size: 15.0)!
             fontSize4 = UIFont(name: "Helvetica-Bold",size: 20.0)!
             fontSize5 = UIFont(name: "HelveticaNeue-Italic",size: 24.0)!
@@ -85,7 +85,9 @@ struct FontsAndConstraints {
             fontSize6 = UIFont(name: "Helvetica-Bold",size: 45.0)!
             fontSize7 = UIFont(name: "HelveticaNeue",size: 40.0)!
         }
-        return (screenDimension, fontSize, fontSize2, fontSize3, fontSize4, fontSize5, fontSize6, fontSize7, bioTextConstraint)
-    }
+        let sizeAndFontInfo = (screenDimension: screenDimension, fontSize: fontSize, fontSize2: fontSize2, fontSize3: fontSize3, fontSize4: fontSize4, fontSize5: fontSize5, fontSize6: fontSize6, fontSize7: fontSize7, bioTextConstraint: bioTextConstraint)
 
+        return sizeAndFontInfo
+
+    }
 }

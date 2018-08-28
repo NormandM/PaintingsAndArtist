@@ -42,6 +42,10 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     var nameArray = [String]()
     var gaveUp: Bool = false
     var n = 0
+    let fontsAndConstraints = FontsAndConstraints()
+    lazy var sizeInfo = fontsAndConstraints.size()
+    var bn: (String, Int) = ("",0)
+    var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat)?
     override func viewDidLoad() {
         effect = visualEffect.effect
         messageView.layer.cornerRadius = 5
@@ -70,7 +74,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             let dir: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last! as URL
             let url = dir.appendingPathComponent("Debug.txt")
             try "\(painterName) \(Date())".appendLineToURL(fileURL: url as URL)
-            let result = try String(contentsOf: url as URL, encoding: String.Encoding.utf8)
+            _ = try String(contentsOf: url as URL, encoding: String.Encoding.utf8)
             print(url)
             do {
                 let contents = try String(contentsOf: url)
@@ -93,6 +97,10 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         bioTextView.layer.borderWidth = 2
         bioTextView.layer.borderColor = UIColor.white.cgColor
         bioTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 20, 20)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8)
+        
     }
 
     @IBOutlet weak var answerCollectioView: UICollectionView!{
@@ -211,16 +219,21 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath as IndexPath) as! AnswerCollectionViewCell
-            cell2.answerLetter.text = totalNameArray[indexPath.section][indexPath.item]
+        cell2.answerLetter.text = totalNameArray[indexPath.section][indexPath.item]
+        cell2.answerLetter.font = sizeInfoAndFonts?.fontSize2
+        print(sizeInfoAndFonts?.screenDimension)
+        
         if indexPath.section == 1{
             cell2.layer.borderColor = UIColor.white.cgColor
             cell2.layer.borderWidth = 2
             cell2.answerLetter.textColor = UIColor.white
+            
         }else if indexPath.section == 0{
             cell2.layer.borderColor = UIColor.clear.cgColor
             cell2.answerLetter.textColor = UIColor.white
             if cell2.answerLetter.text != " " {
                 cell2.answerLetter.text = "__"
+                cell2.isUserInteractionEnabled = false
             }
         }
         return cell2
@@ -239,6 +252,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             }
             let cell2 = collectionView.cellForItem(at: [0, n]) as! AnswerCollectionViewCell
             cell2.answerLetter.text = letter
+            cell2.isUserInteractionEnabled = true
             cell.answerLetter.text = ""
             cell.isUserInteractionEnabled = false
             indexResponse[n] = indexShuffledName[indexPath.item]
@@ -246,6 +260,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             n = n + 1
         }else if indexPath.section == 0 {
             cell.answerLetter.text = "__"
+            cell.isUserInteractionEnabled = false
             let letterTouched = indexResponse[indexPath.item]
             let path = letterTouched.0
             let letter = letterTouched.1
@@ -322,7 +337,19 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     // dimension for the cell's width and height.
     /////////////////////////////////////////////////////////////////////////
     @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellsAcross: CGFloat = 11
+
+        
+        var cellsAcross = CGFloat()
+        let painterNameLenght = totalNameArray[0].count + 1
+        if indexPath.section == 0 || painterNameLenght <= 9{
+            cellsAcross = CGFloat( painterNameLenght)
+            //cell.answerLetter.font = sizeInfoAndFont.fontSize
+        }else {
+            cellsAcross = 9
+        }
+            
+
+        //let cellsAcross: CGFloat = 11
         let spaceBetweenCells: CGFloat = 2
         let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim)
