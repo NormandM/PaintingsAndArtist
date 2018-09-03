@@ -14,7 +14,9 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet var specialMessageView: UIView!
     @IBOutlet weak var diplomaImageView: UIImageView!
     @IBOutlet weak var quizProgressBar: UIProgressView!
+    @IBOutlet weak var topConstraintTitleForAnagramme: NSLayoutConstraint!
     
+    @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentAfterResponse: SpecialLabel?
     @IBOutlet weak var specialCommentAfterResponse: SpecialLabel!
     @IBOutlet weak var okButton: UIButton!
@@ -28,6 +30,10 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var firstPaintingLabel: SpecialLabel!
     @IBOutlet weak var secondPaintingLabel: SpecialLabel!
     @IBOutlet weak var responseRatio: UILabel!
+    @IBOutlet weak var titlePaintings: UILabel!
+    @IBOutlet weak var titleForAnagramme: UILabel!
+    
+    var spaceBetweenCells = CGFloat()
     var totalQuestion = Int()
     var soundPlayer: SoundPlayer?
     var painterName = String()
@@ -42,14 +48,20 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     var nameArray = [String]()
     var gaveUp: Bool = false
     var n = 0
+    var isLanscape = Bool()
+    var top = CGFloat()
+    lazy var heightSection = answerCollectioView.frame.height/4
     let fontsAndConstraints = FontsAndConstraints()
     lazy var sizeInfo = fontsAndConstraints.size()
     var bn: (String, Int) = ("",0)
-    var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat)?
+    var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
+    var cellsAcross = CGFloat()
+    var traitIsCompactHorizontal = Bool()
     override func viewDidLoad() {
         effect = visualEffect.effect
         messageView.layer.cornerRadius = 5
         visualEffect.effect = nil
+ 
         titleLable.text = "Painter Biography Quiz"
         hintButton.layer.cornerRadius = hintButton.frame.height / 2.0
         hintItemButton.forEach {(eachButton) in
@@ -75,14 +87,12 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             let url = dir.appendingPathComponent("Debug.txt")
             try "\(painterName) \(Date())".appendLineToURL(fileURL: url as URL)
             _ = try String(contentsOf: url as URL, encoding: String.Encoding.utf8)
-            print(url)
             do {
                 let contents = try String(contentsOf: url)
                 print(contents)
             } catch {
                 // contents could not be loaded
             }
-
         }
         catch {
             print("Could not write to file")
@@ -95,12 +105,26 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         indexResponse = indexNames.0
         indexShuffledName = indexNames.1
         bioTextView.layer.borderWidth = 2
-        bioTextView.layer.borderColor = UIColor.white.cgColor
-        bioTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 20, 20)
+
     }
     override func viewWillAppear(_ animated: Bool) {
-        sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8)
-        
+        sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
+        let horizontalCompact = UITraitCollection(horizontalSizeClass: .compact)
+        if self.traitCollection.containsTraits(in: horizontalCompact) {traitIsCompactHorizontal = true}
+        firstPaintingLabel.font = sizeInfoAndFonts?.fontSize1
+        secondPaintingLabel.font = sizeInfoAndFonts?.fontSize1
+        titlePaintings.font = sizeInfoAndFonts?.fontSize2
+        titleForAnagramme.font = sizeInfoAndFonts?.fontSize2
+        titleLable.font = sizeInfoAndFonts?.fontSize4
+        bioDateLabel.font = sizeInfoAndFonts?.fontSize2
+        bioTextView.layer.borderColor = UIColor.white.cgColor
+        bioTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 20, 20)
+        bioTextView.font = sizeInfoAndFonts?.fontSize3
+        cellsAcross = CGFloat(totalNameArray[0].count + 1)
+        if UIDevice.current.orientation.isLandscape {isLanscape = true}
+        spaceBetweenCells = setUpLayout()
+        //topConstraintTitleForAnagramme.constant = (sizeInfoAndFonts?.collectionViewTopConstraintConstant)!
+        //collectionViewBottomConstraint.constant = (sizeInfoAndFonts?.collectionViewTopConstraintConstant)!
     }
 
     @IBOutlet weak var answerCollectioView: UICollectionView!{
@@ -159,21 +183,23 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                         cell2.answerLetter.text = " "
                         indexShuffledName[j] = (j, "__")
                     }
+                    for  single in 0 ..< shuffledNameArray.count {
+                        print(shuffledNameArray.count)
+                        let cell = answerCollectioView.cellForItem(at: [1, single]) as! AnswerCollectionViewCell
+                        if cell.answerLetter.text != "" || cell.answerLetter.text != " "{
+                            cell.isUserInteractionEnabled = true
+                        }else{cell.isUserInteractionEnabled = false}
+                    }
                 }else if buttonLabel == HintLabel.showPainterName.rawValue{
-                    
 
-                    
                     gaveUp = true
                     var i = 0
                     var j = 0
-                    print(nameArray)
-                    
                     for letter in nameArray {
                         
                         let cell = answerCollectioView.cellForItem(at: [0, i]) as! AnswerCollectionViewCell
                         let cell2 = answerCollectioView.cellForItem(at: [1, j]) as! AnswerCollectionViewCell
                         indexResponse[i] = (i, letter)
-                        print(indexResponse[i])
                         cell.answerLetter.text = letter
                         cell2.answerLetter.text = " "
                         if letter != " "{
@@ -203,26 +229,15 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     
 ////////////////// Collection View ////////////////////////////////////////
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
         return totalNameArray.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return totalNameArray[section].count
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 0 {
-            return CGSize(width: CGFloat(0), height: CGFloat(0))
-        }else{
-            let height = answerCollectioView.frame.height/4
-            return CGSize(width: CGFloat(10), height: height)
-        }
-    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath as IndexPath) as! AnswerCollectionViewCell
         cell2.answerLetter.text = totalNameArray[indexPath.section][indexPath.item]
         cell2.answerLetter.font = sizeInfoAndFonts?.fontSize2
-        print(sizeInfoAndFonts?.screenDimension)
-        
         if indexPath.section == 1{
             cell2.layer.borderColor = UIColor.white.cgColor
             cell2.layer.borderWidth = 2
@@ -243,6 +258,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         let letter = cell.answerLetter.text
         if indexPath.section == 1 {
             var i = 0
+            n = 0
             for response in indexResponse {
                 if response.1 == "__"{
                     n = i
@@ -274,12 +290,12 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         if n == indexResponse.count {
             messageAfterResponse()
         }
+        
     }
     func messageAfterResponse(){
             let totalPaintings = artistList.count
             let isResponseGood = CheckingReponse.goodOrBad(indexResponse: indexResponse, painterName: nameArray)
             if isResponseGood{
-                print(gaveUp)
                 if gaveUp {
                     successiveRightAnswers = 0
                 }else{
@@ -336,25 +352,58 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     // the spaces between the cells, and then divide by N to find the final
     // dimension for the cell's width and height.
     /////////////////////////////////////////////////////////////////////////
-    @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         
-        var cellsAcross = CGFloat()
-        let painterNameLenght = totalNameArray[0].count + 1
-        if indexPath.section == 0 || painterNameLenght <= 9{
-            cellsAcross = CGFloat( painterNameLenght)
-            //cell.answerLetter.font = sizeInfoAndFont.fontSize
-        }else {
-            cellsAcross = 9
-        }
-            
+        if fromInterfaceOrientation.isLandscape {
+            isLanscape = false
+        }else{isLanscape = true}
+        spaceBetweenCells = setUpLayout()
+        answerCollectioView.setNeedsDisplay()
+        
+    }
 
-        //let cellsAcross: CGFloat = 11
-        let spaceBetweenCells: CGFloat = 2
+    func setUpLayout() -> CGFloat{
+        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        if isLanscape {
+            top = view.bounds.height * 0.048
+        }else{
+            top = view.bounds.height * 0.057
+        }
+        layout.sectionInset = UIEdgeInsets(top: top,left:20,bottom: 0,right:20)
+        layout.minimumInteritemSpacing = 2
+        if traitIsCompactHorizontal == false{
+            switch cellsAcross {
+            case 5:
+                layout.minimumInteritemSpacing = 80
+                if isLanscape {top = view.bounds.height * 0.001}
+                layout.sectionInset = UIEdgeInsets(top: top,left:20,bottom: 0,right:20)
+            case 6:
+                layout.minimumInteritemSpacing = 80
+            case 7:
+                layout.minimumInteritemSpacing = 40
+            case 8:
+                layout.minimumInteritemSpacing = 40
+            case 9:
+                layout.minimumInteritemSpacing = 20
+            default:
+                layout.minimumInteritemSpacing = 10
+            }
+        }
+
+        answerCollectioView.collectionViewLayout = layout
+        return layout.minimumInteritemSpacing
+    }
+    @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let delta = totalNameArray[0].count - totalNameArray[1].count + 1
+        let painterNameLenght = totalNameArray[0].count + delta
+        if traitIsCompactHorizontal && painterNameLenght > 9{
+            cellsAcross = CGFloat(painterNameLenght + 1)
+        }else{cellsAcross = CGFloat(painterNameLenght)}
+
+
         let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim)
     }
-
 
     /*
     // MARK: - Navigation

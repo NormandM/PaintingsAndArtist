@@ -11,7 +11,7 @@
 		8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */; };
 		8E1C43D320C989480010F874 /* RandomizeOrderOfPaintings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C43D220C989480010F874 /* RandomizeOrderOfPaintings.swift */; };
 		8E1C43D620C9AC450010F874 /* Gymnopédie_no.3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E1C43D520C9AC450010F874 /* Gymnopédie_no.3.mp3 */; };
-		8E279BF32135EF0200A44B62 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E279BF22135EF0200A44B62 /* ArtistesAndPaintings.plist */; };
+		8E279BF7213DE16B00A44B62 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E279BF6213DE16B00A44B62 /* ArtistesAndPaintings.plist */; };
 		8E57650320EABD15001FEF3D /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650220EABD15001FEF3D /* Hint.swift */; };
 		8E57650520EAC722001FEF3D /* EnumForHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650420EAC722001FEF3D /* EnumForHints.swift */; };
 		8E57650720EC0C70001FEF3D /* TitleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650620EC0C70001FEF3D /* TitleDisplay.swift */; };
@@ -72,7 +72,7 @@
 		8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime_clickbell_octave_up.mp3; sourceTree = "<group>"; };
 		8E1C43D220C989480010F874 /* RandomizeOrderOfPaintings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizeOrderOfPaintings.swift; sourceTree = "<group>"; };
 		8E1C43D520C9AC450010F874 /* Gymnopédie_no.3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gymnopédie_no.3.mp3"; sourceTree = "<group>"; };
-		8E279BF22135EF0200A44B62 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
+		8E279BF6213DE16B00A44B62 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
 		8E57650220EABD15001FEF3D /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
 		8E57650420EAC722001FEF3D /* EnumForHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumForHints.swift; sourceTree = "<group>"; };
 		8E57650620EC0C70001FEF3D /* TitleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDisplay.swift; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 			children = (
 				8EFBE76B20B1B169008E7532 /* AppDelegate.swift */,
 				8EFBE76F20B1B169008E7532 /* Main.storyboard */,
-				8E279BF22135EF0200A44B62 /* ArtistesAndPaintings.plist */,
+				8E279BF6213DE16B00A44B62 /* ArtistesAndPaintings.plist */,
 				8EB88C532107C45E009755CD /* StartMenu */,
 				8E57650E20F27949001FEF3D /* SlideShow */,
 				8E57650F20F279AE001FEF3D /* QuizPart2ChoosePainting */,
@@ -390,9 +390,9 @@
 				8EFBE77920B1B16D008E7532 /* LaunchScreen.storyboard in Resources */,
 				8E1C43D620C9AC450010F874 /* Gymnopédie_no.3.mp3 in Resources */,
 				8EFBE77620B1B16D008E7532 /* Assets.xcassets in Resources */,
-				8E279BF32135EF0200A44B62 /* ArtistesAndPaintings.plist in Resources */,
 				8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */,
 				8E11C4012120861500BB6AFC /* etc_error_drum.mp3 in Resources */,
+				8E279BF7213DE16B00A44B62 /* ArtistesAndPaintings.plist in Resources */,
 				8EFBE77120B1B169008E7532 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
