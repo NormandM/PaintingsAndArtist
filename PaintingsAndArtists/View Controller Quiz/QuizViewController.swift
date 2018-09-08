@@ -16,7 +16,6 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var buyCreditsButton: UIButton!
     @IBOutlet weak var paintingImage: UIImageView!
     @IBOutlet var painterButton: [UIButton]!
-    
     @IBOutlet weak var hintButton: UIButton!
     @IBOutlet var hintItemButton: [UIButton]!
     @IBOutlet weak var placeHolderButton: UIButton!
@@ -24,6 +23,9 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet var messageView: UIView!
+    let fontsAndConstraints = FontsAndConstraints()
+    lazy var sizeInfo = fontsAndConstraints.size()
+    var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
     var effect: UIVisualEffect!
     var partTwoOfQuizDone: Bool = false
     var soundPlayer: SoundPlayer?
@@ -48,8 +50,7 @@ class QuizViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Who painted this?"
-        print("text")
+
         effect = visualEffect.effect
         messageView.layer.cornerRadius = 5
         visualEffect.effect = nil
@@ -75,17 +76,23 @@ class QuizViewController: UIViewController {
         credit = UserDefaults.standard.integer(forKey: "credit")
         hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
         reinializePaintingsList()
-        print("selectedIndex: \(selectedIndex)")
         quizElementSelection()
     }
     override func viewDidAppear(_ animated: Bool) {
+        sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
+        let navLabel = UILabel()
+        let navTitle = NSMutableAttributedString(string: "Who painted this?", attributes:[
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: sizeInfoAndFonts?.fontSize4 ?? UIFont(name: "HelveticaNeue-Bold", size: 12)!])
+        navLabel.attributedText = navTitle
+        self.navigationItem.titleView = navLabel
         nextButton.layer.masksToBounds = true
         nextButton.layer.cornerRadius = nextButton.frame.width/2
         nextButton.backgroundColor = UIColor(displayP3Red: 27/255, green: 95/255, blue: 94/255, alpha: 1.0)
+        
     }
     func quizElementSelection() {
         reinializePaintingsList()
-        print("selectedIndex: \(selectedIndex)")
         selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
         finalArrayOfButtonNames = PainterSelection.buttonsNameSelection(artistList: artistList, indexPainting: indexPainting, painterButton: painterButton, selectedIndex: selectedIndex)
 
@@ -147,8 +154,6 @@ class QuizViewController: UIViewController {
                         UserDefaults.standard.set(0, forKey: "successiveRightAnswers")
                         self.selectedIndex = self.selectedIndex + 1
                         UserDefaults.standard.set(self.selectedIndex, forKey: "selectedIndex")
-                        print("slectedIndex: \(self.selectedIndex)")
-                        print(UserDefaults.standard.integer(forKey: "selectedIndex"))
                         self.nextButton.isEnabled = true
                         self.nextButton.isHidden = false
                         self.nextButton.setTitle("Next", for: .normal)
@@ -205,7 +210,6 @@ class QuizViewController: UIViewController {
     }
     func reinializePaintingsList() {
         if !(indexPaintingAlreadyExist(indexPainting: "indexPainting")){
-            print("is in")
             let randomizeOrderOfPaintings = RandomizeOrderOfIndexArray(artistList: artistList)
             indexPainting = randomizeOrderOfPaintings.generateRandomIndex(from: 0, to: artistList.count - 1, quantity: nil)
             UserDefaults.standard.set(indexPainting, forKey: "indexPainting")

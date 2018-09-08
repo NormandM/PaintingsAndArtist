@@ -109,7 +109,6 @@ class SuccessiveAnswer {
             """
             CreditManagment.increseOneThousandCredit()
         default:
-            print("painterName2: \(painterName)")
             commentAfterResponse.text = """
             Great!
             \(painterName)

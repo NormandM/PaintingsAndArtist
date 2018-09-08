@@ -14,9 +14,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet var specialMessageView: UIView!
     @IBOutlet weak var diplomaImageView: UIImageView!
     @IBOutlet weak var quizProgressBar: UIProgressView!
-    @IBOutlet weak var topConstraintTitleForAnagramme: NSLayoutConstraint!
-    
-    @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentAfterResponse: SpecialLabel?
     @IBOutlet weak var specialCommentAfterResponse: SpecialLabel!
     @IBOutlet weak var okButton: UIButton!
@@ -32,7 +29,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var responseRatio: UILabel!
     @IBOutlet weak var titlePaintings: UILabel!
     @IBOutlet weak var titleForAnagramme: UILabel!
-    
     var spaceBetweenCells = CGFloat()
     var totalQuestion = Int()
     var soundPlayer: SoundPlayer?
@@ -49,19 +45,18 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     var gaveUp: Bool = false
     var n = 0
     var isLanscape = Bool()
-    var top = CGFloat()
-    lazy var heightSection = answerCollectioView.frame.height/4
     let fontsAndConstraints = FontsAndConstraints()
     lazy var sizeInfo = fontsAndConstraints.size()
-    var bn: (String, Int) = ("",0)
     var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
     var cellsAcross = CGFloat()
     var traitIsCompactHorizontal = Bool()
+    var left = CGFloat()
+    var right = CGFloat()
     override func viewDidLoad() {
+        super.viewDidLoad()
         effect = visualEffect.effect
         messageView.layer.cornerRadius = 5
         visualEffect.effect = nil
- 
         titleLable.text = "Painter Biography Quiz"
         hintButton.layer.cornerRadius = hintButton.frame.height / 2.0
         hintItemButton.forEach {(eachButton) in
@@ -113,24 +108,25 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         if self.traitCollection.containsTraits(in: horizontalCompact) {traitIsCompactHorizontal = true}
         firstPaintingLabel.font = sizeInfoAndFonts?.fontSize1
         secondPaintingLabel.font = sizeInfoAndFonts?.fontSize1
-        titlePaintings.font = sizeInfoAndFonts?.fontSize2
-        titleForAnagramme.font = sizeInfoAndFonts?.fontSize2
+        titlePaintings.font = sizeInfoAndFonts?.fontSize4
+        titleForAnagramme.font = sizeInfoAndFonts?.fontSize4
         titleLable.font = sizeInfoAndFonts?.fontSize4
         bioDateLabel.font = sizeInfoAndFonts?.fontSize2
         bioTextView.layer.borderColor = UIColor.white.cgColor
         bioTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 20, 20)
-        bioTextView.font = sizeInfoAndFonts?.fontSize3
-        cellsAcross = CGFloat(totalNameArray[0].count + 1)
+        bioTextView.font = sizeInfoAndFonts?.fontSize1
+        cellsAcross = CGFloat(totalNameArray[0].count)
         if UIDevice.current.orientation.isLandscape {isLanscape = true}
-        spaceBetweenCells = setUpLayout()
-        //topConstraintTitleForAnagramme.constant = (sizeInfoAndFonts?.collectionViewTopConstraintConstant)!
-        //collectionViewBottomConstraint.constant = (sizeInfoAndFonts?.collectionViewTopConstraintConstant)!
+        setUpLayout()
     }
+
+
 
     @IBOutlet weak var answerCollectioView: UICollectionView!{
         didSet{
             answerCollectioView.dataSource = self
             answerCollectioView.delegate = self
+            
         }
     }
     @IBAction func okButtonPressed(_ sender: UIButton) {
@@ -163,7 +159,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     cell.answerLetter.textColor = UIColor.red
                     var cell2 = answerCollectioView.cellForItem(at: [1, 0]) as! AnswerCollectionViewCell
                     var j = 0
-                    for i in 0 ... countLetter{
+                    for i in 0 ..< countLetter{
                         cell2 = answerCollectioView.cellForItem(at: [1, i]) as! AnswerCollectionViewCell
                         if cell2.answerLetter.text == goodLetter{
                             j = i
@@ -184,7 +180,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                         indexShuffledName[j] = (j, "__")
                     }
                     for  single in 0 ..< shuffledNameArray.count {
-                        print(shuffledNameArray.count)
                         let cell = answerCollectioView.cellForItem(at: [1, single]) as! AnswerCollectionViewCell
                         if cell.answerLetter.text != "" || cell.answerLetter.text != " "{
                             cell.isUserInteractionEnabled = true
@@ -251,6 +246,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 cell2.isUserInteractionEnabled = false
             }
         }
+        cell2.layoutIfNeeded()
         return cell2
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -353,55 +349,140 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     // dimension for the cell's width and height.
     /////////////////////////////////////////////////////////////////////////
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        
         if fromInterfaceOrientation.isLandscape {
             isLanscape = false
         }else{isLanscape = true}
-        spaceBetweenCells = setUpLayout()
+        setUpLayout()
         answerCollectioView.setNeedsDisplay()
         
     }
 
-    func setUpLayout() -> CGFloat{
+    func setUpLayout(){
+        print(traitIsCompactHorizontal)
+        var top = CGFloat()
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        if isLanscape {
-            top = view.bounds.height * 0.048
-        }else{
-            top = view.bounds.height * 0.057
-        }
-        layout.sectionInset = UIEdgeInsets(top: top,left:20,bottom: 0,right:20)
-        layout.minimumInteritemSpacing = 2
         if traitIsCompactHorizontal == false{
+            layout.minimumInteritemSpacing = 0.002 * view.bounds.width
+            spaceBetweenCells = layout.minimumInteritemSpacing
             switch cellsAcross {
+            case 4:
+            if isLanscape {
+                top = answerCollectioView.bounds.height * 0.1
+                left = 0.293 * view.bounds.width
+                right = left
+            }else{
+                top = answerCollectioView.bounds.height * 0.2
+                left = 0.244 * view.bounds.width
+                right = left
+            }
             case 5:
-                layout.minimumInteritemSpacing = 80
-                if isLanscape {top = view.bounds.height * 0.001}
-                layout.sectionInset = UIEdgeInsets(top: top,left:20,bottom: 0,right:20)
+                if isLanscape {
+                    top = answerCollectioView.bounds.height * 0.1
+                    left = 0.256 * view.bounds.width
+                    right = left
+                }else{
+                    top = answerCollectioView.bounds.height * 0.2
+                    left = 0.244 * view.bounds.width
+                    right = left
+                }
             case 6:
-                layout.minimumInteritemSpacing = 80
+                if isLanscape {
+                    top = answerCollectioView.bounds.height * 0.1
+                    left = 0.220 * view.bounds.width
+                    right = left
+                }else{
+                    top = answerCollectioView.bounds.height * 0.2
+                    left = 0.195 * view.bounds.width
+                    right = left
+                }
             case 7:
-                layout.minimumInteritemSpacing = 40
+                if isLanscape {
+                    top = answerCollectioView.bounds.height * 0.1
+                    left = 0.183 * view.bounds.width
+                    right = left
+                }else{
+                    top = answerCollectioView.bounds.height * 0.2
+                    left = 0.148 * view.bounds.width
+                    right = left
+                }
             case 8:
-                layout.minimumInteritemSpacing = 40
+                if isLanscape {
+                    top = answerCollectioView.bounds.height * 0.1
+                    left = 0.146 * view.bounds.width
+                    right = left
+                }else{
+                    top = answerCollectioView.bounds.height * 0.2
+                    left = 0.1 * view.bounds.width
+                    right = left
+                }
             case 9:
-                layout.minimumInteritemSpacing = 20
+                if isLanscape {
+                    top = answerCollectioView.bounds.height * 0.1
+                    left = 0.11 * view.bounds.width
+                    right = left
+                }else{
+                    top = answerCollectioView.bounds.height * 0.2
+                    left = 0.049 * view.bounds.width
+                    right = left
+                }
+            case 10:
+                if isLanscape {
+                    top = answerCollectioView.bounds.height * 0.1
+                    left = 0.073 * view.bounds.width
+                    right = left
+                }else{
+                    top = answerCollectioView.bounds.height * 0.2
+                    left = 0.049 * view.bounds.width
+                    right = left
+                }
             default:
-                layout.minimumInteritemSpacing = 10
+                if isLanscape {
+                    top = answerCollectioView.bounds.height * 0.1
+                    left = 0.036 * view.bounds.width
+                    right = left
+                }else{
+                    top = answerCollectioView.bounds.height * 0.22
+                    left = 0.049 * view.bounds.width
+                    right = left
+                }
+            }
+
+        }else{
+            left = 10
+            right = left
+            layout.minimumInteritemSpacing = 1
+            spaceBetweenCells = layout.minimumInteritemSpacing
+            print(cellsAcross)
+            switch cellsAcross {
+
+            case 4, 5:
+                print("is in")
+                top = answerCollectioView.bounds.height * 0.05
+            case 6:
+                top = answerCollectioView.bounds.height * 0.08
+            case 7, 8:
+                top = answerCollectioView.bounds.height * 0.1
+            case 9:
+                top = answerCollectioView.bounds.height * 0.12
+            case 10:
+                top = answerCollectioView.bounds.height * 0.15
+            default:
+                top = answerCollectioView.bounds.height * 0.15
             }
         }
-
+        layout.sectionInset = UIEdgeInsets(top: top,left:left,bottom: 0,right:right)
         answerCollectioView.collectionViewLayout = layout
-        return layout.minimumInteritemSpacing
-    }
+       
+ 
+   }
     @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let delta = totalNameArray[0].count - totalNameArray[1].count + 1
-        let painterNameLenght = totalNameArray[0].count + delta
-        if traitIsCompactHorizontal && painterNameLenght > 9{
-            cellsAcross = CGFloat(painterNameLenght + 1)
-        }else{cellsAcross = CGFloat(painterNameLenght)}
-
-
-        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+        var dim = CGFloat()
+        if indexPath.section == 1{
+            cellsAcross = CGFloat(totalNameArray[1].count)
+        }else{
+            cellsAcross = CGFloat(totalNameArray[0].count)
+        }
+        dim = ((collectionView.bounds.width - (left + right)) - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim)
     }
 
@@ -416,6 +497,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     */
 
 }
+
 
 extension String {
     func appendLineToURL(fileURL: URL) throws {

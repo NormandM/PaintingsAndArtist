@@ -40,9 +40,9 @@ struct FontsAndConstraints {
             screenDimension = "average"
             bioTextConstraint = 50
             collectionViewTopConstraintConstant = 20
-            fontSize = UIFont(name: "HelveticaNeue-Italic", size: 12)!
-            fontSize2 = UIFont(name: "HelveticaNeue-Bold", size: 12)!
-            fontSize3 =  UIFont(name: "Helvetica-LightOblique", size: 15.0)!
+            fontSize = UIFont(name: "HelveticaNeue-Italic", size: 16)!
+            fontSize2 = UIFont(name: "HelveticaNeue-Bold", size: 16)!
+            fontSize3 =  UIFont(name: "Helvetica-LightOblique", size: 14.0)!
             fontSize4 = UIFont(name: "Helvetica-Bold",size: 20.0)!
             fontSize5 = UIFont(name: "HelveticaNeue-Italic",size: 24.0)!
             fontSize6 = UIFont(name: "Helvetica-Bold",size: 24.0)!
@@ -54,7 +54,7 @@ struct FontsAndConstraints {
             fontSize = UIFont(name: "HelveticaNeue-Italic", size: 15)!
             fontSize2 = UIFont(name: "HelveticaNeue-Bold", size: 15)!
             fontSize3 =  UIFont(name: "Helvetica-LightOblique", size: 18.0)!
-            fontSize4 = UIFont(name: "Helvetica-Bold",size: 22.0)!
+            fontSize4 = UIFont(name: "Helvetica-Bold",size: 23.0)!
             fontSize5 = UIFont(name: "HelveticaNeue-Italic",size: 29.0)!
             fontSize6 = UIFont(name: "Helvetica-Bold",size: 29.0)!
             fontSize7 = UIFont(name: "HelveticaNeue",size: 40.0)!

@@ -362,7 +362,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NR-K3-BdD">
-                                <rect key="frame" x="351.5" y="899" width="65" height="65"/>
+                                <rect key="frame" x="348" y="892.5" width="72" height="71.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9NR-K3-BdD" secondAttribute="height" multiplier="1:1" id="fyd-5e-wfe"/>
@@ -471,10 +471,10 @@
                             <constraint firstItem="rg4-zZ-rve" firstAttribute="trailing" secondItem="AAi-sf-76b" secondAttribute="trailing" constant="10" id="euU-aS-3pp"/>
                             <constraint firstItem="k2x-FM-6bx" firstAttribute="leading" secondItem="uPh-G8-jdK" secondAttribute="trailing" constant="10" id="fu0-aP-krA"/>
                             <constraint firstItem="rg4-zZ-rve" firstAttribute="trailing" secondItem="k2x-FM-6bx" secondAttribute="trailing" constant="10" id="h9k-gW-hRA"/>
-                            <constraint firstItem="9NR-K3-BdD" firstAttribute="top" secondItem="r5E-xw-Qvo" secondAttribute="bottom" constant="5" id="jUu-qG-g5r"/>
                             <constraint firstItem="rg4-zZ-rve" firstAttribute="trailing" secondItem="C36-jQ-Tla" secondAttribute="trailing" constant="10" id="pIH-Sf-iLn"/>
                             <constraint firstItem="uPh-G8-jdK" firstAttribute="top" secondItem="EBA-uT-buB" secondAttribute="bottom" constant="10" id="ram-Xd-ist"/>
                             <constraint firstItem="C36-jQ-Tla" firstAttribute="leading" secondItem="rg4-zZ-rve" secondAttribute="leading" constant="10" id="ucH-Ix-1Ex"/>
+                            <constraint firstItem="9NR-K3-BdD" firstAttribute="height" secondItem="ifA-0W-hJo" secondAttribute="height" multiplier="0.07:1" id="xo6-th-po7"/>
                             <constraint firstItem="uPh-G8-jdK" firstAttribute="width" secondItem="EBA-uT-buB" secondAttribute="width" id="ymB-Io-GjN"/>
                             <constraint firstItem="4pQ-X0-l9K" firstAttribute="leading" secondItem="rg4-zZ-rve" secondAttribute="leading" id="zoO-Cr-ncB"/>
                             <constraint firstItem="tDb-8G-AHh" firstAttribute="top" secondItem="uPh-G8-jdK" secondAttribute="bottom" constant="10" id="zzr-vh-Tt3"/>
@@ -826,17 +826,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fTK-qL-d1g">
-                                <rect key="frame" x="38.5" y="599" width="691" height="386"/>
+                                <rect key="frame" x="38.5" y="599" width="691" height="376"/>
                                 <color key="backgroundColor" red="0.10588235294117647" green="0.37254901960784315" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="kTH-g7-ert">
                                     <size key="itemSize" width="10" height="10"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="10" height="10"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="50" maxX="10" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell2" id="ad1-QW-iv2" customClass="AnswerCollectionViewCell" customModule="PaintingsAndArtists" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="100" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="10" width="10" height="10"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -861,7 +861,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="placeHolder" id="2oL-aK-J5f">
-                                    <rect key="frame" x="0.0" y="0.0" width="691" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="691" height="10"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <connections>
@@ -877,10 +877,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="IdP-t0-qve">
-                                <rect key="frame" x="0.0" y="905" width="768" height="119"/>
+                                <rect key="frame" x="10" y="895" width="748" height="119"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsy-fp-h2s" userLabel="Buy some Coins">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="748" height="29"/>
                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="Buy some Coins">
@@ -892,7 +892,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8y1-k7-OdJ">
-                                        <rect key="frame" x="0.0" y="30" width="768" height="29"/>
+                                        <rect key="frame" x="0.0" y="30" width="748" height="29"/>
                                         <color key="backgroundColor" red="0.69803921570000005" green="0.81568627449999997" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="I give up! What is the painter's name: 4 coins">
@@ -904,7 +904,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4Q-Fw-6Ac" userLabel="Give me one letter: 1 coin">
-                                        <rect key="frame" x="0.0" y="60" width="768" height="29"/>
+                                        <rect key="frame" x="0.0" y="60" width="748" height="29"/>
                                         <color key="backgroundColor" red="0.69803921570000005" green="0.81568627449999997" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="Give me one letter: 1 coin">
@@ -916,7 +916,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sds-pc-XeY">
-                                        <rect key="frame" x="0.0" y="90" width="768" height="29"/>
+                                        <rect key="frame" x="0.0" y="90" width="748" height="29"/>
                                         <color key="backgroundColor" red="0.1058823529" green="0.37254901959999998" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="Hint">
@@ -968,11 +968,11 @@
                             <constraint firstItem="QgU-VU-x9A" firstAttribute="centerX" secondItem="bAU-Zd-3iY" secondAttribute="centerX" id="NZs-bv-JB8"/>
                             <constraint firstItem="MTb-Xd-MW4" firstAttribute="centerX" secondItem="bAU-Zd-3iY" secondAttribute="centerX" id="OSP-V5-afE"/>
                             <constraint firstItem="LLw-E4-ao3" firstAttribute="top" secondItem="zyS-Tj-6tc" secondAttribute="bottom" constant="20" id="SVl-Ip-FYq"/>
-                            <constraint firstAttribute="bottom" secondItem="IdP-t0-qve" secondAttribute="bottom" id="V9j-g0-vI8"/>
+                            <constraint firstAttribute="bottom" secondItem="IdP-t0-qve" secondAttribute="bottom" constant="10" id="V9j-g0-vI8"/>
                             <constraint firstItem="fTK-qL-d1g" firstAttribute="top" secondItem="EEk-4R-qXg" secondAttribute="bottom" id="Y14-xR-z27"/>
                             <constraint firstItem="9Qx-lk-LjP" firstAttribute="centerX" secondItem="bAU-Zd-3iY" secondAttribute="centerX" id="Ys2-lW-CfC"/>
                             <constraint firstItem="9Qx-lk-LjP" firstAttribute="width" secondItem="zyS-Tj-6tc" secondAttribute="width" id="Ze8-T4-lsv"/>
-                            <constraint firstItem="IdP-t0-qve" firstAttribute="leading" secondItem="w45-tN-tQD" secondAttribute="leading" id="aDc-7G-BoL"/>
+                            <constraint firstItem="IdP-t0-qve" firstAttribute="leading" secondItem="w45-tN-tQD" secondAttribute="leading" constant="10" id="aDc-7G-BoL"/>
                             <constraint firstItem="QgU-VU-x9A" firstAttribute="height" secondItem="bAU-Zd-3iY" secondAttribute="height" multiplier="0.05:1" id="bFr-UX-zae"/>
                             <constraint firstItem="MTb-Xd-MW4" firstAttribute="height" secondItem="bAU-Zd-3iY" secondAttribute="height" multiplier="0.05:1" id="bR5-FG-O9M"/>
                             <constraint firstItem="B7c-n3-PKg" firstAttribute="top" secondItem="bAU-Zd-3iY" secondAttribute="top" id="cCJ-qI-MOO"/>
@@ -989,7 +989,7 @@
                             <constraint firstItem="fTK-qL-d1g" firstAttribute="width" secondItem="EEk-4R-qXg" secondAttribute="width" id="umX-pv-0zt"/>
                             <constraint firstItem="LLw-E4-ao3" firstAttribute="width" secondItem="zyS-Tj-6tc" secondAttribute="width" id="v1j-FP-j2o"/>
                             <constraint firstItem="zyS-Tj-6tc" firstAttribute="centerX" secondItem="bAU-Zd-3iY" secondAttribute="centerX" id="x6q-Z3-xFg"/>
-                            <constraint firstItem="w45-tN-tQD" firstAttribute="trailing" secondItem="IdP-t0-qve" secondAttribute="trailing" id="x7C-AO-wD7"/>
+                            <constraint firstItem="w45-tN-tQD" firstAttribute="trailing" secondItem="IdP-t0-qve" secondAttribute="trailing" constant="10" id="x7C-AO-wD7"/>
                             <constraint firstItem="rk7-o6-etl" firstAttribute="centerX" secondItem="bAU-Zd-3iY" secondAttribute="centerX" id="xso-OF-T7u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w45-tN-tQD"/>
@@ -998,7 +998,6 @@
                         <outlet property="answerCollectioView" destination="fTK-qL-d1g" id="24p-gt-npv"/>
                         <outlet property="bioDateLabel" destination="LLw-E4-ao3" id="2s8-bh-1eZ"/>
                         <outlet property="bioTextView" destination="9Qx-lk-LjP" id="zu9-46-y8O"/>
-                        <outlet property="collectionViewBottomConstraint" destination="jWE-qF-Yum" id="ydE-Tk-dIj"/>
                         <outlet property="commentAfterResponse" destination="FyE-Yi-S4O" id="eTM-J3-GQ0"/>
                         <outlet property="diplomaImageView" destination="zYu-hD-Q4i" id="eoq-Yg-wFz"/>
                         <outlet property="firstPaintingLabel" destination="MTb-Xd-MW4" id="pyc-7j-Et2"/>
@@ -1014,7 +1013,6 @@
                         <outlet property="titleForAnagramme" destination="EEk-4R-qXg" id="Wbb-y6-Cbx"/>
                         <outlet property="titleLable" destination="zyS-Tj-6tc" id="8D7-bW-IOI"/>
                         <outlet property="titlePaintings" destination="rk7-o6-etl" id="lMx-j5-zyQ"/>
-                        <outlet property="topConstraintTitleForAnagramme" destination="uM5-p3-DXt" id="151-eA-0dN"/>
                         <outlet property="visualEffect" destination="B7c-n3-PKg" id="Hle-Tx-LPZ"/>
                         <outletCollection property="hintItemButton" destination="bsy-fp-h2s" collectionClass="NSMutableArray" id="JuO-Qv-q93"/>
                         <outletCollection property="hintItemButton" destination="8y1-k7-OdJ" collectionClass="NSMutableArray" id="zge-C2-b4h"/>
