@@ -24,7 +24,7 @@ class ChoosingPainterInfo {
         randomizeArtistList = UserDefaults.standard.array(forKey: "randomizeArtistList") as! [[String]]
         let painterInfo = randomizeArtistList[questionIndex]
         let painterName = painterInfo[5]
-        //let painterName = "MICHE"
+        //let painterName = "MIC HELADDDD"
         let bioDate = painterInfo[1]
         let bioText = painterInfo[3]
         let firstPainting = painterInfo[2]

@@ -20,6 +20,10 @@ class SlideShowViewController: UIViewController {
     var x: CGFloat = 0
     var y: CGFloat = 0
     var indexPainting: [Int] = []
+    var isFromSlideShow = Bool()
+    var isFromMenu = Bool()
+    var isFromQuiz = Bool()
+    var goingForwards = Bool()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
@@ -43,7 +47,15 @@ class SlideShowViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         vueTimer.invalidate()
         UIApplication.shared.isIdleTimerDisabled = false
-
+        if goingForwards == false{
+            performSegue(withIdentifier: "goToMenu", sender: self)
+        }
+        
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        goingForwards = false
     }
 
 
@@ -79,6 +91,7 @@ class SlideShowViewController: UIViewController {
     
     @IBAction func tapToIdentify(_ sender: UITapGestureRecognizer) {
         slideShowUIImageView.stopAnimating()
+        isFromSlideShow = true
         vueTimer.invalidate()
         performSegue(withIdentifier: "showPaintingInfo", sender: self)
     }
@@ -90,6 +103,13 @@ class SlideShowViewController: UIViewController {
 
         if segue.identifier == "showPaintingInfo" {
             let controller = segue.destination as! infoAndImageViewController
+            isFromSlideShow = true
+            isFromMenu = false
+            isFromQuiz = false
+            goingForwards = true
+            controller.isFromQuiz = isFromQuiz
+            controller.isFromSlideShow = isFromSlideShow
+            controller.isFromMenu = isFromMenu
             controller.specificArtistInfo = indexPainting[n]
             controller.artistList = artistList
         }

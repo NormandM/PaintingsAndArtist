@@ -19,12 +19,15 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var artistName: UILabel!
     var isFromQuiz = Bool()
+    var isFromMenu = Bool()
+    var isFromSlideShow = Bool()
     var specificArtistInfo: Int?
     var artistList: [[String]] = []
     var artistsCount = 0
     var bioInfoEra = String()
     var bioInfoBio = String()
     var bioInfoImageName = String()
+    var goingForwards = Bool()
     var n = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +68,13 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
         bioTextView.font = fontsAndConstraints.size().1
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        if goingForwards == false {
+            performSegue(withIdentifier: "goToMenu", sender: self)
+        }
+    }
     override func viewDidAppear(_ animated: Bool) {
+        goingForwards = false
         bioTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 
@@ -142,7 +151,15 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Navigation
 
     @objc func returnToSlideShow() {
-        performSegue(withIdentifier: "goBackToSlideShow", sender: self)
+        goingForwards = true
+        if isFromQuiz {
+            performSegue(withIdentifier: "goBackToQuiz", sender: self)
+        }else if isFromMenu {
+            performSegue(withIdentifier: "goToMenu", sender: self)
+        }else if isFromSlideShow{
+            performSegue(withIdentifier: "goBackToSlideShow", sender: self)
+        }
+        
     }
 
 

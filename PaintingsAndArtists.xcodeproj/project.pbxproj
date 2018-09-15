@@ -11,7 +11,10 @@
 		8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */; };
 		8E1C43D320C989480010F874 /* RandomizeOrderOfPaintings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C43D220C989480010F874 /* RandomizeOrderOfPaintings.swift */; };
 		8E1C43D620C9AC450010F874 /* Gymnopédie_no.3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E1C43D520C9AC450010F874 /* Gymnopédie_no.3.mp3 */; };
-		8E279BF7213DE16B00A44B62 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E279BF6213DE16B00A44B62 /* ArtistesAndPaintings.plist */; };
+		8E279BF92145FD2100A44B62 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E279BF82145FD2100A44B62 /* ArtistesAndPaintings.plist */; };
+		8E279BFB2147029000A44B62 /* MessageViewIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279BFA2147029000A44B62 /* MessageViewIntroduction.swift */; };
+		8E279BFD21470BF400A44B62 /* MessageViewOutOfCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */; };
+		8E279C012149B11800A44B62 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279C002149B11800A44B62 /* RoundButton.swift */; };
 		8E57650320EABD15001FEF3D /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650220EABD15001FEF3D /* Hint.swift */; };
 		8E57650520EAC722001FEF3D /* EnumForHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650420EAC722001FEF3D /* EnumForHints.swift */; };
 		8E57650720EC0C70001FEF3D /* TitleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650620EC0C70001FEF3D /* TitleDisplay.swift */; };
@@ -19,7 +22,7 @@
 		8E57650D20F15CB9001FEF3D /* ChosePaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */; };
 		8E6E7B0720E55084001317CB /* ButtonAndLabelDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E7B0620E55084001317CB /* ButtonAndLabelDisplay.swift */; };
 		8E9885E72103851F009C5A84 /* LabelWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9885E62103851F009C5A84 /* LabelWithInsets.swift */; };
-		8EACF31320FBE01100F2E981 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31220FBE01100F2E981 /* MessageView.swift */; };
+		8EACF31320FBE01100F2E981 /* SpecialMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31220FBE01100F2E981 /* SpecialMessage.swift */; };
 		8EACF31520FD0A8B00F2E981 /* CreditManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31420FD0A8B00F2E981 /* CreditManagement.swift */; };
 		8EACF31720FD360800F2E981 /* OtherPainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31620FD360800F2E981 /* OtherPainting.swift */; };
 		8EACF31920FE6FC100F2E981 /* ProgressionBarDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31820FE6FC100F2E981 /* ProgressionBarDisplay.swift */; };
@@ -72,7 +75,10 @@
 		8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime_clickbell_octave_up.mp3; sourceTree = "<group>"; };
 		8E1C43D220C989480010F874 /* RandomizeOrderOfPaintings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizeOrderOfPaintings.swift; sourceTree = "<group>"; };
 		8E1C43D520C9AC450010F874 /* Gymnopédie_no.3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gymnopédie_no.3.mp3"; sourceTree = "<group>"; };
-		8E279BF6213DE16B00A44B62 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
+		8E279BF82145FD2100A44B62 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
+		8E279BFA2147029000A44B62 /* MessageViewIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewIntroduction.swift; sourceTree = "<group>"; };
+		8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewOutOfCredits.swift; sourceTree = "<group>"; };
+		8E279C002149B11800A44B62 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		8E57650220EABD15001FEF3D /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
 		8E57650420EAC722001FEF3D /* EnumForHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumForHints.swift; sourceTree = "<group>"; };
 		8E57650620EC0C70001FEF3D /* TitleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDisplay.swift; sourceTree = "<group>"; };
@@ -80,7 +86,7 @@
 		8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosePaintingViewController.swift; sourceTree = "<group>"; };
 		8E6E7B0620E55084001317CB /* ButtonAndLabelDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAndLabelDisplay.swift; sourceTree = "<group>"; };
 		8E9885E62103851F009C5A84 /* LabelWithInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithInsets.swift; sourceTree = "<group>"; };
-		8EACF31220FBE01100F2E981 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		8EACF31220FBE01100F2E981 /* SpecialMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialMessage.swift; sourceTree = "<group>"; };
 		8EACF31420FD0A8B00F2E981 /* CreditManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditManagement.swift; sourceTree = "<group>"; };
 		8EACF31620FD360800F2E981 /* OtherPainting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPainting.swift; sourceTree = "<group>"; };
 		8EACF31820FE6FC100F2E981 /* ProgressionBarDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionBarDisplay.swift; sourceTree = "<group>"; };
@@ -175,7 +181,6 @@
 				8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */,
 				8EACF31620FD360800F2E981 /* OtherPainting.swift */,
 				8E9885E62103851F009C5A84 /* LabelWithInsets.swift */,
-				8EACF31220FBE01100F2E981 /* MessageView.swift */,
 			);
 			path = QuizPart2ChoosePainting;
 			sourceTree = "<group>";
@@ -186,6 +191,8 @@
 				8EFBE79E20B5CBC5008E7532 /* MenuViewController.swift */,
 				8EB88C542107C48F009755CD /* ImageManager.swift */,
 				8EE676E0210CE8CC0057392C /* ExtensionToSeparateWords.swift */,
+				8E279BFA2147029000A44B62 /* MessageViewIntroduction.swift */,
+				8E279C002149B11800A44B62 /* RoundButton.swift */,
 			);
 			path = StartMenu;
 			sourceTree = "<group>";
@@ -203,6 +210,7 @@
 				8E57650220EABD15001FEF3D /* Hint.swift */,
 				8E57650420EAC722001FEF3D /* EnumForHints.swift */,
 				8EACF31420FD0A8B00F2E981 /* CreditManagement.swift */,
+				8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */,
 			);
 			path = "View Controller Quiz";
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 				8EACF31820FE6FC100F2E981 /* ProgressionBarDisplay.swift */,
 				8EE676F22116008C0057392C /* LetterChoice.swift */,
 				8EE676F421178B910057392C /* CheckingResponse.swift */,
+				8EACF31220FBE01100F2E981 /* SpecialMessage.swift */,
 			);
 			path = BonusQuiz;
 			sourceTree = "<group>";
@@ -247,11 +256,11 @@
 			children = (
 				8EFBE76B20B1B169008E7532 /* AppDelegate.swift */,
 				8EFBE76F20B1B169008E7532 /* Main.storyboard */,
-				8E279BF6213DE16B00A44B62 /* ArtistesAndPaintings.plist */,
+				8E279BF82145FD2100A44B62 /* ArtistesAndPaintings.plist */,
 				8EB88C532107C45E009755CD /* StartMenu */,
 				8E57650E20F27949001FEF3D /* SlideShow */,
-				8E57650F20F279AE001FEF3D /* QuizPart2ChoosePainting */,
 				8EC8905D20E037F2000BB518 /* View Controller Quiz */,
+				8E57650F20F279AE001FEF3D /* QuizPart2ChoosePainting */,
 				8EE676D9210A40DA0057392C /* BonusQuiz */,
 				8E1C441A20D0300A0010F874 /* InfoImageViewController */,
 				8EFBE77720B1B16D008E7532 /* LaunchScreen.storyboard */,
@@ -392,7 +401,7 @@
 				8EFBE77620B1B16D008E7532 /* Assets.xcassets in Resources */,
 				8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */,
 				8E11C4012120861500BB6AFC /* etc_error_drum.mp3 in Resources */,
-				8E279BF7213DE16B00A44B62 /* ArtistesAndPaintings.plist in Resources */,
+				8E279BF92145FD2100A44B62 /* ArtistesAndPaintings.plist in Resources */,
 				8EFBE77120B1B169008E7532 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,14 +440,17 @@
 				8E57650D20F15CB9001FEF3D /* ChosePaintingViewController.swift in Sources */,
 				8EE676DF210B8DF60057392C /* AnswerCollectionViewCell.swift in Sources */,
 				8E9885E72103851F009C5A84 /* LabelWithInsets.swift in Sources */,
+				8E279BFD21470BF400A44B62 /* MessageViewOutOfCredits.swift in Sources */,
 				8EE676E32110D0B00057392C /* ArrayManagement.swift in Sources */,
 				8EACF31920FE6FC100F2E981 /* ProgressionBarDisplay.swift in Sources */,
+				8E279C012149B11800A44B62 /* RoundButton.swift in Sources */,
 				8EFBE76C20B1B169008E7532 /* AppDelegate.swift in Sources */,
 				8EFBE7A320B5F5E1008E7532 /* infoAndImageViewController.swift in Sources */,
 				8EE4283220C32102005981B3 /* FontsAndConstraints.swift in Sources */,
 				8EE676D8210A40CA0057392C /* BonusQuizViewController.swift in Sources */,
 				8E57650B20F129CF001FEF3D /* PainterSelection.swift in Sources */,
-				8EACF31320FBE01100F2E981 /* MessageView.swift in Sources */,
+				8E279BFB2147029000A44B62 /* MessageViewIntroduction.swift in Sources */,
+				8EACF31320FBE01100F2E981 /* SpecialMessage.swift in Sources */,
 				8EACF31720FD360800F2E981 /* OtherPainting.swift in Sources */,
 				8EACF31B20FE812100F2E981 /* BuyCreditViewController.swift in Sources */,
 				8E1C43D320C989480010F874 /* RandomizeOrderOfPaintings.swift in Sources */,

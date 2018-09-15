@@ -89,18 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    @objc func rotated() -> Bool {
-        var orientation = Bool()
-        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
-            orientation = true
-            
-            
-        }
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
-            orientation = false
-        }
-        return orientation
-    }
+
 
 
 }

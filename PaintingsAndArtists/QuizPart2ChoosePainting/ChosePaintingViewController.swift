@@ -15,7 +15,7 @@ class ChosePaintingViewController: UIViewController {
     @IBOutlet weak var paintingImage3: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var commentOnResponse: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: RoundButton!
     var bioInfoImageName = String()
     var indexPainting = [Int]()
     var artistList = [[String]]()
@@ -28,13 +28,15 @@ class ChosePaintingViewController: UIViewController {
     var soundPlayer: SoundPlayer?
     var painterName = String()
     var isAnswerGood = Bool()
+    let fontsAndConstraints = FontsAndConstraints()
+    lazy var sizeInfo = fontsAndConstraints.size()
+    var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
     override func viewDidLoad() {
         super.viewDidLoad()
         soundPlayer = SoundPlayer()
         commentOnResponse.isHidden = true
         let paintingImage: [UIImageView] = [paintingImage1, paintingImage2, paintingImage3]
-        infoLabel.textColor = UIColor.white
-        infoLabel.text = "Identify another \(artistList[indexPainting[selectedIndex]][0]) painting"
+
         painterName = artistList[indexPainting[selectedIndex]][0]
         var i = Int()
         for artistName in artistList {
@@ -53,18 +55,30 @@ class ChosePaintingViewController: UIViewController {
             ImageManager.choosImage(imageView: paintingImage[i], imageName: imageName)
             i = i + 1
         }
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
+        infoLabel.textColor = UIColor.white
+        infoLabel.text = "Identify another \(artistList[indexPainting[selectedIndex]][0]) painting"
+        infoLabel.font = sizeInfoAndFonts?.fontSize2
+        commentOnResponse.font = sizeInfoAndFonts?.fontSize5
         nextButton.isHidden = true
         selectedIndex = selectedIndex + 1
         UserDefaults.standard.set(selectedIndex, forKey: "selectedIndex")
         selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
     }
     override func viewDidAppear(_ animated: Bool) {
+        nextButton.titleLabel?.font = sizeInfoAndFonts?.fontSize6
         nextButton.layer.masksToBounds = true
         nextButton.layer.cornerRadius = nextButton.frame.width/2
         nextButton.backgroundColor = UIColor(displayP3Red: 27/255, green: 95/255, blue: 94/255, alpha: 1.0)
     }
 
-    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        nextButton.layer.masksToBounds = true
+        nextButton.layer.cornerRadius = nextButton.frame.width/2
+    }
 
     @IBAction func nextButtonWasPressed(_ sender: UIButton) {
         if isAnswerGood{
@@ -113,6 +127,7 @@ class ChosePaintingViewController: UIViewController {
             infoLabel.text = otherPaintingNameForSameArtist
             soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
         }
+        
     }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -9,12 +9,27 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-    var artistList: [[String]] = []
-    var artistsCount = 0
-    var effect: UIVisualEffect!
+    @IBOutlet weak var learnArtLabel: UILabel!
+    @IBOutlet weak var slideShowButton: UIButton!
+    @IBOutlet weak var starHereLabel: UILabel!
+    @IBOutlet weak var quizButton: UIButton!
+    @IBOutlet weak var testYourKnowledgeLabel: UILabel!
+    @IBOutlet weak var allTheDataButton: UIButton!
+    @IBOutlet weak var consultAndLearnLabel: UILabel!
+    @IBOutlet weak var manageYourCreditsButton: UIButton!
     @IBOutlet var menuView: UIView!
     @IBOutlet weak var visualEffect: UIVisualEffectView!
     @IBOutlet weak var grandeJatte: UIImageView!
+    var artistList: [[String]] = []
+    var artistsCount = 0
+    var isFromMenu = Bool()
+    var isFromQuiz = Bool()
+    var isFromSlideShow = Bool()
+    var effect: UIVisualEffect!
+    let fontsAndConstraints = FontsAndConstraints()
+    lazy var sizeInfo = fontsAndConstraints.size()
+    var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
@@ -52,27 +67,26 @@ class MenuViewController: UIViewController {
                 }
             }
         }
+        artistList = sortedArtistList
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            IntroductionMessage.showMessageView(view: self.view, messageView: self.menuView, visualEffect: self.visualEffect, effect: self.effect, learnArtLabel: self.learnArtLabel, slideShowButton: self.slideShowButton, starHereLabel: self.starHereLabel, quizButton: self.quizButton, testYourKnowledgeLabel: self.testYourKnowledgeLabel, allTheDataButton: self.allTheDataButton, consultAndLearnLabel: self.consultAndLearnLabel, manageYourCreditsButton: self.manageYourCreditsButton)
+        }
+    }
     
-        let appDelegate = AppDelegate()
-        let orientation = appDelegate.rotated()
-        if orientation {
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        if UIDevice.current.orientation.isLandscape{
             ImageManager.choosImage(imageView: grandeJatte, imageName: "Un dimanche après-midi à l'île de la Grande Jatte")
         }else{
             ImageManager.choosImage(imageView: grandeJatte, imageName: "detailDeaGrandeJatte")
+        }
+    }
 
-        }
-        artistList = sortedArtistList
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            MessageView.showMessageView(view: self.view, messageView: self.menuView, button: nil, visualEffect: self.visualEffect, effect: self.effect, diplomaImageView: nil, totalPaintings: nil)
-        }
-        
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-    }
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+    }
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        IntroductionMessage.showMessageView(view: view, messageView: menuView, visualEffect: visualEffect, effect:effect, learnArtLabel: learnArtLabel, slideShowButton: slideShowButton, starHereLabel: starHereLabel, quizButton: quizButton, testYourKnowledgeLabel: testYourKnowledgeLabel, allTheDataButton: allTheDataButton, consultAndLearnLabel: consultAndLearnLabel, manageYourCreditsButton: manageYourCreditsButton)
     }
 
     // MARK: - Navigation
@@ -93,7 +107,13 @@ class MenuViewController: UIViewController {
             backItem.title = ""
             navigationItem.backBarButtonItem = backItem
             backItem.tintColor = UIColor.white
+            isFromQuiz = false
+            isFromMenu = true
+            isFromSlideShow = false
             let controller = segue.destination as! infoAndImageViewController
+            controller.isFromMenu = isFromMenu
+            controller.isFromQuiz = isFromQuiz
+            controller.isFromSlideShow = isFromSlideShow
             controller.artistList = artistList
             controller.artistsCount = artistsCount
         }
@@ -106,6 +126,10 @@ class MenuViewController: UIViewController {
             controller.artistList = artistList
             controller.artistsCount = artistsCount
         }
+
+    }
+    @IBAction func unwindToMainMenu (_ sender: UIStoryboardSegue) {
+        IntroductionMessage.showMessageView(view: view, messageView: menuView, visualEffect: visualEffect, effect:effect, learnArtLabel: learnArtLabel, slideShowButton: slideShowButton, starHereLabel: starHereLabel, quizButton: quizButton, testYourKnowledgeLabel: testYourKnowledgeLabel, allTheDataButton: allTheDataButton, consultAndLearnLabel: consultAndLearnLabel, manageYourCreditsButton: manageYourCreditsButton)
     }
 }
 

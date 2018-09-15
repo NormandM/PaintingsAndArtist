@@ -16,8 +16,12 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var quizProgressBar: UIProgressView!
     @IBOutlet weak var commentAfterResponse: SpecialLabel?
     @IBOutlet weak var specialCommentAfterResponse: SpecialLabel!
-    @IBOutlet weak var okButton: UIButton!
-    @IBOutlet weak var specialViewOkButton: UIButton!
+
+    @IBOutlet weak var finalCommentAfterResponse: SpecialLabel!
+    
+    
+    @IBOutlet var finalView: UIView!
+    @IBOutlet weak var specialViewOkButton: RoundButton!
     @IBOutlet weak var hintButton: UIButton!
     @IBOutlet var hintItemButton: [UIButton]!
     @IBOutlet weak var visualEffect: UIVisualEffectView!
@@ -29,6 +33,11 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var responseRatio: UILabel!
     @IBOutlet weak var titlePaintings: UILabel!
     @IBOutlet weak var titleForAnagramme: UILabel!
+    @IBOutlet weak var nextLevelLabel: UILabel!
+    @IBOutlet weak var okButton: RoundButton!
+    @IBOutlet weak var finalOkButton: RoundButton!
+    
+    
     var spaceBetweenCells = CGFloat()
     var totalQuestion = Int()
     var soundPlayer: SoundPlayer?
@@ -112,27 +121,34 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         titleForAnagramme.font = sizeInfoAndFonts?.fontSize4
         titleLable.font = sizeInfoAndFonts?.fontSize4
         bioDateLabel.font = sizeInfoAndFonts?.fontSize2
+        hintItemButton.forEach {(eachButton) in
+            eachButton.titleLabel?.font = sizeInfoAndFonts?.fontSize1
+        }
+        hintButton.titleLabel?.font = sizeInfoAndFonts?.fontSize2
         bioTextView.layer.borderColor = UIColor.white.cgColor
         bioTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 20, 20)
         bioTextView.font = sizeInfoAndFonts?.fontSize1
+        commentAfterResponse?.font = sizeInfoAndFonts?.fontSize2
+        specialCommentAfterResponse.font = sizeInfoAndFonts?.fontSize2
+        responseRatio.font = sizeInfoAndFonts?.fontSize7
         cellsAcross = CGFloat(totalNameArray[0].count)
         if UIDevice.current.orientation.isLandscape {isLanscape = true}
         setUpLayout()
     }
 
-
-
     @IBOutlet weak var answerCollectioView: UICollectionView!{
         didSet{
             answerCollectioView.dataSource = self
             answerCollectioView.delegate = self
-            
+
         }
     }
-    @IBAction func okButtonPressed(_ sender: UIButton) {
+    @IBAction func okButtonPressed(_ sender: RoundButton) {
+        print("okButtonPressed")
         MessageView.dismissMessageview(messageView: messageView, visualEffect: visualEffect, effect: effect)
         performSegue(withIdentifier: "backToViewController", sender: self)
     }
+    
     @IBAction func hintSelectionPress(_ sender: UIButton) {
         hintMenuAction()
         
@@ -186,7 +202,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                         }else{cell.isUserInteractionEnabled = false}
                     }
                 }else if buttonLabel == HintLabel.showPainterName.rawValue{
-
                     gaveUp = true
                     var i = 0
                     var j = 0
@@ -213,9 +228,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
                 hintMenuAction()
             }
-            
         }
-
     }
     func showActionView () {
         
@@ -246,6 +259,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 cell2.isUserInteractionEnabled = false
             }
         }
+        cell2.answerLetter.font = sizeInfoAndFonts?.fontSize2
         cell2.layoutIfNeeded()
         return cell2
     }
@@ -298,33 +312,50 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     CreditManagment.increaseOneCredit(hintButton: nil)
                     soundPlayer?.playSound(soundName: "chime_clickbell_octave_up", type: "mp3")
                     successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers") + 1
+                    if successiveRightAnswers > artistList.count {
+                        successiveRightAnswers = 0
+                    }else if successiveRightAnswers == artistList.count {
+                        quizProgressBar.isHidden = true
+                        responseRatio.isHidden = true
+                        nextLevelLabel.isHidden = true
+                    }
                 }
                 let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, painterName: painterName, totalPaintings: totalPaintings, gaveUp: gaveUp)
                 totalQuestion = tuppleResponse.1
                 UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
-                
                 switch successiveRightAnswers {
                 case 5, 15, 30, 50:
-                    let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: specialCommentAfterResponse!, painterName: painterName, totalPaintings: totalPaintings, gaveUp: gaveUp)
-                    specialCommentAfterResponse = tuppleResponse.0
+                let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: specialCommentAfterResponse!, painterName: painterName, totalPaintings: totalPaintings, gaveUp: gaveUp)
                     totalQuestion = tuppleResponse.1
-                    MessageView.showMessageView(view: view, messageView: specialMessageView, button: specialViewOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, totalPaintings: totalPaintings)
+                    specialCommentAfterResponse = tuppleResponse.0
+                    specialViewOkButton.x = view.frame.width * 0.7/2 - specialViewOkButton.buttonHeight/2
+                    specialViewOkButton.y =  view.frame.height * 0.7 * 0.8
+                    MessageView.showMessageView(view: view, messageView: specialMessageView, button: specialViewOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, totalPaintings: totalPaintings, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
+                case totalPaintings:
+                let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: finalCommentAfterResponse, painterName: painterName, totalPaintings: totalPaintings, gaveUp: gaveUp)
+                    finalCommentAfterResponse = tuppleResponse.0
+                    finalOkButton.x = view.frame.width * 0.7/2 - finalOkButton.buttonHeight/2
+                    finalOkButton.y =   view.frame.height * 0.7 * 0.8
+                    MessageView.showMessageView(view: view, messageView: finalView, button: finalOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, totalPaintings: totalPaintings, commentAfterResponse: finalCommentAfterResponse, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                     
                 default:
-                    let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, painterName: painterName, totalPaintings: totalPaintings, gaveUp: gaveUp)
+                    print("is default")
                     commentAfterResponse = tuppleResponse.0
-                    totalQuestion = tuppleResponse.1
-                    MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: totalPaintings)
+                    
+                    MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: totalPaintings, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                     QuizProgressionBar.barDisplay(successiveRightAnswers: successiveRightAnswers, quizProgressionBar: quizProgressBar, totalQuestion: totalQuestion)
                     responseRatio.text = "\(successiveRightAnswers)/\(totalQuestion)"
+                   
+
                     
                 }
+                okButton.setNeedsDisplay()
             }else{
                 let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, painterName: painterName, totalPaintings: totalPaintings, gaveUp: gaveUp)
                 totalQuestion = tuppleResponse.1
                 soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
                 commentAfterResponse?.text = "Sorry! It is not the right answer\nThe painter's name is \(painterName)"
-                MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: totalPaintings)
+                MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: totalPaintings, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                 UserDefaults.standard.set(0, forKey: "successiveRightAnswers")
                 
                 successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
@@ -333,6 +364,8 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             }
         
     }
+    
+
     func hintMenuAction() {
         hintItemButton.forEach { (eachButton) in
             UIView.animate(withDuration: 0.4, animations: {
@@ -352,9 +385,25 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         if fromInterfaceOrientation.isLandscape {
             isLanscape = false
         }else{isLanscape = true}
-        setUpLayout()
         answerCollectioView.setNeedsDisplay()
         
+        if self.messageView.isDescendant(of: self.view) {
+            print("normal")
+            MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: artistList.count, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
+
+        }
+        if self.specialMessageView.isDescendant(of: self.view) {
+            print("special")
+            specialViewOkButton.x = view.frame.width * 0.7/2 - specialViewOkButton.buttonHeight/2
+            specialViewOkButton.y =  view.frame.height * 0.7 * 0.8
+            MessageView.showMessageView(view: view, messageView: specialMessageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: artistList.count, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
+        }
+        if self.finalView.isDescendant(of: self.view){
+            finalOkButton.x = view.frame.width * 0.7/2 - finalOkButton.buttonHeight/2
+            finalOkButton.y =   view.frame.height * 0.7 * 0.8
+            MessageView.showMessageView(view: view, messageView: finalView, button: finalOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: artistList.count, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
+        }
+        okButton.setNeedsDisplay()
     }
 
     func setUpLayout(){
@@ -362,8 +411,9 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         var top = CGFloat()
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         if traitIsCompactHorizontal == false{
-            layout.minimumInteritemSpacing = 0.002 * view.bounds.width
+            layout.minimumInteritemSpacing = 2
             spaceBetweenCells = layout.minimumInteritemSpacing
+            //let numberOfCells = totalNameArray[0].count
             switch cellsAcross {
             case 4:
             if isLanscape {
@@ -450,13 +500,12 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         }else{
             left = 10
             right = left
-            layout.minimumInteritemSpacing = 1
+            layout.minimumInteritemSpacing = 2
             spaceBetweenCells = layout.minimumInteritemSpacing
             print(cellsAcross)
             switch cellsAcross {
 
             case 4, 5:
-                print("is in")
                 top = answerCollectioView.bounds.height * 0.05
             case 6:
                 top = answerCollectioView.bounds.height * 0.08
@@ -468,6 +517,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 top = answerCollectioView.bounds.height * 0.15
             default:
                 top = answerCollectioView.bounds.height * 0.15
+                
             }
         }
         layout.sectionInset = UIEdgeInsets(top: top,left:left,bottom: 0,right:right)
@@ -477,12 +527,11 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
    }
     @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var dim = CGFloat()
-        if indexPath.section == 1{
-            cellsAcross = CGFloat(totalNameArray[1].count)
-        }else{
-            cellsAcross = CGFloat(totalNameArray[0].count)
-        }
-        dim = ((collectionView.bounds.width - (left + right)) - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+        let spaceAccross = CGFloat(totalNameArray[0].count)
+        spaceBetweenCells = 2
+        print(totalNameArray[0].count)
+        print(spaceBetweenCells)
+        dim = ((collectionView.bounds.width - (left + right)) - spaceAccross * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim)
     }
 

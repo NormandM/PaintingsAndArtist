@@ -19,6 +19,7 @@ class ButtonTranslation {
             fromButton.transform = CGAffineTransform(translationX: maxXToButton - maxXFromButton, y: maxYToButton - maxYFromButton)}, completion:{finished in completionAnimation(fromButton: fromButton, toButton: toButton, painterName: painterName)})
     }
     class func completionAnimation(fromButton: UIButton, toButton: UIButton, painterName: String){
+        let fontsAndConstraints = FontsAndConstraints()
         fromButton.isHidden =  false
         fromButton.isEnabled = false
         fromButton.backgroundColor = UIColor.black
@@ -26,6 +27,7 @@ class ButtonTranslation {
         fromButton.titleLabel!.lineBreakMode = .byWordWrapping
         fromButton.titleLabel!.textAlignment = .center
         fromButton.setTitle("\(painterName)\n1 coin was added", for: .normal)
+        fromButton.titleLabel?.font = fontsAndConstraints.size().1
         
     }
 }

@@ -35,7 +35,8 @@ class SuccessiveAnswer {
             totalQuestion = 5
         case 5:
             commentAfterResponse.text = """
-            Art Amateur!
+            You have reach the level
+                ART AMATEUR!
             You were right with 5 consecutive
             series of answers!
             
@@ -54,7 +55,8 @@ class SuccessiveAnswer {
             totalQuestion = 15
         case 15:
             commentAfterResponse.text = """
-            Art Connoisseur!
+            You have reach the level
+                ART CONNOISSEUR!
             You were right with 15 consecutive
             series of answers!
             
@@ -73,7 +75,8 @@ class SuccessiveAnswer {
             totalQuestion = 30
         case 30:
             commentAfterResponse.text = """
-            Art Expert!
+            You have reach the level
+                ART EXPERT!
             You were right with 30 consecutive
             series of answers!
             
@@ -92,7 +95,8 @@ class SuccessiveAnswer {
             totalQuestion = 50
         case 50:
             commentAfterResponse.text = """
-            Art Scholar!
+            You have reach the level
+                ART SCHOLAR!
             You were right with 50 consecutive
             series of answers!
             
@@ -102,10 +106,19 @@ class SuccessiveAnswer {
             totalQuestion = totalPaintings
         case totalPaintings:
             commentAfterResponse.text = """
+            
             Fantastic!
-            You know it all!
+            YOU KNOW IT ALL!
             
             A 1000 coins bonnus was added to your credits
+            
+            You know art and you know this game.
+            Any ideas how I could improve it?
+            If you do I would like to hear from you!
+            
+            Please write at nmartin1956@gmail.com.
+            
+            Thank you!
             """
             CreditManagment.increseOneThousandCredit()
         default:

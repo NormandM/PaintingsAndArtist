@@ -20,9 +20,11 @@ class QuizViewController: UIViewController {
     @IBOutlet var hintItemButton: [UIButton]!
     @IBOutlet weak var placeHolderButton: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: RoundButton!
+    @IBOutlet weak var okBuyCreditsButton: RoundButton!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet var messageView: UIView!
+    weak var movingButton: UIButton?
     let fontsAndConstraints = FontsAndConstraints()
     lazy var sizeInfo = fontsAndConstraints.size()
     var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
@@ -35,15 +37,17 @@ class QuizViewController: UIViewController {
     var selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
     var artistsCount: Int = 0
     var errorCounter = 0
-    
-        
+    var isFromQuiz = Bool()
+    var isFromMenu = Bool()
+    var isFromSlideShow = Bool()
+    var goingForwards = Bool()
     var credit = UserDefaults.standard.integer(forKey: "credit")
     {
         didSet{
             if credit < 1 {
                 nextButton.isEnabled = false
                 nextButton.isHidden = true
-                MessageView.showMessageView(view: view, messageView: messageView, button: buyCreditsButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: nil)
+                MessageOutOfCredits.showMessageView(view: view, messageView: messageView, visualEffect: visualEffect, effect: effect, messageLabel: messageLabel, okBuyCreditsButton: okBuyCreditsButton)
                 hintButton.isHidden = true
             }
         }
@@ -66,8 +70,8 @@ class QuizViewController: UIViewController {
         }
         self.navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.black
- //       UserDefaults.standard.set(0, forKey: "credit")
-//        UserDefaults.standard.set(0, forKey: "successiveRightAnswers")
+        //UserDefaults.standard.set(10, forKey: "credit")
+        //UserDefaults.standard.set(139, forKey: "successiveRightAnswers")
 
         if !(userAlreadyExist(credit: "credit")){
             credit = 20
@@ -79,6 +83,7 @@ class QuizViewController: UIViewController {
         quizElementSelection()
     }
     override func viewDidAppear(_ animated: Bool) {
+        goingForwards = false
         sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
         let navLabel = UILabel()
         let navTitle = NSMutableAttributedString(string: "Who painted this?", attributes:[
@@ -89,8 +94,38 @@ class QuizViewController: UIViewController {
         nextButton.layer.masksToBounds = true
         nextButton.layer.cornerRadius = nextButton.frame.width/2
         nextButton.backgroundColor = UIColor(displayP3Red: 27/255, green: 95/255, blue: 94/255, alpha: 1.0)
+        nextButton.titleLabel?.font = sizeInfoAndFonts?.fontSize6
+        painterButton.forEach {(eachButton) in
+            eachButton.titleLabel?.font = sizeInfoAndFonts?.fontSize2
+        }
+        hintItemButton.forEach {(eachButton) in
+            eachButton.titleLabel?.font = sizeInfoAndFonts?.fontSize1
+        }
+        hintButton.titleLabel?.font = sizeInfoAndFonts?.fontSize6
+        okBuyCreditsButton.titleLabel?.font = sizeInfoAndFonts?.fontSize6
+        errorMessage.font = sizeInfoAndFonts?.fontSize1
+        messageLabel.font = sizeInfoAndFonts?.fontSize2
+        
         
     }
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        if let theButton = movingButton {
+            theButton.transform = CGAffineTransform.identity
+            ButtonTranslation.translate(fromButton: theButton, toButton: placeHolderButton, painterName: artistList[indexPainting[selectedIndex]][0])
+        }
+        if self.messageView.isDescendant(of: self.view) {
+                MessageOutOfCredits.showMessageView(view: view, messageView: messageView, visualEffect: visualEffect, effect: effect, messageLabel: messageLabel, okBuyCreditsButton: okBuyCreditsButton)
+        }
+
+        nextButton.layer.masksToBounds = true
+        nextButton.layer.cornerRadius = nextButton.frame.width/2
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if goingForwards == false {
+            performSegue(withIdentifier: "goToMenu", sender: self)
+        }
+    }
+
     func quizElementSelection() {
         reinializePaintingsList()
         selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
@@ -121,6 +156,7 @@ class QuizViewController: UIViewController {
     }
     @IBAction func painterButtonPressed(_ sender: UIButton) {
         soundPlayer = SoundPlayer()
+        
         if let painterButtonTitle = sender.titleLabel?.text {
             if painterButtonTitle == artistList[indexPainting[selectedIndex]][0]{
                 for button in painterButton {
@@ -129,6 +165,7 @@ class QuizViewController: UIViewController {
                         button.isHidden  = true
                     }
                 }
+                movingButton = sender
                 soundPlayer?.playSound(soundName: "chime_clickbell_octave_up", type: "mp3")
                 ButtonTranslation.translate(fromButton: sender, toButton: placeHolderButton, painterName: painterButtonTitle)
                 TitleDisplay.show(labelTitle: labelTitle, titleText: artistList[indexPainting[selectedIndex]][2], nextButton: nextButton, view: self)
@@ -143,13 +180,13 @@ class QuizViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     sender.isEnabled = false
                     sender.isHidden = true
+
                     if self.errorCounter > 2 {
                         LabelAndButton.buttonInvisible(painterButton: self.painterButton, errorMessage: self.errorMessage)
                         self.errorMessage.isHidden = false
                         self.errorMessage.text = """
                         Sorry...
-                        The right answer is :
-                        \(self.artistList[self.indexPainting[self.selectedIndex]][0])
+                        The right answer is : \(self.artistList[self.indexPainting[self.selectedIndex]][0])
                         """
                         UserDefaults.standard.set(0, forKey: "successiveRightAnswers")
                         self.selectedIndex = self.selectedIndex + 1
@@ -173,8 +210,7 @@ class QuizViewController: UIViewController {
         if credit < 1 {
             nextButton.isEnabled = false
             nextButton.isHidden = true
-            MessageView.showMessageView(view: self.view, messageView: messageView, button: buyCreditsButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: nil)
-            //hintButton.isHidden = true
+            MessageOutOfCredits.showMessageView(view: self.view, messageView: messageView, visualEffect: visualEffect, effect: effect, messageLabel: messageLabel, okBuyCreditsButton: okBuyCreditsButton)
         }else if let buttonLabel = sender.titleLabel?.text {
             if buttonLabel != HintLabel.buyCoins.rawValue {
                 Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: finalArrayOfButtonNames, painterName: artistList[indexPainting[selectedIndex]][0], painterButton: painterButton, placeHolderButton: placeHolderButton, labelTitle: labelTitle, view: self, nextButton: nextButton, titleText: artistList[indexPainting[selectedIndex]][2], hintButton: hintButton, showActionView: showActionView)
@@ -195,8 +231,16 @@ class QuizViewController: UIViewController {
         nextButton.isEnabled = false
         nextButton.isHidden = true
     }
+  
     @IBAction func buyCreditsButtonPressed(_ sender: UIButton) {
-        MessageView.dismissMessageview(messageView: messageView, visualEffect: visualEffect, effect: effect)
+        executeSegue()
+    }
+    @IBAction func buyCreditsTapped(_ sender: UITapGestureRecognizer) {
+        executeSegue()
+    }
+    func executeSegue () {
+        MessageOutOfCredits.dismissMessageview(messageView: messageView, visualEffect: visualEffect, effect: effect)
+        nextButton.isHidden = true
         performSegue(withIdentifier: "showBuyCredits", sender: self)
     }
     
@@ -234,12 +278,19 @@ class QuizViewController: UIViewController {
             navigationItem.backBarButtonItem = backItem
             backItem.tintColor = UIColor.white
             let controller = segue.destination as! infoAndImageViewController
-            controller.isFromQuiz = true
+            goingForwards = true
+            isFromQuiz = true
+            isFromMenu = false
+            isFromSlideShow = false
+            controller.isFromQuiz = isFromQuiz
+            controller.isFromMenu = isFromMenu
+            controller.isFromSlideShow = isFromSlideShow
             controller.bioInfoEra = artistList[indexPainting[selectedIndex]][1]
             controller.bioInfoImageName = artistList[indexPainting[selectedIndex]][2]
             controller.bioInfoBio = artistList[indexPainting[selectedIndex]][3]
         }
         if segue.identifier == "showChosePainting" {
+            goingForwards = true
             let controller = segue.destination as! ChosePaintingViewController
             controller.indexPainting = indexPainting
             controller.artistList = artistList
@@ -247,6 +298,15 @@ class QuizViewController: UIViewController {
             controller.bioInfoImageName = artistList[indexPainting[selectedIndex]][2]
             LabelAndButton.enableHintButtons(hintItemButton: hintItemButton)
         }
+        if segue.identifier == "showBuyCredits" {
+            goingForwards = true
+            let controller = segue.destination as! BuyCreditViewController
+            let backItem = UIBarButtonItem()
+            controller.navigationItem.hidesBackButton = true
+            backItem.title = ""
+
+        }
+
     }
     @IBAction func unwindToViewController(_ sender: UIStoryboardSegue) {
         hintButton.isHidden = false
