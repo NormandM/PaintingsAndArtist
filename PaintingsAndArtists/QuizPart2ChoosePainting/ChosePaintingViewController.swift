@@ -124,6 +124,8 @@ class ChosePaintingViewController: UIViewController {
             \(painterName) painting.
             """
             isAnswerGood = false
+            CreditManagment.decreaseFourCredit(hintButton: nil)
+            UserDefaults.standard.set(0, forKey: "successiveRightAnswers")
             infoLabel.text = otherPaintingNameForSameArtist
             soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
         }

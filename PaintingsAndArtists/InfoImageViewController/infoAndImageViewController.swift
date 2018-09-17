@@ -74,7 +74,6 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
-        goingForwards = false
         bioTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 

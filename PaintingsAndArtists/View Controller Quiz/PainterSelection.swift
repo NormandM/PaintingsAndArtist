@@ -12,7 +12,6 @@ class PainterSelection {
         var otherPainters = [String]()
         var chosenOtherPaintersIndex = [Int]()
         var i = 0
-// Solution temporaire
         for artist in artistList {
             if artist[0] != artistList[indexPainting[selectedIndex]][0] && !otherPainters.contains(artist[0]) {
                 otherPainters.append(artist[0])

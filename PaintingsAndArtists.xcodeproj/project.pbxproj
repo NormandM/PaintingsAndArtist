@@ -11,10 +11,12 @@
 		8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */; };
 		8E1C43D320C989480010F874 /* RandomizeOrderOfPaintings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C43D220C989480010F874 /* RandomizeOrderOfPaintings.swift */; };
 		8E1C43D620C9AC450010F874 /* Gymnopédie_no.3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E1C43D520C9AC450010F874 /* Gymnopédie_no.3.mp3 */; };
-		8E279BF92145FD2100A44B62 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E279BF82145FD2100A44B62 /* ArtistesAndPaintings.plist */; };
 		8E279BFB2147029000A44B62 /* MessageViewIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279BFA2147029000A44B62 /* MessageViewIntroduction.swift */; };
 		8E279BFD21470BF400A44B62 /* MessageViewOutOfCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */; };
 		8E279C012149B11800A44B62 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279C002149B11800A44B62 /* RoundButton.swift */; };
+		8E31E60B21501F5900CABE83 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E31E60A21501F5900CABE83 /* ArtistesAndPaintings.plist */; };
+		8E31E60D215020F200CABE83 /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31E60C215020F200CABE83 /* LogoViewController.swift */; };
+		8E31E60F2150233D00CABE83 /* Acoustic Trio.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E31E60E2150233D00CABE83 /* Acoustic Trio.wav */; };
 		8E57650320EABD15001FEF3D /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650220EABD15001FEF3D /* Hint.swift */; };
 		8E57650520EAC722001FEF3D /* EnumForHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650420EAC722001FEF3D /* EnumForHints.swift */; };
 		8E57650720EC0C70001FEF3D /* TitleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650620EC0C70001FEF3D /* TitleDisplay.swift */; };
@@ -75,10 +77,12 @@
 		8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime_clickbell_octave_up.mp3; sourceTree = "<group>"; };
 		8E1C43D220C989480010F874 /* RandomizeOrderOfPaintings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizeOrderOfPaintings.swift; sourceTree = "<group>"; };
 		8E1C43D520C9AC450010F874 /* Gymnopédie_no.3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gymnopédie_no.3.mp3"; sourceTree = "<group>"; };
-		8E279BF82145FD2100A44B62 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
 		8E279BFA2147029000A44B62 /* MessageViewIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewIntroduction.swift; sourceTree = "<group>"; };
 		8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewOutOfCredits.swift; sourceTree = "<group>"; };
 		8E279C002149B11800A44B62 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		8E31E60A21501F5900CABE83 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
+		8E31E60C215020F200CABE83 /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
+		8E31E60E2150233D00CABE83 /* Acoustic Trio.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Acoustic Trio.wav"; sourceTree = "<group>"; };
 		8E57650220EABD15001FEF3D /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
 		8E57650420EAC722001FEF3D /* EnumForHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumForHints.swift; sourceTree = "<group>"; };
 		8E57650620EC0C70001FEF3D /* TitleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDisplay.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */,
+				8E31E60E2150233D00CABE83 /* Acoustic Trio.wav */,
 				8E11C4002120861500BB6AFC /* etc_error_drum.mp3 */,
 				8E1C43D520C9AC450010F874 /* Gymnopédie_no.3.mp3 */,
 			);
@@ -192,6 +197,7 @@
 				8EB88C542107C48F009755CD /* ImageManager.swift */,
 				8EE676E0210CE8CC0057392C /* ExtensionToSeparateWords.swift */,
 				8E279BFA2147029000A44B62 /* MessageViewIntroduction.swift */,
+				8E31E60C215020F200CABE83 /* LogoViewController.swift */,
 				8E279C002149B11800A44B62 /* RoundButton.swift */,
 			);
 			path = StartMenu;
@@ -256,18 +262,18 @@
 			children = (
 				8EFBE76B20B1B169008E7532 /* AppDelegate.swift */,
 				8EFBE76F20B1B169008E7532 /* Main.storyboard */,
-				8E279BF82145FD2100A44B62 /* ArtistesAndPaintings.plist */,
+				8E31E60A21501F5900CABE83 /* ArtistesAndPaintings.plist */,
 				8EB88C532107C45E009755CD /* StartMenu */,
 				8E57650E20F27949001FEF3D /* SlideShow */,
 				8EC8905D20E037F2000BB518 /* View Controller Quiz */,
 				8E57650F20F279AE001FEF3D /* QuizPart2ChoosePainting */,
 				8EE676D9210A40DA0057392C /* BonusQuiz */,
 				8E1C441A20D0300A0010F874 /* InfoImageViewController */,
+				8EACF31A20FE812100F2E981 /* BuyCreditViewController.swift */,
 				8EFBE77720B1B16D008E7532 /* LaunchScreen.storyboard */,
 				8EFBE77A20B1B16D008E7532 /* Info.plist */,
 				8EFBE77220B1B169008E7532 /* PaintingsAndArtists.xcdatamodeld */,
 				8EE4283120C32101005981B3 /* FontsAndConstraints.swift */,
-				8EACF31A20FE812100F2E981 /* BuyCreditViewController.swift */,
 				8E1C43D420C9A0C80010F874 /* SoundsAndMusic */,
 				8EFBE77520B1B16D008E7532 /* Assets.xcassets */,
 			);
@@ -401,7 +407,8 @@
 				8EFBE77620B1B16D008E7532 /* Assets.xcassets in Resources */,
 				8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */,
 				8E11C4012120861500BB6AFC /* etc_error_drum.mp3 in Resources */,
-				8E279BF92145FD2100A44B62 /* ArtistesAndPaintings.plist in Resources */,
+				8E31E60B21501F5900CABE83 /* ArtistesAndPaintings.plist in Resources */,
+				8E31E60F2150233D00CABE83 /* Acoustic Trio.wav in Resources */,
 				8EFBE77120B1B169008E7532 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +457,7 @@
 				8EE676D8210A40CA0057392C /* BonusQuizViewController.swift in Sources */,
 				8E57650B20F129CF001FEF3D /* PainterSelection.swift in Sources */,
 				8E279BFB2147029000A44B62 /* MessageViewIntroduction.swift in Sources */,
+				8E31E60D215020F200CABE83 /* LogoViewController.swift in Sources */,
 				8EACF31320FBE01100F2E981 /* SpecialMessage.swift in Sources */,
 				8EACF31720FD360800F2E981 /* OtherPainting.swift in Sources */,
 				8EACF31B20FE812100F2E981 /* BuyCreditViewController.swift in Sources */,

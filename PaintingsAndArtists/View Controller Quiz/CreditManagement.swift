@@ -37,29 +37,43 @@ class CreditManagment{
         UserDefaults.standard.set(credit, forKey: "credit")
         
     }
-    class func decreaseOneCredit(hintButton: UIButton){
+    class func decreaseOneCredit(hintButton: UIButton?){
         let credit = UserDefaults.standard.integer(forKey: "credit") - 1
         UserDefaults.standard.set(credit, forKey: "credit")
-        hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
+        if let button = hintButton {
+            button.setTitle("\(credit) Coins available for Hints", for: .normal)
+        }
+        
     }
-    class func decreaseTwoCredit(hintButton: UIButton){
+    class func decreaseTwoCredit(hintButton: UIButton?){
         let credit = UserDefaults.standard.integer(forKey: "credit") - 2
         UserDefaults.standard.set(credit, forKey: "credit")
-        hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
+        if let button = hintButton {
+             button.setTitle("\(credit) Coins available for Hints", for: .normal)
+        }
+       
     }
-    class func decreaseThreeCredit(hintButton: UIButton){
+    class func decreaseThreeCredit(hintButton: UIButton?){
         let credit = UserDefaults.standard.integer(forKey: "credit") - 3
         UserDefaults.standard.set(credit, forKey: "credit")
-        hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
+        if let button = hintButton {
+            button.setTitle("\(credit) Coins available for Hints", for: .normal)
+        }
+        
     }
-    class func decreaseFourCredit(hintButton: UIButton){
+    class func decreaseFourCredit(hintButton: UIButton?){
         let credit = UserDefaults.standard.integer(forKey: "credit") - 4
         UserDefaults.standard.set(credit, forKey: "credit")
-        hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
+        if let button = hintButton {
+            button.setTitle("\(credit) Coins available for Hints", for: .normal)
+        }
+        
     }
-    class func displayCredit(hintButton: UIButton){
+    class func displayCredit(hintButton: UIButton?){
         let credit = UserDefaults.standard.integer(forKey: "credit")
-        hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
+        if let button = hintButton {
+            button.setTitle("\(credit) Coins available for Hints", for: .normal)
+        }
     }
     
 }

@@ -52,10 +52,8 @@ class MessageView {
             imageName = "artExpert3"
         case 50:
             imageName = "mortarboard"
-        //case totalPaintings:
             
         default:
-            print("in2")
             messageViewHeight = view.frame.height * 0.6
             messageXPosition = view.frame.size.width  / 2 - messageViewWidth/2
             messageYPosition = view.frame.size.height/2 - messageViewHeight/2

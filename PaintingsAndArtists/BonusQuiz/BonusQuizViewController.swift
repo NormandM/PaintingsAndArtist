@@ -61,6 +61,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     var traitIsCompactHorizontal = Bool()
     var left = CGFloat()
     var right = CGFloat()
+    var hintLetterCounter = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
         effect = visualEffect.effect
@@ -92,8 +93,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             try "\(painterName) \(Date())".appendLineToURL(fileURL: url as URL)
             _ = try String(contentsOf: url as URL, encoding: String.Encoding.utf8)
             do {
-                let contents = try String(contentsOf: url)
-                print(contents)
+                _ = try String(contentsOf: url)
             } catch {
                 // contents could not be loaded
             }
@@ -144,7 +144,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     @IBAction func okButtonPressed(_ sender: RoundButton) {
-        print("okButtonPressed")
         MessageView.dismissMessageview(messageView: messageView, visualEffect: visualEffect, effect: effect)
         performSegue(withIdentifier: "backToViewController", sender: self)
     }
@@ -155,12 +154,13 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     }
 
     @IBAction func specificHintPressed(_ sender: UIButton) {
+        n = 0
         if let buttonLabel = sender.titleLabel?.text {
             let countLetter = nameArray.count
             if buttonLabel != HintLabel.buyCoins.rawValue {
                 if buttonLabel == HintLabel.showLetter.rawValue {
                     var cell =  answerCollectioView.cellForItem(at: [0, 0]) as! AnswerCollectionViewCell
-                        for i in 0 ... countLetter{
+                        for i in 0 ..< countLetter{
                         cell = answerCollectioView.cellForItem(at: [0, i]) as! AnswerCollectionViewCell
                         if cell.answerLetter.text == "__"  || cell.answerLetter.text != nameArray[i]{
                             n = i
@@ -173,6 +173,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     cell = answerCollectioView.cellForItem(at: [0, n]) as! AnswerCollectionViewCell
                     cell.answerLetter.text = goodLetter
                     cell.answerLetter.textColor = UIColor.red
+                    cell.isUserInteractionEnabled = false
                     var cell2 = answerCollectioView.cellForItem(at: [1, 0]) as! AnswerCollectionViewCell
                     var j = 0
                     for i in 0 ..< countLetter{
@@ -201,6 +202,12 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                             cell.isUserInteractionEnabled = true
                         }else{cell.isUserInteractionEnabled = false}
                     }
+                    hintLetterCounter = hintLetterCounter + 1
+                    if hintLetterCounter == 2 {
+                        hintItemButton[1].isEnabled = false
+                        hintItemButton[1].setTitleColor(UIColor.lightGray, for:UIControlState.normal)
+                    }
+
                 }else if buttonLabel == HintLabel.showPainterName.rawValue{
                     gaveUp = true
                     var i = 0
@@ -266,6 +273,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell =  collectionView.cellForItem(at: indexPath) as! AnswerCollectionViewCell
         let letter = cell.answerLetter.text
+
         if indexPath.section == 1 {
             var i = 0
             n = 0
@@ -339,18 +347,14 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     MessageView.showMessageView(view: view, messageView: finalView, button: finalOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, totalPaintings: totalPaintings, commentAfterResponse: finalCommentAfterResponse, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                     
                 default:
-                    print("is default")
                     commentAfterResponse = tuppleResponse.0
-                    
                     MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: totalPaintings, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                     QuizProgressionBar.barDisplay(successiveRightAnswers: successiveRightAnswers, quizProgressionBar: quizProgressBar, totalQuestion: totalQuestion)
                     responseRatio.text = "\(successiveRightAnswers)/\(totalQuestion)"
-                   
-
-                    
                 }
                 okButton.setNeedsDisplay()
             }else{
+                CreditManagment.decreaseFourCredit(hintButton: hintButton)
                 let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, painterName: painterName, totalPaintings: totalPaintings, gaveUp: gaveUp)
                 totalQuestion = tuppleResponse.1
                 soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
@@ -388,12 +392,10 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         answerCollectioView.setNeedsDisplay()
         
         if self.messageView.isDescendant(of: self.view) {
-            print("normal")
             MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: artistList.count, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
 
         }
         if self.specialMessageView.isDescendant(of: self.view) {
-            print("special")
             specialViewOkButton.x = view.frame.width * 0.7/2 - specialViewOkButton.buttonHeight/2
             specialViewOkButton.y =  view.frame.height * 0.7 * 0.8
             MessageView.showMessageView(view: view, messageView: specialMessageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: artistList.count, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
@@ -407,13 +409,11 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     }
 
     func setUpLayout(){
-        print(traitIsCompactHorizontal)
         var top = CGFloat()
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         if traitIsCompactHorizontal == false{
             layout.minimumInteritemSpacing = 2
             spaceBetweenCells = layout.minimumInteritemSpacing
-            //let numberOfCells = totalNameArray[0].count
             switch cellsAcross {
             case 4:
             if isLanscape {
@@ -529,21 +529,10 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         var dim = CGFloat()
         let spaceAccross = CGFloat(totalNameArray[0].count)
         spaceBetweenCells = 2
-        print(totalNameArray[0].count)
-        print(spaceBetweenCells)
         dim = ((collectionView.bounds.width - (left + right)) - spaceAccross * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

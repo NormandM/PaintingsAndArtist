@@ -58,7 +58,7 @@ class QuizViewController: UIViewController {
         effect = visualEffect.effect
         messageView.layer.cornerRadius = 5
         visualEffect.effect = nil
-        errorMessage.isHidden = true
+        errorMessage.isHidden = false
         placeHolderButton.isHidden = true
         placeHolderButton.isEnabled = false
         nextButton.isHidden = true
@@ -74,7 +74,7 @@ class QuizViewController: UIViewController {
         //UserDefaults.standard.set(139, forKey: "successiveRightAnswers")
 
         if !(userAlreadyExist(credit: "credit")){
-            credit = 20
+            credit = 40
             UserDefaults.standard.set(credit, forKey: "credit")
         }
         credit = UserDefaults.standard.integer(forKey: "credit")
@@ -137,7 +137,6 @@ class QuizViewController: UIViewController {
         ImageManager.choosImage(imageView: paintingImage, imageName: artistList[indexPainting[selectedIndex]][2])
     }
     @objc func nextQuizPainting(){
-        print("partTwoOfQuizDone: \(partTwoOfQuizDone)")
         if partTwoOfQuizDone{
             quizElementSelection()
         }else{
@@ -195,6 +194,7 @@ class QuizViewController: UIViewController {
                         self.nextButton.isHidden = false
                         self.nextButton.setTitle("Next", for: .normal)
                         self.partTwoOfQuizDone = true
+                        LabelAndButton.disableHintButtons(hintItemButton: self.hintItemButton)
                     }
                 }
                 errorCounter = errorCounter + 1
@@ -230,6 +230,7 @@ class QuizViewController: UIViewController {
         nextQuizPainting()
         nextButton.isEnabled = false
         nextButton.isHidden = true
+        LabelAndButton.enableHintButtons(hintItemButton: hintItemButton)
     }
   
     @IBAction func buyCreditsButtonPressed(_ sender: UIButton) {
@@ -282,6 +283,7 @@ class QuizViewController: UIViewController {
             isFromQuiz = true
             isFromMenu = false
             isFromSlideShow = false
+            controller.goingForwards = goingForwards
             controller.isFromQuiz = isFromQuiz
             controller.isFromMenu = isFromMenu
             controller.isFromSlideShow = isFromSlideShow
@@ -301,6 +303,7 @@ class QuizViewController: UIViewController {
         if segue.identifier == "showBuyCredits" {
             goingForwards = true
             let controller = segue.destination as! BuyCreditViewController
+            controller.provenance = "quiz"
             let backItem = UIBarButtonItem()
             controller.navigationItem.hidesBackButton = true
             backItem.title = ""

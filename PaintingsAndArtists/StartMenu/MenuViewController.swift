@@ -20,6 +20,7 @@ class MenuViewController: UIViewController {
     @IBOutlet var menuView: UIView!
     @IBOutlet weak var visualEffect: UIVisualEffectView!
     @IBOutlet weak var grandeJatte: UIImageView!
+    let provenance = "menu"
     var artistList: [[String]] = []
     var artistsCount = 0
     var isFromMenu = Bool()
@@ -43,7 +44,7 @@ class MenuViewController: UIViewController {
             artistList = artistListNSArray as! [[String]]
             artistsCount = artistList.count
         }
-///////// Sorting Array by Surname //////////////////
+        ///////// Sorting Array by Surname //////////////////
         var listOfArtistName: [String] = []
         var listOfArtistSurname: [String] = []
         var sortedArtistList: [[String]] = []
@@ -81,6 +82,7 @@ class MenuViewController: UIViewController {
             ImageManager.choosImage(imageView: grandeJatte, imageName: "detailDeaGrandeJatte")
         }
     }
+    
 
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
@@ -91,7 +93,6 @@ class MenuViewController: UIViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSlideShowViewController" {
             let backItem = UIBarButtonItem()
@@ -125,6 +126,13 @@ class MenuViewController: UIViewController {
             let controller = segue.destination as! QuizViewController
             controller.artistList = artistList
             controller.artistsCount = artistsCount
+        }
+        if segue.identifier == "showBuyCredits"{
+            let controller = segue.destination as! BuyCreditViewController
+            controller.provenance = provenance
+            let backItem = UIBarButtonItem()
+            controller.navigationItem.hidesBackButton = true
+            backItem.title = ""
         }
 
     }
