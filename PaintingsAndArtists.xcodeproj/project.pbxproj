@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0521283425BEC20FE6C9A8 /* Pods_PaintingsAndArtistsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5763EB09A8CC038E2C8A357 /* Pods_PaintingsAndArtistsUITests.framework */; };
 		8E11C4012120861500BB6AFC /* etc_error_drum.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E11C4002120861500BB6AFC /* etc_error_drum.mp3 */; };
 		8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */; };
 		8E1C43D320C989480010F874 /* RandomizeOrderOfPaintings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C43D220C989480010F874 /* RandomizeOrderOfPaintings.swift */; };
@@ -57,6 +58,8 @@
 		8EFBE79F20B5CBC5008E7532 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBE79E20B5CBC5008E7532 /* MenuViewController.swift */; };
 		8EFBE7A120B5CBF4008E7532 /* SlideShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBE7A020B5CBF4008E7532 /* SlideShowViewController.swift */; };
 		8EFBE7A320B5F5E1008E7532 /* infoAndImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBE7A220B5F5E1008E7532 /* infoAndImageViewController.swift */; };
+		CF0705D1EF2C171A143D5417 /* Pods_PaintingsAndArtistsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0756581A543A883CB23267F /* Pods_PaintingsAndArtistsTests.framework */; };
+		F7B3C91F31D39E630835E91A /* Pods_PaintingsAndArtists.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E47A01F972F19BCAA3625D /* Pods_PaintingsAndArtists.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		025CF5C290D5574041F7BF48 /* Pods-PaintingsAndArtistsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintingsAndArtistsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PaintingsAndArtistsTests/Pods-PaintingsAndArtistsTests.release.xcconfig"; sourceTree = "<group>"; };
+		0615F3AC3A7801C77B9D4783 /* Pods-PaintingsAndArtists.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintingsAndArtists.release.xcconfig"; path = "Pods/Target Support Files/Pods-PaintingsAndArtists/Pods-PaintingsAndArtists.release.xcconfig"; sourceTree = "<group>"; };
+		4500021206ECAA958247FDB5 /* Pods-PaintingsAndArtistsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintingsAndArtistsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaintingsAndArtistsUITests/Pods-PaintingsAndArtistsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E11C4002120861500BB6AFC /* etc_error_drum.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = etc_error_drum.mp3; sourceTree = "<group>"; };
 		8E11C4022120885F00BB6AFC /* chime_clickbell_octave_up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime_clickbell_octave_up.mp3; sourceTree = "<group>"; };
 		8E1C43D220C989480010F874 /* RandomizeOrderOfPaintings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizeOrderOfPaintings.swift; sourceTree = "<group>"; };
@@ -133,6 +139,12 @@
 		8EFBE79E20B5CBC5008E7532 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8EFBE7A020B5CBF4008E7532 /* SlideShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideShowViewController.swift; sourceTree = "<group>"; };
 		8EFBE7A220B5F5E1008E7532 /* infoAndImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoAndImageViewController.swift; sourceTree = "<group>"; };
+		9D73BB5510C1A0CA99F1412F /* Pods-PaintingsAndArtists.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintingsAndArtists.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaintingsAndArtists/Pods-PaintingsAndArtists.debug.xcconfig"; sourceTree = "<group>"; };
+		A5763EB09A8CC038E2C8A357 /* Pods_PaintingsAndArtistsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaintingsAndArtistsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5966DE47F52B93F15128528 /* Pods-PaintingsAndArtistsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintingsAndArtistsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PaintingsAndArtistsUITests/Pods-PaintingsAndArtistsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D6E47A01F972F19BCAA3625D /* Pods_PaintingsAndArtists.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaintingsAndArtists.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D86631EB0E6D3367F6DC3F2C /* Pods-PaintingsAndArtistsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintingsAndArtistsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaintingsAndArtistsTests/Pods-PaintingsAndArtistsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F0756581A543A883CB23267F /* Pods_PaintingsAndArtistsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaintingsAndArtistsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EDE7A162150544000DC320C /* StoreKit.framework in Frameworks */,
+				F7B3C91F31D39E630835E91A /* Pods_PaintingsAndArtists.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0705D1EF2C171A143D5417 /* Pods_PaintingsAndArtistsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0521283425BEC20FE6C9A8 /* Pods_PaintingsAndArtistsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +249,9 @@
 			isa = PBXGroup;
 			children = (
 				8EDE7A152150544000DC320C /* StoreKit.framework */,
+				D6E47A01F972F19BCAA3625D /* Pods_PaintingsAndArtists.framework */,
+				F0756581A543A883CB23267F /* Pods_PaintingsAndArtistsTests.framework */,
+				A5763EB09A8CC038E2C8A357 /* Pods_PaintingsAndArtistsUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -272,6 +290,7 @@
 				8EFBE78D20B1B16E008E7532 /* PaintingsAndArtistsUITests */,
 				8EFBE76920B1B169008E7532 /* Products */,
 				8EDE7A142150544000DC320C /* Frameworks */,
+				E82C1C5B23BDA27502632703 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,6 +346,19 @@
 			path = PaintingsAndArtistsUITests;
 			sourceTree = "<group>";
 		};
+		E82C1C5B23BDA27502632703 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D73BB5510C1A0CA99F1412F /* Pods-PaintingsAndArtists.debug.xcconfig */,
+				0615F3AC3A7801C77B9D4783 /* Pods-PaintingsAndArtists.release.xcconfig */,
+				D86631EB0E6D3367F6DC3F2C /* Pods-PaintingsAndArtistsTests.debug.xcconfig */,
+				025CF5C290D5574041F7BF48 /* Pods-PaintingsAndArtistsTests.release.xcconfig */,
+				4500021206ECAA958247FDB5 /* Pods-PaintingsAndArtistsUITests.debug.xcconfig */,
+				B5966DE47F52B93F15128528 /* Pods-PaintingsAndArtistsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -334,9 +366,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EFBE79320B1B16E008E7532 /* Build configuration list for PBXNativeTarget "PaintingsAndArtists" */;
 			buildPhases = (
+				20596CFB5C9ADD472BC4016F /* [CP] Check Pods Manifest.lock */,
 				8EFBE76420B1B169008E7532 /* Sources */,
 				8EFBE76520B1B169008E7532 /* Frameworks */,
 				8EFBE76620B1B169008E7532 /* Resources */,
+				4ECAD55A47483BB23810AF91 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -351,6 +385,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EFBE79620B1B16E008E7532 /* Build configuration list for PBXNativeTarget "PaintingsAndArtistsTests" */;
 			buildPhases = (
+				3560BA63A297ED4B846AFFCB /* [CP] Check Pods Manifest.lock */,
 				8EFBE77B20B1B16E008E7532 /* Sources */,
 				8EFBE77C20B1B16E008E7532 /* Frameworks */,
 				8EFBE77D20B1B16E008E7532 /* Resources */,
@@ -369,6 +404,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EFBE79920B1B16E008E7532 /* Build configuration list for PBXNativeTarget "PaintingsAndArtistsUITests" */;
 			buildPhases = (
+				FFB4A8DE4A3E99FA898D03F4 /* [CP] Check Pods Manifest.lock */,
 				8EFBE78620B1B16E008E7532 /* Sources */,
 				8EFBE78720B1B16E008E7532 /* Frameworks */,
 				8EFBE78820B1B16E008E7532 /* Resources */,
@@ -466,6 +502,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20596CFB5C9ADD472BC4016F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PaintingsAndArtists-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3560BA63A297ED4B846AFFCB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PaintingsAndArtistsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4ECAD55A47483BB23810AF91 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PaintingsAndArtists/Pods-PaintingsAndArtists-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaintingsAndArtists/Pods-PaintingsAndArtists-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFB4A8DE4A3E99FA898D03F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PaintingsAndArtistsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8EFBE76420B1B169008E7532 /* Sources */ = {
@@ -680,6 +809,7 @@
 		};
 		8EFBE79420B1B16E008E7532 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D73BB5510C1A0CA99F1412F /* Pods-PaintingsAndArtists.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -698,6 +828,7 @@
 		};
 		8EFBE79520B1B16E008E7532 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0615F3AC3A7801C77B9D4783 /* Pods-PaintingsAndArtists.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -716,6 +847,7 @@
 		};
 		8EFBE79720B1B16E008E7532 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D86631EB0E6D3367F6DC3F2C /* Pods-PaintingsAndArtistsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -737,6 +869,7 @@
 		};
 		8EFBE79820B1B16E008E7532 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 025CF5C290D5574041F7BF48 /* Pods-PaintingsAndArtistsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -758,6 +891,7 @@
 		};
 		8EFBE79A20B1B16E008E7532 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4500021206ECAA958247FDB5 /* Pods-PaintingsAndArtistsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -778,6 +912,7 @@
 		};
 		8EFBE79B20B1B16E008E7532 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5966DE47F52B93F15128528 /* Pods-PaintingsAndArtistsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -8,16 +8,24 @@
 
 import UIKit
 import StoreKit
+import GoogleMobileAds
 
-class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, GADBannerViewDelegate {
     
     @IBOutlet weak var buyCreditViewTitle: SpecialLabel!
     @IBOutlet weak var buy200CoinsLabel: UILabel!
     @IBOutlet weak var watchVideoLabel: UILabel!
     @IBOutlet weak var doneButton: RoundButton!
     @IBOutlet weak var coinsButton: UIButton!
-    
     @IBOutlet weak var videoButton: UIButton!
+    let request = GADRequest()
+    lazy var adBannerView: GADBannerView = {
+        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        adBannerView.adUnitID = "ca-app-pub-1437510869244180/3214567654"
+        adBannerView.delegate = self
+        adBannerView.rootViewController = self
+        return adBannerView
+    }()
     var provenance = String()
     
     var productID = ""
@@ -51,6 +59,8 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        adBannerView.load(GADRequest())
+        navigationItem.titleView = adBannerView
         self.navigationItem.setHidesBackButton(true, animated:true);
         let reachability = Reachability()
         let isConnected = reachability.isConnectedToNetwork()
@@ -68,6 +78,17 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         credit = UserDefaults.standard.integer(forKey: "credit")
         
     }
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner loaded successfully")
+        
+        
+    }
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("Fail to receive ads")
+        print(error)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
 
