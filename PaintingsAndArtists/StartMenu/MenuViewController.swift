@@ -129,6 +129,7 @@ class MenuViewController: UIViewController {
         }
         if segue.identifier == "showBuyCredits"{
             let controller = segue.destination as! BuyCreditViewController
+            print(provenance)
             controller.provenance = provenance
             let backItem = UIBarButtonItem()
             controller.navigationItem.hidesBackButton = true

@@ -126,7 +126,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         }
         hintButton.titleLabel?.font = sizeInfoAndFonts?.fontSize2
         bioTextView.layer.borderColor = UIColor.white.cgColor
-        bioTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 20, 20)
+        bioTextView.textContainerInset = UIEdgeInsets.init(top: 10, left: 20, bottom: 20, right: 20)
         bioTextView.font = sizeInfoAndFonts?.fontSize1
         commentAfterResponse?.font = sizeInfoAndFonts?.fontSize2
         specialCommentAfterResponse.font = sizeInfoAndFonts?.fontSize2
@@ -205,7 +205,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     hintLetterCounter = hintLetterCounter + 1
                     if hintLetterCounter == 2 {
                         hintItemButton[1].isEnabled = false
-                        hintItemButton[1].setTitleColor(UIColor.lightGray, for:UIControlState.normal)
+                        hintItemButton[1].setTitleColor(UIColor.lightGray, for:UIControl.State.normal)
                     }
 
                 }else if buttonLabel == HintLabel.showPainterName.rawValue{

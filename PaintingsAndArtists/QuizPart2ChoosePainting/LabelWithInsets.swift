@@ -15,7 +15,7 @@ class SpecialLabel: UILabel {
     override func drawText(in rect: CGRect) {
         let insets: UIEdgeInsets = UIEdgeInsets(top: self.topInset, left: self.leftInset, bottom: self.bottomInset, right: self.rightInset)
         self.setNeedsLayout()
-        return super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+        return super.drawText(in: rect.inset(by: insets))
     }
     
 }

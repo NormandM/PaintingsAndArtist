@@ -22,6 +22,7 @@
 		8E57650720EC0C70001FEF3D /* TitleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650620EC0C70001FEF3D /* TitleDisplay.swift */; };
 		8E57650B20F129CF001FEF3D /* PainterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650A20F129CF001FEF3D /* PainterSelection.swift */; };
 		8E57650D20F15CB9001FEF3D /* ChosePaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */; };
+		8E69E45B215190FA00B1ED8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E69E45A215190FA00B1ED8C /* GoogleService-Info.plist */; };
 		8E6E7B0720E55084001317CB /* ButtonAndLabelDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E7B0620E55084001317CB /* ButtonAndLabelDisplay.swift */; };
 		8E9885E72103851F009C5A84 /* LabelWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9885E62103851F009C5A84 /* LabelWithInsets.swift */; };
 		8EACF31320FBE01100F2E981 /* SpecialMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31220FBE01100F2E981 /* SpecialMessage.swift */; };
@@ -34,6 +35,9 @@
 		8EC8905F20E03825000BB518 /* ShakingMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC8905E20E03825000BB518 /* ShakingMovement.swift */; };
 		8EC8906120E0397A000BB518 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC8906020E0397A000BB518 /* SoundPlayer.swift */; };
 		8EC8906720E15B1E000BB518 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC8906620E15B1E000BB518 /* Translation.swift */; };
+		8EDE7A162150544000DC320C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDE7A152150544000DC320C /* StoreKit.framework */; };
+		8EDE7A182150584E00DC320C /* IAPProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE7A172150584E00DC320C /* IAPProducts.swift */; };
+		8EDE7A1B2150609900DC320C /* ConnectionReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */; };
 		8EE4283220C32102005981B3 /* FontsAndConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4283120C32101005981B3 /* FontsAndConstraints.swift */; };
 		8EE676D8210A40CA0057392C /* BonusQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE676D7210A40CA0057392C /* BonusQuizViewController.swift */; };
 		8EE676DF210B8DF60057392C /* AnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE676DE210B8DF60057392C /* AnswerCollectionViewCell.swift */; };
@@ -88,6 +92,7 @@
 		8E57650620EC0C70001FEF3D /* TitleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDisplay.swift; sourceTree = "<group>"; };
 		8E57650A20F129CF001FEF3D /* PainterSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainterSelection.swift; sourceTree = "<group>"; };
 		8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosePaintingViewController.swift; sourceTree = "<group>"; };
+		8E69E45A215190FA00B1ED8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E6E7B0620E55084001317CB /* ButtonAndLabelDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAndLabelDisplay.swift; sourceTree = "<group>"; };
 		8E9885E62103851F009C5A84 /* LabelWithInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithInsets.swift; sourceTree = "<group>"; };
 		8EACF31220FBE01100F2E981 /* SpecialMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialMessage.swift; sourceTree = "<group>"; };
@@ -100,6 +105,9 @@
 		8EC8905E20E03825000BB518 /* ShakingMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakingMovement.swift; sourceTree = "<group>"; };
 		8EC8906020E0397A000BB518 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		8EC8906620E15B1E000BB518 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		8EDE7A152150544000DC320C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8EDE7A172150584E00DC320C /* IAPProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProducts.swift; sourceTree = "<group>"; };
+		8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionReachable.swift; sourceTree = "<group>"; };
 		8EE4283120C32101005981B3 /* FontsAndConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsAndConstraints.swift; sourceTree = "<group>"; };
 		8EE676D7210A40CA0057392C /* BonusQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusQuizViewController.swift; sourceTree = "<group>"; };
 		8EE676DE210B8DF60057392C /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EDE7A162150544000DC320C /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +230,24 @@
 			path = "View Controller Quiz";
 			sourceTree = "<group>";
 		};
+		8EDE7A142150544000DC320C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EDE7A152150544000DC320C /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EDE7A192150604300DC320C /* CreditManagement */ = {
+			isa = PBXGroup;
+			children = (
+				8EACF31A20FE812100F2E981 /* BuyCreditViewController.swift */,
+				8EDE7A172150584E00DC320C /* IAPProducts.swift */,
+				8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */,
+			);
+			path = CreditManagement;
+			sourceTree = "<group>";
+		};
 		8EE676D9210A40DA0057392C /* BonusQuiz */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +271,7 @@
 				8EFBE78220B1B16E008E7532 /* PaintingsAndArtistsTests */,
 				8EFBE78D20B1B16E008E7532 /* PaintingsAndArtistsUITests */,
 				8EFBE76920B1B169008E7532 /* Products */,
+				8EDE7A142150544000DC320C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,15 +289,16 @@
 			isa = PBXGroup;
 			children = (
 				8EFBE76B20B1B169008E7532 /* AppDelegate.swift */,
+				8E69E45A215190FA00B1ED8C /* GoogleService-Info.plist */,
 				8EFBE76F20B1B169008E7532 /* Main.storyboard */,
 				8E31E60A21501F5900CABE83 /* ArtistesAndPaintings.plist */,
 				8EB88C532107C45E009755CD /* StartMenu */,
+				8EDE7A192150604300DC320C /* CreditManagement */,
 				8E57650E20F27949001FEF3D /* SlideShow */,
 				8EC8905D20E037F2000BB518 /* View Controller Quiz */,
 				8E57650F20F279AE001FEF3D /* QuizPart2ChoosePainting */,
 				8EE676D9210A40DA0057392C /* BonusQuiz */,
 				8E1C441A20D0300A0010F874 /* InfoImageViewController */,
-				8EACF31A20FE812100F2E981 /* BuyCreditViewController.swift */,
 				8EFBE77720B1B16D008E7532 /* LaunchScreen.storyboard */,
 				8EFBE77A20B1B16D008E7532 /* Info.plist */,
 				8EFBE77220B1B169008E7532 /* PaintingsAndArtists.xcdatamodeld */,
@@ -366,13 +395,21 @@
 				TargetAttributes = {
 					8EFBE76720B1B169008E7532 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					8EFBE77E20B1B16E008E7532 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 8EFBE76720B1B169008E7532;
 					};
 					8EFBE78920B1B16E008E7532 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 8EFBE76720B1B169008E7532;
 					};
 				};
@@ -404,6 +441,7 @@
 			files = (
 				8EFBE77920B1B16D008E7532 /* LaunchScreen.storyboard in Resources */,
 				8E1C43D620C9AC450010F874 /* Gymnopédie_no.3.mp3 in Resources */,
+				8E69E45B215190FA00B1ED8C /* GoogleService-Info.plist in Resources */,
 				8EFBE77620B1B16D008E7532 /* Assets.xcassets in Resources */,
 				8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */,
 				8E11C4012120861500BB6AFC /* etc_error_drum.mp3 in Resources */,
@@ -446,8 +484,10 @@
 				8EFBE77420B1B169008E7532 /* PaintingsAndArtists.xcdatamodeld in Sources */,
 				8E57650D20F15CB9001FEF3D /* ChosePaintingViewController.swift in Sources */,
 				8EE676DF210B8DF60057392C /* AnswerCollectionViewCell.swift in Sources */,
+				8EDE7A182150584E00DC320C /* IAPProducts.swift in Sources */,
 				8E9885E72103851F009C5A84 /* LabelWithInsets.swift in Sources */,
 				8E279BFD21470BF400A44B62 /* MessageViewOutOfCredits.swift in Sources */,
+				8EDE7A1B2150609900DC320C /* ConnectionReachable.swift in Sources */,
 				8EE676E32110D0B00057392C /* ArrayManagement.swift in Sources */,
 				8EACF31920FE6FC100F2E981 /* ProgressionBarDisplay.swift in Sources */,
 				8E279C012149B11800A44B62 /* RoundButton.swift in Sources */,
@@ -651,7 +691,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -669,7 +709,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -689,7 +729,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtistsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PaintingsAndArtists.app/PaintingsAndArtists";
 			};
@@ -710,7 +750,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtistsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PaintingsAndArtists.app/PaintingsAndArtists";
 			};
@@ -730,7 +770,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtistsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PaintingsAndArtists;
 			};
@@ -750,7 +790,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtistsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PaintingsAndArtists;
 			};

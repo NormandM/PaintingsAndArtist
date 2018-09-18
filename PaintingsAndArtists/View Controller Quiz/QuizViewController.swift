@@ -87,8 +87,8 @@ class QuizViewController: UIViewController {
         sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
         let navLabel = UILabel()
         let navTitle = NSMutableAttributedString(string: "Who painted this?", attributes:[
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: sizeInfoAndFonts?.fontSize4 ?? UIFont(name: "HelveticaNeue-Bold", size: 12)!])
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: sizeInfoAndFonts?.fontSize4 ?? UIFont(name: "HelveticaNeue-Bold", size: 12)!])
         navLabel.attributedText = navTitle
         self.navigationItem.titleView = navLabel
         nextButton.layer.masksToBounds = true
@@ -105,8 +105,12 @@ class QuizViewController: UIViewController {
         okBuyCreditsButton.titleLabel?.font = sizeInfoAndFonts?.fontSize6
         errorMessage.font = sizeInfoAndFonts?.fontSize1
         messageLabel.font = sizeInfoAndFonts?.fontSize2
-        
-        
+        credit = UserDefaults.standard.integer(forKey: "credit")
+        if credit < 1 {
+            nextButton.isEnabled = false
+            nextButton.isHidden = true
+            MessageOutOfCredits.showMessageView(view: self.view, messageView: messageView, visualEffect: visualEffect, effect: effect, messageLabel: messageLabel, okBuyCreditsButton: okBuyCreditsButton)
+        }
     }
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         if let theButton = movingButton {

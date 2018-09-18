@@ -41,7 +41,7 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
         self.view.addGestureRecognizer(swipeRight)
         if let info = specificArtistInfo {
             n = info
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "<", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToSlideShow))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "<", style: UIBarButtonItem.Style.plain, target: self, action: #selector(returnToSlideShow))
             navigationItem.leftBarButtonItem?.tintColor = UIColor.white
             swipeLeft.isEnabled = false
             swipeRight.isEnabled = false
@@ -55,12 +55,12 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
         labelTitle.textColor = .white
         self.navigationItem.titleView = labelTitle
         
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: fontsAndConstraints.size().7], for: UIControlState.normal)
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: fontsAndConstraints.size().4], for: UIControl.State.normal)
         biotextLeadingConstraint.constant = fontsAndConstraints.size().8
         biotextTrailingConstraint.constant = fontsAndConstraints.size().8
         bioTextView.layer.borderWidth = 2
         bioTextView.layer.borderColor = UIColor.white.cgColor
-        bioTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 20, 20)
+        bioTextView.textContainerInset = UIEdgeInsets.init(top: 10, left: 20, bottom: 20, right: 20)
         bioTextViewFormat()
         scrollView.delegate = self
         artistName.font = fontsAndConstraints.size().4
@@ -74,6 +74,13 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        let fontsAndConstraints = FontsAndConstraints()
+        labelTitle.backgroundColor = .clear
+        labelTitle.numberOfLines = 2
+        labelTitle.font = fontsAndConstraints.size().2
+        labelTitle.textAlignment = .center
+        labelTitle.textColor = .white
+        self.navigationItem.titleView = labelTitle
         bioTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 
@@ -107,13 +114,13 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
         
     }
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             UIView.animate(withDuration: 0.5, animations: {
                 let slideShowUIImageViewFrame = self.slideShowUIImageView.frame
                 let maxSlideShowUIImageView =  slideShowUIImageViewFrame.maxX
                 self.slideShowUIImageView.transform = CGAffineTransform(translationX: maxSlideShowUIImageView - maxSlideShowUIImageView/5, y: 0)}, completion:{finished in translate()})
 
-        }else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+        }else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             UIView.animate(withDuration: 0.5, animations: {
                 let slideShowUIImageViewFrame = self.slideShowUIImageView.frame
                 let maxSlideShowUIImageView =  slideShowUIImageViewFrame.maxX
@@ -121,7 +128,7 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
             
         }
         func translate() {
-            if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            if gesture.direction == UISwipeGestureRecognizer.Direction.right {
                 if n > 0 {
                     if labelTitle.text !=  artistList[n][2] { n = n - 1}
                     n = n - 1
@@ -132,7 +139,7 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
                 }
                 
             }
-            else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
                 if n < artistsCount - 1 {
                     if labelTitle.text ==  artistList[n][2] { n = n + 1}
                     bioTextViewFormat()
