@@ -69,7 +69,7 @@ class MenuViewController: UIViewController {
             }
         }
         artistList = sortedArtistList
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             IntroductionMessage.showMessageView(view: self.view, messageView: self.menuView, visualEffect: self.visualEffect, effect: self.effect, learnArtLabel: self.learnArtLabel, slideShowButton: self.slideShowButton, starHereLabel: self.starHereLabel, quizButton: self.quizButton, testYourKnowledgeLabel: self.testYourKnowledgeLabel, allTheDataButton: self.allTheDataButton, consultAndLearnLabel: self.consultAndLearnLabel, manageYourCreditsButton: self.manageYourCreditsButton)
         }
         if !(userAlreadyExist(credit: "credit")){
@@ -133,7 +133,6 @@ class MenuViewController: UIViewController {
         }
         if segue.identifier == "showBuyCredits"{
             let controller = segue.destination as! BuyCreditViewController
-            print(provenance)
             controller.provenance = provenance
             let backItem = UIBarButtonItem()
             controller.navigationItem.hidesBackButton = true

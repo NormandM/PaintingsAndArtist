@@ -47,7 +47,6 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     }
     var priceCoins = String() {
         didSet {
-            print("ok")
             buy200CoinsLabel.text = """
             Do you enjoy LEARN ART?
             Buy 200 coins for \(priceCoins),
@@ -65,7 +64,6 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         let reachability = Reachability()
         let isConnected = reachability.isConnectedToNetwork()
         fetchAvailableProducts()
-        print("isConnected: \(isConnected)")
         isNotConnectedNoReason = false
         if !isConnected{
             self.showAlertNoInternet()
@@ -78,16 +76,8 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         credit = UserDefaults.standard.integer(forKey: "credit")
         
     }
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("Banner loaded successfully")
-        
-        
-    }
-    
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        print("Fail to receive ads")
-        print(error)
-    }
+
+
 
     override func viewWillAppear(_ animated: Bool) {
         sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
@@ -128,7 +118,6 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     }
 
     @IBAction func doneHasBeenPressed(_ sender: RoundButton) {
-        print("provenance: \(provenance)")
         if provenance == "menu"{
             performSegue(withIdentifier: "menu", sender: self)
         }else if provenance == "quiz"{
@@ -167,7 +156,6 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     }
     func productsRequest (_ request:SKProductsRequest, didReceive response:SKProductsResponse) {
         iapProducts = response.products
-        print(iapProducts)
         let numberFormatter = NumberFormatter()
         numberFormatter.formatterBehavior = .behavior10_4
         numberFormatter.numberStyle = .currency
@@ -175,7 +163,6 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         if let price = numberFormatter.string(from: myCoins.price) {
             priceCoins = price
         }
-        print("price:\(priceCoins)")
     }
 
     // MARK: - MAKE PURCHASE OF A PRODUCT

@@ -87,19 +87,16 @@ class VideoViewController: UIViewController, GADRewardBasedVideoAdDelegate  {
     
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
-        print("received add")
         completedPlaying = true
         rewardBasedAd.present(fromRootViewController: self)
         credit = UserDefaults.standard.integer(forKey: "credit")
         credit = credit + 20
-        print(credit)
         UserDefaults.standard.set(credit, forKey: "credit")
         messageAfterTransaction.isHidden = false
         coinImage.isHidden = false
         OKButton.isHidden = false
     }
     func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
-        print("did receive ad")
         if rewardBasedAd.isReady {
             rewardBasedAd.present(fromRootViewController: self)
             activityIndicatorViewAsStop = true
@@ -147,15 +144,12 @@ class VideoViewController: UIViewController, GADRewardBasedVideoAdDelegate  {
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
                             didFailToLoadWithError error: Error) {
         self.activityIndicatorView.stopAnimating()
-        print(error)
         messageAfterTransaction.isHidden = false
         messageAfterTransaction.text = """
             Sorry, there is no Video Add at the moment.
             Please try later
         """
         OKButton.isHidden = false
-
-        
     }
 
 }

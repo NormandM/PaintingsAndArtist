@@ -159,7 +159,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     var cell2 = answerCollectioView.cellForItem(at: [1, 0]) as! AnswerCollectionViewCell
                     var j = 0
                     for i in 0 ..< countLetter{
-                        print(i)
                         cell2 = answerCollectioView.cellForItem(at: [1, i]) as! AnswerCollectionViewCell
                         if cell2.answerLetter.text == goodLetter{
                             j = i
@@ -486,7 +485,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             right = left
             layout.minimumInteritemSpacing = 2
             spaceBetweenCells = layout.minimumInteritemSpacing
-            print(cellsAcross)
             switch cellsAcross {
 
             case 4, 5:
