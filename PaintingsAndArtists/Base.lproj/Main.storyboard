@@ -699,9 +699,9 @@
                             <constraint firstItem="LRJ-Aa-xBz" firstAttribute="height" secondItem="g8m-O6-5z6" secondAttribute="height" multiplier="0.15" id="ccO-BT-zjG"/>
                             <constraint firstItem="LRJ-Aa-xBz" firstAttribute="top" secondItem="ify-Up-kb2" secondAttribute="bottom" constant="10.000000000000028" id="f9O-kd-ARy"/>
                             <constraint firstItem="ify-Up-kb2" firstAttribute="leading" secondItem="5Ko-32-O2o" secondAttribute="leading" constant="10" id="iFY-Dm-SfL"/>
+                            <constraint firstItem="bjC-kV-q1v" firstAttribute="width" secondItem="g8m-O6-5z6" secondAttribute="width" multiplier="0.8" id="idn-Xx-7yS"/>
                             <constraint firstItem="bjC-kV-q1v" firstAttribute="centerX" secondItem="g8m-O6-5z6" secondAttribute="centerX" id="jTT-Cv-rAm"/>
                             <constraint firstItem="LRJ-Aa-xBz" firstAttribute="centerX" secondItem="g8m-O6-5z6" secondAttribute="centerX" id="luj-Cb-54c"/>
-                            <constraint firstItem="bjC-kV-q1v" firstAttribute="width" secondItem="LRJ-Aa-xBz" secondAttribute="width" multiplier="3" id="rVy-YK-gif"/>
                             <constraint firstItem="iuI-7j-Mp8" firstAttribute="height" secondItem="g8m-O6-5z6" secondAttribute="height" multiplier="0.1:1" id="vf5-wQ-h8G"/>
                             <constraint firstItem="5Ko-32-O2o" firstAttribute="trailing" secondItem="ify-Up-kb2" secondAttribute="trailing" constant="10" id="yHh-CN-T9N"/>
                             <constraint firstItem="AK0-C9-K6g" firstAttribute="height" secondItem="g8m-O6-5z6" secondAttribute="height" multiplier="0.1" id="yk2-RC-I9h"/>
@@ -727,18 +727,70 @@
             </objects>
             <point key="canvasLocation" x="-323.1884057971015" y="1668.7500000000002"/>
         </scene>
-        <!--View Controller-->
+        <!--Video View Controller-->
         <scene sceneID="jnU-h5-FXo">
             <objects>
-                <viewController id="cZ1-sX-Yr4" sceneMemberID="viewController">
+                <viewController id="cZ1-sX-Yr4" customClass="VideoViewController" customModule="PaintingsAndArtists" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IMi-vA-bDu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PP7-7N-4bD" customClass="RoundButton" customModule="PaintingsAndArtists" customModuleProvider="target">
+                                <rect key="frame" x="170.33333333333334" y="632.33333333333337" width="73.333333333333343" height="73.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PP7-7N-4bD" secondAttribute="height" multiplier="1:1" id="aWX-Tt-WDe"/>
+                                </constraints>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doneHasBeenPressed:" destination="uOi-a4-lvt" eventType="touchUpInside" id="ebW-jc-GeE"/>
+                                    <action selector="okButtonWasPressed:" destination="cZ1-sX-Yr4" eventType="touchUpInside" id="LRd-H8-cjb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 coins was added to your credits" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="7Ga-Ui-5s5">
+                                <rect key="frame" x="73.333333333333343" y="358" width="267.33333333333326" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin2" translatesAutoresizingMaskIntoConstraints="NO" id="W4z-hm-4eG">
+                                <rect key="frame" x="140.66666666666669" y="185.33333333333337" width="132.66666666666669" height="132.66666666666663"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="W4z-hm-4eG" secondAttribute="height" multiplier="1:1" id="Rfp-N5-4gn"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1058823529" green="0.37254901959999998" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="W4z-hm-4eG" firstAttribute="height" secondItem="IMi-vA-bDu" secondAttribute="height" multiplier="0.18" id="5uB-im-eHy"/>
+                            <constraint firstItem="PP7-7N-4bD" firstAttribute="height" secondItem="IMi-vA-bDu" secondAttribute="height" multiplier="0.1" id="A5Q-xZ-37S"/>
+                            <constraint firstItem="7Ga-Ui-5s5" firstAttribute="centerX" secondItem="IMi-vA-bDu" secondAttribute="centerX" id="Fi8-Lo-zOY"/>
+                            <constraint firstItem="xMi-Ky-Kq9" firstAttribute="bottom" secondItem="PP7-7N-4bD" secondAttribute="bottom" constant="30" id="HZf-V1-GIr"/>
+                            <constraint firstItem="W4z-hm-4eG" firstAttribute="centerX" secondItem="IMi-vA-bDu" secondAttribute="centerX" id="Hqw-Qh-G21"/>
+                            <constraint firstItem="PP7-7N-4bD" firstAttribute="centerX" secondItem="IMi-vA-bDu" secondAttribute="centerX" id="P8m-fa-Xb9"/>
+                            <constraint firstItem="7Ga-Ui-5s5" firstAttribute="centerY" secondItem="IMi-vA-bDu" secondAttribute="centerY" id="oVU-i3-jzS"/>
+                            <constraint firstItem="7Ga-Ui-5s5" firstAttribute="top" secondItem="W4z-hm-4eG" secondAttribute="bottom" constant="40" id="sqw-MA-FXP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xMi-Ky-Kq9"/>
                     </view>
+                    <connections>
+                        <outlet property="OKButton" destination="PP7-7N-4bD" id="85T-Tr-Zcl"/>
+                        <outlet property="coinImage" destination="W4z-hm-4eG" id="XMn-Sa-jdw"/>
+                        <outlet property="messageAfterTransaction" destination="7Ga-Ui-5s5" id="rza-iC-2U0"/>
+                        <segue destination="fK4-8E-wrT" kind="unwind" identifier="backToBuyCreditView" unwindAction="unwindToBuyCreditViewController:" id="oFi-8k-MqV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8UW-53-2er" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fK4-8E-wrT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-323" y="2391"/>
         </scene>

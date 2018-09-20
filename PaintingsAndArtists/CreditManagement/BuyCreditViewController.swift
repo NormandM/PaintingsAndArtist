@@ -21,7 +21,7 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     let request = GADRequest()
     lazy var adBannerView: GADBannerView = {
         let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        adBannerView.adUnitID = "ca-app-pub-1437510869244180/3214567654"
+        adBannerView.adUnitID = "ca-app-pub-1437510869244180/6198209827"
         adBannerView.delegate = self
         adBannerView.rootViewController = self
         return adBannerView
@@ -95,6 +95,13 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         buyCreditViewTitle.font = sizeInfoAndFonts?.fontSize2
         buyCreditViewTitle.layer.borderColor = UIColor.white.cgColor
         buyCreditViewTitle.layer.borderWidth = 3.0
+        credit = UserDefaults.standard.integer(forKey: "credit")
+        buyCreditViewTitle.text = """
+        CREDIT AVAILABLE: \(credit)
+        To preserve the visual integrity of the App,
+        except for this page, there are no adds in
+        LEARN ART.
+        """
         buy200CoinsLabel.text = """
         Do you enjoy LEARN ART?
         Buy 200 coins for \(priceCoins),
@@ -131,8 +138,8 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
 
     
     @IBAction func watchVideoHasBeenpressed(_ sender: UIButton) {
-        UserDefaults.standard.set(credit + 20, forKey: "credit")
-        credit = UserDefaults.standard.integer(forKey: "credit")
+       // UserDefaults.standard.set(credit + 20, forKey: "credit")
+        //credit = UserDefaults.standard.integer(forKey: "credit")
     }
     
     func showAlertNoInternet() {
@@ -212,17 +219,19 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }}}
     }
     
-
+    @IBAction func buy200Coins(_ sender: UIButton) {
+        purchaseMyProduct(product: iapProducts[0])
+    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "quiz" {
             
         }
-
     }
-    @IBAction func buy200Coins(_ sender: UIButton) {
-        purchaseMyProduct(product: iapProducts[0])
+    @IBAction func unwindToBuyCreditViewController(_ unwindSegue: UIStoryboardSegue) {
+        
+        
     }
 
 }

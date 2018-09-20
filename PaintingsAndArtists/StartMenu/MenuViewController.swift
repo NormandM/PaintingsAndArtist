@@ -30,7 +30,7 @@ class MenuViewController: UIViewController {
     let fontsAndConstraints = FontsAndConstraints()
     lazy var sizeInfo = fontsAndConstraints.size()
     var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
-    
+    var credit = UserDefaults.standard.integer(forKey: "credit")
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
@@ -71,6 +71,10 @@ class MenuViewController: UIViewController {
         artistList = sortedArtistList
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             IntroductionMessage.showMessageView(view: self.view, messageView: self.menuView, visualEffect: self.visualEffect, effect: self.effect, learnArtLabel: self.learnArtLabel, slideShowButton: self.slideShowButton, starHereLabel: self.starHereLabel, quizButton: self.quizButton, testYourKnowledgeLabel: self.testYourKnowledgeLabel, allTheDataButton: self.allTheDataButton, consultAndLearnLabel: self.consultAndLearnLabel, manageYourCreditsButton: self.manageYourCreditsButton)
+        }
+        if !(userAlreadyExist(credit: "credit")){
+            credit = 40
+            UserDefaults.standard.set(credit, forKey: "credit")
         }
     }
     
@@ -139,6 +143,9 @@ class MenuViewController: UIViewController {
     }
     @IBAction func unwindToMainMenu (_ sender: UIStoryboardSegue) {
         IntroductionMessage.showMessageView(view: view, messageView: menuView, visualEffect: visualEffect, effect:effect, learnArtLabel: learnArtLabel, slideShowButton: slideShowButton, starHereLabel: starHereLabel, quizButton: quizButton, testYourKnowledgeLabel: testYourKnowledgeLabel, allTheDataButton: allTheDataButton, consultAndLearnLabel: consultAndLearnLabel, manageYourCreditsButton: manageYourCreditsButton)
+    }
+    func userAlreadyExist(credit: String) -> Bool {
+        return UserDefaults.standard.object(forKey: credit) != nil
     }
 }
 

@@ -86,24 +86,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         totalNameArray = allInfo.5
         nameArray = totalNameArray[0]
         painterName = nameArray.compactMap {$0}.joined()
- ////////////////////////////////////////////////////////////
-        do {
-            let dir: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last! as URL
-            let url = dir.appendingPathComponent("Debug.txt")
-            try "\(painterName) \(Date())".appendLineToURL(fileURL: url as URL)
-            _ = try String(contentsOf: url as URL, encoding: String.Encoding.utf8)
-            do {
-                _ = try String(contentsOf: url)
-            } catch {
-                // contents could not be loaded
-            }
-        }
-        catch {
-            print("Could not write to file")
-        }
-
-
-//////////////////////////////////////////////////////////////////
         shuffledNameArray = totalNameArray[1]
         let indexNames = LetterChoice.indexLetter(painterName: nameArray, shuffledPainterName: shuffledNameArray)
         indexResponse = indexNames.0
@@ -177,6 +159,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     var cell2 = answerCollectioView.cellForItem(at: [1, 0]) as! AnswerCollectionViewCell
                     var j = 0
                     for i in 0 ..< countLetter{
+                        print(i)
                         cell2 = answerCollectioView.cellForItem(at: [1, i]) as! AnswerCollectionViewCell
                         if cell2.answerLetter.text == goodLetter{
                             j = i
@@ -347,6 +330,8 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     MessageView.showMessageView(view: view, messageView: finalView, button: finalOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, totalPaintings: totalPaintings, commentAfterResponse: finalCommentAfterResponse, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                     
                 default:
+                    let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, painterName: painterName, totalPaintings: totalPaintings, gaveUp: gaveUp)
+                    totalQuestion = tuppleResponse.1
                     commentAfterResponse = tuppleResponse.0
                     MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: totalPaintings, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                     QuizProgressionBar.barDisplay(successiveRightAnswers: successiveRightAnswers, quizProgressionBar: quizProgressBar, totalQuestion: totalQuestion)
@@ -361,7 +346,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 commentAfterResponse?.text = "Sorry! It is not the right answer\nThe painter's name is \(painterName)"
                 MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, totalPaintings: totalPaintings, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                 UserDefaults.standard.set(0, forKey: "successiveRightAnswers")
-                
                 successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
                 QuizProgressionBar.barDisplay(successiveRightAnswers: successiveRightAnswers, quizProgressionBar: quizProgressBar, totalQuestion: totalQuestion)
                 responseRatio.text = "\(successiveRightAnswers)/\(totalQuestion)"

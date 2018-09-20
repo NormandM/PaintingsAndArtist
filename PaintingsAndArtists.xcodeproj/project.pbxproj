@@ -15,7 +15,6 @@
 		8E279BFB2147029000A44B62 /* MessageViewIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279BFA2147029000A44B62 /* MessageViewIntroduction.swift */; };
 		8E279BFD21470BF400A44B62 /* MessageViewOutOfCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */; };
 		8E279C012149B11800A44B62 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E279C002149B11800A44B62 /* RoundButton.swift */; };
-		8E31E60B21501F5900CABE83 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E31E60A21501F5900CABE83 /* ArtistesAndPaintings.plist */; };
 		8E31E60D215020F200CABE83 /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31E60C215020F200CABE83 /* LogoViewController.swift */; };
 		8E31E60F2150233D00CABE83 /* Acoustic Trio.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E31E60E2150233D00CABE83 /* Acoustic Trio.wav */; };
 		8E57650320EABD15001FEF3D /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650220EABD15001FEF3D /* Hint.swift */; };
@@ -47,6 +46,9 @@
 		8EE676E52110DE3C0057392C /* ChoosingPainterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE676E42110DE3C0057392C /* ChoosingPainterInfo.swift */; };
 		8EE676F32116008C0057392C /* LetterChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE676F22116008C0057392C /* LetterChoice.swift */; };
 		8EE676F521178B910057392C /* CheckingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE676F421178B910057392C /* CheckingResponse.swift */; };
+		8EFAE55E2151B8AF00DBB351 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFAE55D2151B8AF00DBB351 /* VideoViewController.swift */; };
+		8EFAE5602151EAD200DBB351 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EFAE55F2151EAD200DBB351 /* ArtistesAndPaintings.plist */; };
+		8EFAE5622152A82A00DBB351 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFAE5612152A82A00DBB351 /* ActivityIndicator.swift */; };
 		8EFBE76C20B1B169008E7532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBE76B20B1B169008E7532 /* AppDelegate.swift */; };
 		8EFBE76E20B1B169008E7532 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBE76D20B1B169008E7532 /* QuizViewController.swift */; };
 		8EFBE77120B1B169008E7532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFBE76F20B1B169008E7532 /* Main.storyboard */; };
@@ -90,7 +92,6 @@
 		8E279BFA2147029000A44B62 /* MessageViewIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewIntroduction.swift; sourceTree = "<group>"; };
 		8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewOutOfCredits.swift; sourceTree = "<group>"; };
 		8E279C002149B11800A44B62 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		8E31E60A21501F5900CABE83 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
 		8E31E60C215020F200CABE83 /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
 		8E31E60E2150233D00CABE83 /* Acoustic Trio.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Acoustic Trio.wav"; sourceTree = "<group>"; };
 		8E57650220EABD15001FEF3D /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
@@ -122,6 +123,9 @@
 		8EE676E42110DE3C0057392C /* ChoosingPainterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingPainterInfo.swift; sourceTree = "<group>"; };
 		8EE676F22116008C0057392C /* LetterChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterChoice.swift; sourceTree = "<group>"; };
 		8EE676F421178B910057392C /* CheckingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingResponse.swift; sourceTree = "<group>"; };
+		8EFAE55D2151B8AF00DBB351 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		8EFAE55F2151EAD200DBB351 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
+		8EFAE5612152A82A00DBB351 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		8EFBE76820B1B169008E7532 /* PaintingsAndArtists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaintingsAndArtists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFBE76B20B1B169008E7532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EFBE76D20B1B169008E7532 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				8EACF31A20FE812100F2E981 /* BuyCreditViewController.swift */,
 				8EDE7A172150584E00DC320C /* IAPProducts.swift */,
 				8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */,
+				8EFAE55D2151B8AF00DBB351 /* VideoViewController.swift */,
+				8EFAE5612152A82A00DBB351 /* ActivityIndicator.swift */,
 			);
 			path = CreditManagement;
 			sourceTree = "<group>";
@@ -309,8 +315,8 @@
 			children = (
 				8EFBE76B20B1B169008E7532 /* AppDelegate.swift */,
 				8E69E45A215190FA00B1ED8C /* GoogleService-Info.plist */,
+				8EFAE55F2151EAD200DBB351 /* ArtistesAndPaintings.plist */,
 				8EFBE76F20B1B169008E7532 /* Main.storyboard */,
-				8E31E60A21501F5900CABE83 /* ArtistesAndPaintings.plist */,
 				8EB88C532107C45E009755CD /* StartMenu */,
 				8EDE7A192150604300DC320C /* CreditManagement */,
 				8E57650E20F27949001FEF3D /* SlideShow */,
@@ -481,8 +487,8 @@
 				8EFBE77620B1B16D008E7532 /* Assets.xcassets in Resources */,
 				8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */,
 				8E11C4012120861500BB6AFC /* etc_error_drum.mp3 in Resources */,
-				8E31E60B21501F5900CABE83 /* ArtistesAndPaintings.plist in Resources */,
 				8E31E60F2150233D00CABE83 /* Acoustic Trio.wav in Resources */,
+				8EFAE5602151EAD200DBB351 /* ArtistesAndPaintings.plist in Resources */,
 				8EFBE77120B1B169008E7532 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,6 +612,7 @@
 				8EFBE7A120B5CBF4008E7532 /* SlideShowViewController.swift in Sources */,
 				8E57650320EABD15001FEF3D /* Hint.swift in Sources */,
 				8EC8906120E0397A000BB518 /* SoundPlayer.swift in Sources */,
+				8EFAE55E2151B8AF00DBB351 /* VideoViewController.swift in Sources */,
 				8EACF31520FD0A8B00F2E981 /* CreditManagement.swift in Sources */,
 				8EACF31D20FFB71000F2E981 /* SuccessiveRightAnswers.swift in Sources */,
 				8EFBE76E20B1B169008E7532 /* QuizViewController.swift in Sources */,
@@ -636,6 +643,7 @@
 				8EE676E52110DE3C0057392C /* ChoosingPainterInfo.swift in Sources */,
 				8EFBE79F20B5CBC5008E7532 /* MenuViewController.swift in Sources */,
 				8EE676F521178B910057392C /* CheckingResponse.swift in Sources */,
+				8EFAE5622152A82A00DBB351 /* ActivityIndicator.swift in Sources */,
 				8EE676E1210CE8CC0057392C /* ExtensionToSeparateWords.swift in Sources */,
 				8E6E7B0720E55084001317CB /* ButtonAndLabelDisplay.swift in Sources */,
 				8EC8906720E15B1E000BB518 /* Translation.swift in Sources */,

@@ -73,10 +73,7 @@ class QuizViewController: UIViewController {
         //UserDefaults.standard.set(10, forKey: "credit")
         //UserDefaults.standard.set(139, forKey: "successiveRightAnswers")
 
-        if !(userAlreadyExist(credit: "credit")){
-            credit = 40
-            UserDefaults.standard.set(credit, forKey: "credit")
-        }
+
         credit = UserDefaults.standard.integer(forKey: "credit")
         hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
         reinializePaintingsList()
@@ -148,9 +145,7 @@ class QuizViewController: UIViewController {
         }
        partTwoOfQuizDone = false
     }
-    func userAlreadyExist(credit: String) -> Bool {
-        return UserDefaults.standard.object(forKey: credit) != nil
-    }
+
     func indexPaintingAlreadyExist(indexPainting: String) -> Bool {
         return UserDefaults.standard.object(forKey: indexPainting) != nil
     }
