@@ -9,7 +9,7 @@
 import UIKit
 
 class MessageView {
-    class func showMessageView(view: UIView, messageView: UIView, button: RoundButton, visualEffect: UIVisualEffectView, effect:UIVisualEffect, diplomaImageView: UIImageView?, totalPaintings: Int?, commentAfterResponse: UILabel, nextLevel: UILabel, responseRatio: UILabel) {
+    class func showMessageView(view: UIView, messageView: UIView, button: RoundButton, visualEffect: UIVisualEffectView, effect:UIVisualEffect, diplomaImageView: UIImageView?, commentAfterResponse: UILabel, nextLevel: UILabel, responseRatio: UILabel) {
         let fontsAndConstraints = FontsAndConstraints()
         let successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
         messageView.layer.cornerRadius = 5
@@ -54,7 +54,7 @@ class MessageView {
             imageName = "mortarboard"
             
         default:
-            messageViewHeight = view.frame.height * 0.6
+            messageViewHeight = view.frame.height * 0.7
             messageXPosition = view.frame.size.width  / 2 - messageViewWidth/2
             messageYPosition = view.frame.size.height/2 - messageViewHeight/2
             button.y = messageViewHeight * 0.85

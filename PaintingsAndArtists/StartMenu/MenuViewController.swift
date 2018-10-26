@@ -31,6 +31,8 @@ class MenuViewController: UIViewController {
     lazy var sizeInfo = fontsAndConstraints.size()
     var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
     var credit = UserDefaults.standard.integer(forKey: "credit")
+    var score = UserDefaults.standard.integer(forKey: "score")
+    var successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
@@ -72,12 +74,22 @@ class MenuViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             IntroductionMessage.showMessageView(view: self.view, messageView: self.menuView, visualEffect: self.visualEffect, effect: self.effect, learnArtLabel: self.learnArtLabel, slideShowButton: self.slideShowButton, starHereLabel: self.starHereLabel, quizButton: self.quizButton, testYourKnowledgeLabel: self.testYourKnowledgeLabel, allTheDataButton: self.allTheDataButton, consultAndLearnLabel: self.consultAndLearnLabel, manageYourCreditsButton: self.manageYourCreditsButton)
         }
+        //UserDefaults.standard.set(5, forKey: "successiveRightAnswers")
         if !(userAlreadyExist(credit: "credit")){
             credit = 40
             UserDefaults.standard.set(credit, forKey: "credit")
+            score = 0
+            UserDefaults.standard.set(score, forKey: "score")
+            successiveRightAnswers = 0
+            UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
+            UserDefaults.standard.set(false, forKey: "artAmateurIsDone")
+            UserDefaults.standard.set(false, forKey: "artConoisseurIsDone")
+            UserDefaults.standard.set(false, forKey: "artExpertIsDone")
+            UserDefaults.standard.set(false, forKey: "artScholarIsDone")
+            UserDefaults.standard.set(false, forKey: "artMasterIsDone")
         }
     }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         if UIDevice.current.orientation.isLandscape{
@@ -129,7 +141,7 @@ class MenuViewController: UIViewController {
             backItem.tintColor = UIColor.white
             let controller = segue.destination as! QuizViewController
             controller.artistList = artistList
-            controller.artistsCount = artistsCount
+            //controller.artistsCount = artistsCount
         }
         if segue.identifier == "showBuyCredits"{
             let controller = segue.destination as! BuyCreditViewController

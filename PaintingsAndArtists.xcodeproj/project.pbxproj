@@ -24,7 +24,9 @@
 		8E57650D20F15CB9001FEF3D /* ChosePaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */; };
 		8E69E45B215190FA00B1ED8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E69E45A215190FA00B1ED8C /* GoogleService-Info.plist */; };
 		8E6E7B0720E55084001317CB /* ButtonAndLabelDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E7B0620E55084001317CB /* ButtonAndLabelDisplay.swift */; };
+		8E72D6C9217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72D6C8217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift */; };
 		8E9885E72103851F009C5A84 /* LabelWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9885E62103851F009C5A84 /* LabelWithInsets.swift */; };
+		8E9C5CD7217BDFA000006019 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9C5CD6217BDFA000006019 /* GameKit.framework */; };
 		8EACF31320FBE01100F2E981 /* SpecialMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31220FBE01100F2E981 /* SpecialMessage.swift */; };
 		8EACF31520FD0A8B00F2E981 /* CreditManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31420FD0A8B00F2E981 /* CreditManagement.swift */; };
 		8EACF31720FD360800F2E981 /* OtherPainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31620FD360800F2E981 /* OtherPainting.swift */; };
@@ -101,7 +103,9 @@
 		8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosePaintingViewController.swift; sourceTree = "<group>"; };
 		8E69E45A215190FA00B1ED8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E6E7B0620E55084001317CB /* ButtonAndLabelDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAndLabelDisplay.swift; sourceTree = "<group>"; };
+		8E72D6C8217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessiveAnswerIncrement.swift; sourceTree = "<group>"; };
 		8E9885E62103851F009C5A84 /* LabelWithInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithInsets.swift; sourceTree = "<group>"; };
+		8E9C5CD6217BDFA000006019 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8EACF31220FBE01100F2E981 /* SpecialMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialMessage.swift; sourceTree = "<group>"; };
 		8EACF31420FD0A8B00F2E981 /* CreditManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditManagement.swift; sourceTree = "<group>"; };
 		8EACF31620FD360800F2E981 /* OtherPainting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPainting.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9C5CD7217BDFA000006019 /* GameKit.framework in Frameworks */,
 				8EDE7A162150544000DC320C /* StoreKit.framework in Frameworks */,
 				F7B3C91F31D39E630835E91A /* Pods_PaintingsAndArtists.framework in Frameworks */,
 			);
@@ -245,6 +250,7 @@
 				8E57650420EAC722001FEF3D /* EnumForHints.swift */,
 				8EACF31420FD0A8B00F2E981 /* CreditManagement.swift */,
 				8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */,
+				8E72D6C8217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift */,
 			);
 			path = "View Controller Quiz";
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 		8EDE7A142150544000DC320C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E9C5CD6217BDFA000006019 /* GameKit.framework */,
 				8EDE7A152150544000DC320C /* StoreKit.framework */,
 				D6E47A01F972F19BCAA3625D /* Pods_PaintingsAndArtists.framework */,
 				F0756581A543A883CB23267F /* Pods_PaintingsAndArtistsTests.framework */,
@@ -439,6 +446,9 @@
 						CreatedOnToolsVersion = 9.3.1;
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
+							com.apple.GameCenter.iOS = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
@@ -608,6 +618,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EC8905F20E03825000BB518 /* ShakingMovement.swift in Sources */,
+				8E72D6C9217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift in Sources */,
 				8E57650520EAC722001FEF3D /* EnumForHints.swift in Sources */,
 				8EFBE7A120B5CBF4008E7532 /* SlideShowViewController.swift in Sources */,
 				8E57650320EABD15001FEF3D /* Hint.swift in Sources */,

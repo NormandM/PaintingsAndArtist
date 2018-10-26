@@ -25,6 +25,9 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet var messageView: UIView!
     weak var movingButton: UIButton?
+
+    
+    
     let fontsAndConstraints = FontsAndConstraints()
     lazy var sizeInfo = fontsAndConstraints.size()
     var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
@@ -35,13 +38,14 @@ class QuizViewController: UIViewController {
     var artistList: [[String]] = []
     var indexPainting: [Int] = []
     var selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
-    var artistsCount: Int = 0
     var errorCounter = 0
     var isFromQuiz = Bool()
     var isFromMenu = Bool()
     var isFromSlideShow = Bool()
     var goingForwards = Bool()
+    var score = UserDefaults.standard.integer(forKey: "score")
     var credit = UserDefaults.standard.integer(forKey: "credit")
+    var successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
     {
         didSet{
             if credit < 1 {
@@ -70,12 +74,14 @@ class QuizViewController: UIViewController {
         }
         self.navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.black
-        //UserDefaults.standard.set(10, forKey: "credit")
+        //UserDefaults.standard.set(0, forKey: "score")
+        //UserDefaults.standard.set(4, forKey: "credit")
         //UserDefaults.standard.set(139, forKey: "successiveRightAnswers")
 
 
         credit = UserDefaults.standard.integer(forKey: "credit")
-        hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
+        score = UserDefaults.standard.integer(forKey: "score")
+        hintButton.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
         reinializePaintingsList()
         quizElementSelection()
     }
@@ -186,11 +192,16 @@ class QuizViewController: UIViewController {
                         Sorry...
                         The right answer is : \(self.artistList[self.indexPainting[self.selectedIndex]][0])
                         """
-                        UserDefaults.standard.set(0, forKey: "successiveRightAnswers")
+                        self.successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+                        self.successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: self.successiveRightAnswers)
+                        UserDefaults.standard.set(self.successiveRightAnswers, forKey: "successiveRightAnswers")
                         self.selectedIndex = self.selectedIndex + 1
                         UserDefaults.standard.set(self.selectedIndex, forKey: "selectedIndex")
-                        self.nextButton.isEnabled = true
-                        self.nextButton.isHidden = false
+                        if self.credit > 0 {
+                            self.nextButton.isEnabled = true
+                            self.nextButton.isHidden = false
+                        }
+
                         self.nextButton.setTitle("Next", for: .normal)
                         self.partTwoOfQuizDone = true
                         LabelAndButton.disableHintButtons(hintItemButton: self.hintItemButton)
@@ -214,7 +225,8 @@ class QuizViewController: UIViewController {
             if buttonLabel != HintLabel.buyCoins.rawValue {
                 Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: finalArrayOfButtonNames, painterName: artistList[indexPainting[selectedIndex]][0], painterButton: painterButton, placeHolderButton: placeHolderButton, labelTitle: labelTitle, view: self, nextButton: nextButton, titleText: artistList[indexPainting[selectedIndex]][2], hintButton: hintButton, showActionView: showActionView)
                 credit =  UserDefaults.standard.integer(forKey: "credit")
-                hintButton.setTitle("\(credit) Coins available for Hints", for: .normal)
+                score = UserDefaults.standard.integer(forKey: "score")
+                hintButton.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
                 
             }else{
                 performSegue(withIdentifier: "showBuyCredits", sender: self)

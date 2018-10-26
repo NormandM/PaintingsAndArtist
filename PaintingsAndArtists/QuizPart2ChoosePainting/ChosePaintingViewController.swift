@@ -16,6 +16,8 @@ class ChosePaintingViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var commentOnResponse: UILabel!
     @IBOutlet weak var nextButton: RoundButton!
+
+    
     var bioInfoImageName = String()
     var indexPainting = [Int]()
     var artistList = [[String]]()
@@ -55,6 +57,9 @@ class ChosePaintingViewController: UIViewController {
             ImageManager.choosImage(imageView: paintingImage[i], imageName: imageName)
             i = i + 1
         }
+         paintingImage1.isUserInteractionEnabled = true
+         paintingImage2.isUserInteractionEnabled = true
+         paintingImage3.isUserInteractionEnabled = true
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -89,13 +94,22 @@ class ChosePaintingViewController: UIViewController {
     }
     
     @IBAction func imageOneTapped(_ sender: UITapGestureRecognizer) {
+        paintingImage1.isUserInteractionEnabled = false
+        paintingImage2.isUserInteractionEnabled = false
+        paintingImage3.isUserInteractionEnabled = false
         rightImageTapped(imageName: imageNameOtherPaintings[0])
     }
     @IBAction func imageTwoTapped(_ sender: UITapGestureRecognizer) {
-         rightImageTapped(imageName: imageNameOtherPaintings[1])
+        paintingImage1.isUserInteractionEnabled = false
+        paintingImage2.isUserInteractionEnabled = false
+        paintingImage3.isUserInteractionEnabled = false
+        rightImageTapped(imageName: imageNameOtherPaintings[1])
     }
     @IBAction func imageThreeTapped(_ sender: UITapGestureRecognizer) {
-         rightImageTapped(imageName: imageNameOtherPaintings[2])
+        paintingImage1.isUserInteractionEnabled = false
+        paintingImage2.isUserInteractionEnabled = false
+        paintingImage3.isUserInteractionEnabled = false
+        rightImageTapped(imageName: imageNameOtherPaintings[2])
     }
     func rightImageTapped(imageName: String) {
         soundPlayer = SoundPlayer()
@@ -125,7 +139,9 @@ class ChosePaintingViewController: UIViewController {
             """
             isAnswerGood = false
             CreditManagment.decreaseFourCredit(hintButton: nil)
-            UserDefaults.standard.set(0, forKey: "successiveRightAnswers")
+            var successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+            successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: successiveRightAnswers)
+            UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
             infoLabel.text = otherPaintingNameForSameArtist
             soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
         }

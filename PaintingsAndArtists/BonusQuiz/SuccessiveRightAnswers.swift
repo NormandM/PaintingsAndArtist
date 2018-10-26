@@ -9,8 +9,10 @@
 import UIKit
 
 class SuccessiveAnswer {
-    class func progression (commentAfterResponse: SpecialLabel, painterName: String, totalPaintings: Int, gaveUp: Bool) -> (SpecialLabel, Int){
+    class func progression (commentAfterResponse: SpecialLabel, creditLabel: SpecialLabel, painterName: String, gaveUp: Bool) -> (SpecialLabel, Int){
         let successiveRightAnswers =  UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+        let credit = UserDefaults.standard.integer(forKey: "credit")
+        let score = UserDefaults.standard.integer(forKey: "score")
         var totalQuestion = Int()
         switch successiveRightAnswers {
         case 0, 1, 2, 3, 4:
@@ -29,7 +31,12 @@ class SuccessiveAnswer {
                 \(painterName)
                 You are right!
                 
-                1 coin bonnus was added to your credits
+                1 coin was added
+                """
+                creditLabel.text = """
+                Credits: \(credit)
+                
+                Score: \(score)
                 """
             }
             totalQuestion = 5
@@ -40,9 +47,10 @@ class SuccessiveAnswer {
             You were right with 5 consecutive
             series of answers!
             
-            A 5 coins bonnus was added to your credits
+            20 coins was added
             """
             CreditManagment.increaseFiveCredit()
+            
             totalQuestion = 5
         case 6 ... 14:
             commentAfterResponse.text = """
@@ -50,9 +58,14 @@ class SuccessiveAnswer {
             \(painterName)
             You are right!
             
-            1 coin bonnus was added to your credits
+            1 coin was added
             """
-            totalQuestion = 15
+            creditLabel.text = """
+            Credits: \(credit)
+            
+            Score: \(score)
+            """
+            totalQuestion = 10
         case 15:
             commentAfterResponse.text = """
             You have reach the level
@@ -60,19 +73,24 @@ class SuccessiveAnswer {
             You were right with 15 consecutive
             series of answers!
             
-            A 15 coins bonnus was added to your credits
+            40 coins bonnus was added
             """
             CreditManagment.increaseFiftheenCredit()
-            totalQuestion = 15
+            totalQuestion = 10
         case 16 ... 29:
             commentAfterResponse.text = """
             Great!
             \(painterName)
             You are right!
             
-            1 coin bonnus was added to your credits
+            1 coin was added
             """
-            totalQuestion = 30
+            creditLabel.text = """
+            Credits: \(credit)
+            
+            Score: \(score)
+            """
+            totalQuestion = 15
         case 30:
             commentAfterResponse.text = """
             You have reach the level
@@ -80,19 +98,24 @@ class SuccessiveAnswer {
             You were right with 30 consecutive
             series of answers!
             
-            A 30 coins bonnus was added to your credits
+            60 coins was added
             """
             CreditManagment.increaseThirtyCredit()
-            totalQuestion = 30
+            totalQuestion = 15
         case 31 ... 49:
             commentAfterResponse.text = """
             Great!
             \(painterName)
             You are right!
-            
-            1 coin bonnus was added to your credits
+
+            1 coin was added
             """
-            totalQuestion = 50
+            creditLabel.text = """
+            Credits: \(credit)
+
+            Score: \(score)
+            """
+            totalQuestion = 20
         case 50:
             commentAfterResponse.text = """
             You have reach the level
@@ -100,17 +123,17 @@ class SuccessiveAnswer {
             You were right with 50 consecutive
             series of answers!
             
-            A 50 coins bonnus was added to your credits
+            80 coins bonnus was added
             """
             CreditManagment.increseFiftyCredit()
-            totalQuestion = totalPaintings
-        case totalPaintings:
+            totalQuestion = 20
+        case 100:
             commentAfterResponse.text = """
             
             Fantastic!
             YOU KNOW IT ALL!
             
-            A 1000 coins bonnus was added to your credits
+            100 coins bonnus was added.
             
             You know art and you know this game.
             Any ideas how I could improve it?
@@ -121,15 +144,21 @@ class SuccessiveAnswer {
             Thank you!
             """
             CreditManagment.increseOneThousandCredit()
+            totalQuestion = 50
         default:
             commentAfterResponse.text = """
             Great!
             \(painterName)
             You are right!
             
-            1 coin bonnus was added to your credits
+            1 coin was added
             """
-            totalQuestion = totalPaintings
+            creditLabel.text = """
+            Credits: \(credit)
+            
+            Score: \(score)
+            """
+            totalQuestion = 50
         }
         return (commentAfterResponse, totalQuestion)
     }
