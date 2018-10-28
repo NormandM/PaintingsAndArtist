@@ -88,6 +88,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             eachButton.layer.cornerRadius = eachButton.frame.height / 2.0
             eachButton.isHidden = true
         }
+        credit =  UserDefaults.standard.integer(forKey: "credit")
         score = UserDefaults.standard.integer(forKey: "score")
         hintButton.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
         let allInfo = ArrayManagement.manageArray(artistList: artistList)
@@ -214,9 +215,11 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                         hintItemButton[1].isEnabled = false
                         hintItemButton[1].setTitleColor(UIColor.lightGray, for:UIControl.State.normal)
                     }
+                    Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: nil, painterName: nil, painterButton: nil, placeHolderButton: nil, labelTitle: nil, view: nil, nextButton: nil, titleText: nil, hintButton: hintButton, showActionView: showActionView)
 
                 }else if buttonLabel == HintLabel.showPainterName.rawValue{
                     gaveUp = true
+                    Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: nil, painterName: nil, painterButton: nil, placeHolderButton: nil, labelTitle: nil, view: nil, nextButton: nil, titleText: nil, hintButton: hintButton, showActionView: showActionView)
                     var i = 0
                     var j = 0
                     for letter in nameArray {
@@ -237,7 +240,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 if n == (countLetter - 1){
                     messageAfterResponse()
                 }
-                Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: nil, painterName: nil, painterButton: nil, placeHolderButton: nil, labelTitle: nil, view: nil, nextButton: nil, titleText: nil, hintButton: hintButton, showActionView: showActionView)
+
                 credit =  UserDefaults.standard.integer(forKey: "credit")
                 score = UserDefaults.standard.integer(forKey: "score")
                 hintButton.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
@@ -322,16 +325,16 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             let isResponseGood = CheckingReponse.goodOrBad(indexResponse: indexResponse, painterName: nameArray)
             if isResponseGood{
                 if gaveUp {
-                    successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+                    successiveRightAnswers = 0
                     successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: successiveRightAnswers)
                     UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
+                    
                 }else{
                     CreditManagment.increaseOneCredit(hintButton: nil)
                     soundPlayer?.playSound(soundName: "chime_clickbell_octave_up", type: "mp3")
                     successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers") + 1
                     if successiveRightAnswers > artistList.count {
-                        let successiveRightAnswersNew = SuccessiveAnswerIncrement.increment(successiveAnswer: successiveRightAnswers)
-                        successiveRightAnswers = successiveRightAnswersNew
+                        successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: successiveRightAnswers)
                     }else if successiveRightAnswers == artistList.count {
                         quizProgressBar.isHidden = true
                         responseRatio.isHidden = true
@@ -342,6 +345,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 totalQuestion = tuppleResponse.1
                 UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
                 successiveRightAnswers =  UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+                //successiveResponseAdjustement(totalQuestion: totalQuestion)
                 let achievementArtAmateur = GKAchievement(identifier: "ASeriesOf5")
                 let achievementArtConoisseur = GKAchievement(identifier: "ASeriesOf10")
                 let achievementArtExpert = GKAchievement(identifier: "ASeriesOf15")
@@ -351,6 +355,11 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 switch successiveRightAnswers {
                 case 5, 15, 30, 50:
                     artAmateurIsDone = UserDefaults.standard.bool(forKey: "artAmateurIsDone")
+                    artConoisseurIsDone = UserDefaults.standard.bool(forKey: "artConoisseurIsDone")
+                    artExpertIsDone = UserDefaults.standard.bool(forKey: "artExpertIsDone")
+                    artScholarIsDone = UserDefaults.standard.bool(forKey: "artScholarIsDone")
+                    artMasterIsDone = UserDefaults.standard.bool(forKey: "artMasterIsDone")
+                    print("artMasterIsDone: \(artMasterIsDone)")
                     if (successiveRightAnswers == 5 && artAmateurIsDone) || (successiveRightAnswers == 15 && artConoisseurIsDone)  || (successiveRightAnswers == 30 && artExpertIsDone)  || (successiveRightAnswers == 50 && artScholarIsDone) {
                         callDefault()
                     }else{
@@ -370,7 +379,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     
                 default:
                     callDefault()
-
                 }
                 if successiveRightAnswers <= 5 {
                     achievementArtAmateur.percentComplete = Double(successiveRightAnswers) * 20
@@ -413,40 +421,89 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 okButton.setNeedsDisplay()
             }else{
                 CreditManagment.decreaseFourCredit(hintButton: hintButton)
+                gaveUp = true
                 let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, creditLabel: creditLabel, painterName: painterName, gaveUp: gaveUp)
                 totalQuestion = tuppleResponse.1
                 soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
-                commentAfterResponse?.text = "Sorry! It is not the right answer\nThe painter's name is \(painterName)"
+                credit =  UserDefaults.standard.integer(forKey: "credit")
+                score = UserDefaults.standard.integer(forKey: "score")
+                commentAfterResponse?.text = "Sorry! It is not the right answer\nThe painter's name is \n\(painterName)"
+                creditLabel.text = """
+                Credits: \(credit)
                 
-                MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
-                var successiveRightAnswersNew = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
-                successiveRightAnswersNew = SuccessiveAnswerIncrement.increment(successiveAnswer: successiveRightAnswersNew)
-                UserDefaults.standard.set(successiveRightAnswersNew, forKey: "successiveRightAnswers")
-                successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
-                QuizProgressionBar.barDisplay(successiveRightAnswers: successiveRightAnswers, quizProgressionBar: quizProgressBar, totalQuestion: totalQuestion)
-                responseRatio.text = "\(successiveResponseAdjustement(successiveRightAnswers: successiveRightAnswers, totalQuestion: totalQuestion))/\(totalQuestion)"
+                Score: \(score)
+                """
+                successiveRightAnswers = 0
+                successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: successiveRightAnswers)
+                UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
+                successiveResponseAdjustement(totalQuestion: totalQuestion)
+
             }
     }
-    func successiveResponseAdjustement(successiveRightAnswers: Int, totalQuestion: Int) -> Int{
+    func successiveResponseAdjustement(totalQuestion: Int) {
+        successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
         var numerateur = Int()
-        if totalQuestion == 5 {numerateur = successiveRightAnswers}
-        if totalQuestion == 10 {numerateur = successiveRightAnswers - 5}
-        if totalQuestion == 15 {numerateur = successiveRightAnswers - 15}
-        if totalQuestion == 20 {numerateur = successiveRightAnswers - 30}
-        if totalQuestion == 50 {numerateur = successiveRightAnswers - 50}
-        return numerateur
+        var denominateur = Int()
+        if totalQuestion == 5 {
+            numerateur = successiveRightAnswers
+            denominateur = 5
+            if artAmateurIsDone {
+                numerateur = successiveRightAnswers
+                denominateur = 10
+            }
+        }
+        if totalQuestion == 10 {
+            numerateur = successiveRightAnswers - 5
+            denominateur = 10
+            if artConoisseurIsDone {
+                numerateur = successiveRightAnswers
+                denominateur = 15
+            }
+        }
+        if totalQuestion == 15 {
+            numerateur = successiveRightAnswers - 15
+            denominateur = 15
+            if artExpertIsDone {
+                numerateur = successiveRightAnswers
+                denominateur = 20
+            }
+        }
+        if totalQuestion == 20 {
+            numerateur = successiveRightAnswers - 30
+            denominateur = totalQuestion
+            if artScholarIsDone {
+                numerateur = successiveRightAnswers
+                denominateur = 50
+            }
+        }
+        if totalQuestion == 50 {
+            numerateur = successiveRightAnswers - 50
+            denominateur = 50
+            if artMasterIsDone {
+                numerateur = successiveRightAnswers
+                denominateur = 50
+            }
+        }
+        responseRatio.text = "\(numerateur)/\(denominateur)"
+        QuizProgressionBar.barDisplay(successiveRightAnswers: numerateur, quizProgressionBar: quizProgressBar, totalQuestion: denominateur)
+        MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
+        return
     }
     func callDefault() {
         partalAuthenticateLocalPlayer()
         let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, creditLabel: creditLabel, painterName: painterName, gaveUp: gaveUp)
+        credit =  UserDefaults.standard.integer(forKey: "credit")
+        score = UserDefaults.standard.integer(forKey: "score")
         totalQuestion = tuppleResponse.1
         commentAfterResponse = tuppleResponse.0
+        creditLabel.text = """
+        Credits: \(credit)
         
-        MessageView.showMessageView(view: view, messageView: messageView, button: okButton, visualEffect: visualEffect, effect: effect, diplomaImageView: nil, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
-        QuizProgressionBar.barDisplay(successiveRightAnswers: successiveRightAnswers, quizProgressionBar: quizProgressBar, totalQuestion: totalQuestion)
-        responseRatio.text = "\(successiveResponseAdjustement(successiveRightAnswers: successiveRightAnswers, totalQuestion: totalQuestion))/\(totalQuestion)"
-    }
+        Score: \(score)
+        """
 
+        successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+        successiveResponseAdjustement(totalQuestion: totalQuestion)    }
     func hintMenuAction() {
         hintItemButton.forEach { (eachButton) in
             UIView.animate(withDuration: 0.4, animations: {
@@ -632,6 +689,8 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         if self.localPlayer.isAuthenticated{
             self.gcEnabled = true
         }
+        
+      
     }
     
     func authenticateLocalPlayer() {
@@ -690,7 +749,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     
 
 }
-
 
 extension String {
     func appendLineToURL(fileURL: URL) throws {

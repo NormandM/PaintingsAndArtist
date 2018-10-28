@@ -17,7 +17,7 @@ class CreditManagment{
             button.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
         }
     }
-    class func increaseFiveCredit() {
+    class func increaseTwentyCredit() {
         let credit = UserDefaults.standard.integer(forKey: "credit") + 20
         UserDefaults.standard.set(credit, forKey: "credit")
         let score = UserDefaults.standard.integer(forKey: "score") + 20
