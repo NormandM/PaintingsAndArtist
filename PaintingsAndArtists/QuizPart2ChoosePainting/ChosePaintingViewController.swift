@@ -139,7 +139,7 @@ class ChosePaintingViewController: UIViewController {
             """
             isAnswerGood = false
             CreditManagment.decreaseFourCredit(hintButton: nil)
-            var successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+            var successiveRightAnswers = 0
             successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: successiveRightAnswers)
             UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
             infoLabel.text = otherPaintingNameForSameArtist

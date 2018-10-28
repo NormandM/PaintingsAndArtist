@@ -10,7 +10,7 @@ import Foundation
 
 class SuccessiveAnswerIncrement{
     class func increment (successiveAnswer: Int)  -> Int {
-        var resultSuccessiveAnswer = Int()
+        var resultSuccessiveAnswer = successiveAnswer
         if successiveAnswer >= 5 {
             resultSuccessiveAnswer = 5
         }

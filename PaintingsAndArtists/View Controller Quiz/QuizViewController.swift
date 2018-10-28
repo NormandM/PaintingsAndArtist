@@ -192,7 +192,7 @@ class QuizViewController: UIViewController {
                         Sorry...
                         The right answer is : \(self.artistList[self.indexPainting[self.selectedIndex]][0])
                         """
-                        self.successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+                        self.successiveRightAnswers = 0
                         self.successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: self.successiveRightAnswers)
                         UserDefaults.standard.set(self.successiveRightAnswers, forKey: "successiveRightAnswers")
                         self.selectedIndex = self.selectedIndex + 1
