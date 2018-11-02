@@ -139,8 +139,8 @@ class ChosePaintingViewController: UIViewController {
             """
             isAnswerGood = false
             CreditManagment.decreaseFourCredit(hintButton: nil)
-            var successiveRightAnswers = 0
-            successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: successiveRightAnswers)
+            var successiveRightAnswers = UserDefaults.standard.integer(forKey:  "successiveRightAnswers")
+            successiveRightAnswers = SuccessiveAnswer.afterMistake(successiveRightAnswers: successiveRightAnswers)
             UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
             infoLabel.text = otherPaintingNameForSameArtist
             soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")

@@ -24,7 +24,6 @@
 		8E57650D20F15CB9001FEF3D /* ChosePaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */; };
 		8E69E45B215190FA00B1ED8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E69E45A215190FA00B1ED8C /* GoogleService-Info.plist */; };
 		8E6E7B0720E55084001317CB /* ButtonAndLabelDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E7B0620E55084001317CB /* ButtonAndLabelDisplay.swift */; };
-		8E72D6C9217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72D6C8217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift */; };
 		8E9885E72103851F009C5A84 /* LabelWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9885E62103851F009C5A84 /* LabelWithInsets.swift */; };
 		8E9C5CD7217BDFA000006019 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9C5CD6217BDFA000006019 /* GameKit.framework */; };
 		8EACF31320FBE01100F2E981 /* SpecialMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACF31220FBE01100F2E981 /* SpecialMessage.swift */; };
@@ -37,6 +36,7 @@
 		8EC8905F20E03825000BB518 /* ShakingMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC8905E20E03825000BB518 /* ShakingMovement.swift */; };
 		8EC8906120E0397A000BB518 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC8906020E0397A000BB518 /* SoundPlayer.swift */; };
 		8EC8906720E15B1E000BB518 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC8906620E15B1E000BB518 /* Translation.swift */; };
+		8ED0F569218A198800F10CF9 /* music_harp_gliss_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ED0F568218A198800F10CF9 /* music_harp_gliss_up.wav */; };
 		8EDE7A162150544000DC320C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDE7A152150544000DC320C /* StoreKit.framework */; };
 		8EDE7A182150584E00DC320C /* IAPProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE7A172150584E00DC320C /* IAPProducts.swift */; };
 		8EDE7A1B2150609900DC320C /* ConnectionReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */; };
@@ -103,7 +103,6 @@
 		8E57650C20F15CB9001FEF3D /* ChosePaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosePaintingViewController.swift; sourceTree = "<group>"; };
 		8E69E45A215190FA00B1ED8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E6E7B0620E55084001317CB /* ButtonAndLabelDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAndLabelDisplay.swift; sourceTree = "<group>"; };
-		8E72D6C8217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessiveAnswerIncrement.swift; sourceTree = "<group>"; };
 		8E9885E62103851F009C5A84 /* LabelWithInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithInsets.swift; sourceTree = "<group>"; };
 		8E9C5CD6217BDFA000006019 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8EACF31220FBE01100F2E981 /* SpecialMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialMessage.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		8EC8905E20E03825000BB518 /* ShakingMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakingMovement.swift; sourceTree = "<group>"; };
 		8EC8906020E0397A000BB518 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		8EC8906620E15B1E000BB518 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		8ED0F568218A198800F10CF9 /* music_harp_gliss_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music_harp_gliss_up.wav; sourceTree = "<group>"; };
 		8EDE7A152150544000DC320C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8EDE7A172150584E00DC320C /* IAPProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProducts.swift; sourceTree = "<group>"; };
 		8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionReachable.swift; sourceTree = "<group>"; };
@@ -250,7 +250,6 @@
 				8E57650420EAC722001FEF3D /* EnumForHints.swift */,
 				8EACF31420FD0A8B00F2E981 /* CreditManagement.swift */,
 				8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */,
-				8E72D6C8217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift */,
 			);
 			path = "View Controller Quiz";
 			sourceTree = "<group>";
@@ -332,6 +331,7 @@
 				8EE676D9210A40DA0057392C /* BonusQuiz */,
 				8E1C441A20D0300A0010F874 /* InfoImageViewController */,
 				8EFBE77720B1B16D008E7532 /* LaunchScreen.storyboard */,
+				8ED0F568218A198800F10CF9 /* music_harp_gliss_up.wav */,
 				8EFBE77A20B1B16D008E7532 /* Info.plist */,
 				8EFBE77220B1B169008E7532 /* PaintingsAndArtists.xcdatamodeld */,
 				8EE4283120C32101005981B3 /* FontsAndConstraints.swift */,
@@ -494,6 +494,7 @@
 				8EFBE77920B1B16D008E7532 /* LaunchScreen.storyboard in Resources */,
 				8E1C43D620C9AC450010F874 /* Gymnopédie_no.3.mp3 in Resources */,
 				8E69E45B215190FA00B1ED8C /* GoogleService-Info.plist in Resources */,
+				8ED0F569218A198800F10CF9 /* music_harp_gliss_up.wav in Resources */,
 				8EFBE77620B1B16D008E7532 /* Assets.xcassets in Resources */,
 				8E11C4032120885F00BB6AFC /* chime_clickbell_octave_up.mp3 in Resources */,
 				8E11C4012120861500BB6AFC /* etc_error_drum.mp3 in Resources */,
@@ -618,7 +619,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EC8905F20E03825000BB518 /* ShakingMovement.swift in Sources */,
-				8E72D6C9217FBBF600ED3B15 /* SuccessiveAnswerIncrement.swift in Sources */,
 				8E57650520EAC722001FEF3D /* EnumForHints.swift in Sources */,
 				8EFBE7A120B5CBF4008E7532 /* SlideShowViewController.swift in Sources */,
 				8E57650320EABD15001FEF3D /* Hint.swift in Sources */,

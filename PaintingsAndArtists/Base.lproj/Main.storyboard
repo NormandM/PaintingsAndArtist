@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7wE-Wj-vPT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7wE-Wj-vPT">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -421,7 +421,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="C36-jQ-Tla">
-                                <rect key="frame" x="10" y="607" width="1004" height="151"/>
+                                <rect key="frame" x="10" y="637" width="1004" height="121"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAb-3e-O7P" userLabel="Buy some Coins">
                                         <rect key="frame" x="0.0" y="0.0" width="1004" height="29"/>
@@ -434,19 +434,8 @@
                                             <action selector="specificHintPressed:" destination="mTW-hg-iBT" eventType="touchUpInside" id="3zc-id-myd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vl-ve-TEw">
-                                        <rect key="frame" x="0.0" y="30" width="1004" height="29"/>
-                                        <color key="backgroundColor" red="0.69803921570000005" green="0.81568627449999997" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                        <state key="normal" title="Give me the answer!: 3 coins">
-                                            <color key="titleColor" red="0.1058823529" green="0.37254901959999998" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="specificHintPressed:" destination="mTW-hg-iBT" eventType="touchUpInside" id="kiQ-7c-dtU"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="os7-Wg-0Mg">
-                                        <rect key="frame" x="0.0" y="60" width="1004" height="29"/>
+                                        <rect key="frame" x="0.0" y="30" width="1004" height="29"/>
                                         <color key="backgroundColor" red="0.69803921570000005" green="0.81568627449999997" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="Drop two Painters: 2 coins">
@@ -457,7 +446,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDE-qy-bu1">
-                                        <rect key="frame" x="0.0" y="90" width="1004" height="29"/>
+                                        <rect key="frame" x="0.0" y="60" width="1004" height="29"/>
                                         <color key="backgroundColor" red="0.69803921570000005" green="0.81568627449999997" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="See Painter Bio: 1 coin">
@@ -468,7 +457,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDb-8G-AHh">
-                                        <rect key="frame" x="0.0" y="120" width="1004" height="31"/>
+                                        <rect key="frame" x="0.0" y="90" width="1004" height="31"/>
                                         <color key="backgroundColor" red="0.10588235294117647" green="0.37254901960784315" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="Hint">
@@ -544,7 +533,6 @@
                         <outletCollection property="painterButton" destination="k2x-FM-6bx" collectionClass="NSMutableArray" id="Ejb-Un-xuG"/>
                         <outletCollection property="hintItemButton" destination="PDE-qy-bu1" collectionClass="NSMutableArray" id="WzR-TI-qK4"/>
                         <outletCollection property="hintItemButton" destination="os7-Wg-0Mg" collectionClass="NSMutableArray" id="RNG-Xz-rGL"/>
-                        <outletCollection property="hintItemButton" destination="1Vl-ve-TEw" collectionClass="NSMutableArray" id="bo5-be-4PM"/>
                         <outletCollection property="hintItemButton" destination="hAb-3e-O7P" collectionClass="NSMutableArray" id="rxp-0q-CL1"/>
                         <segue destination="04y-Y1-O7U" kind="show" identifier="showBio" id="NU3-ZW-qG7"/>
                         <segue destination="AGd-1J-aZe" kind="presentation" identifier="showChosePainting" id="ci7-fz-o9j"/>
@@ -1198,7 +1186,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FyE-Yi-S4O" customClass="SpecialLabel" customModule="PaintingsAndArtists" customModuleProvider="target">
-                            <rect key="frame" x="10" y="14" width="316" height="111"/>
+                            <rect key="frame" x="10" y="7.5" width="316" height="123.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -1247,7 +1235,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IrM-e1-zVN" customClass="SpecialLabel" customModule="PaintingsAndArtists" customModuleProvider="target">
-                            <rect key="frame" x="59" y="145" width="218" height="111"/>
+                            <rect key="frame" x="59" y="151" width="218" height="111"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -1276,7 +1264,7 @@
                         <constraint firstItem="lak-7A-fMm" firstAttribute="leading" secondItem="pyH-uM-ikb" secondAttribute="trailing" constant="10" id="c1g-T5-mGt"/>
                         <constraint firstItem="ExV-VJ-w8x" firstAttribute="centerY" secondItem="3Bj-jw-hu1" secondAttribute="centerY" multiplier="1.4:1" id="cCI-jM-82I"/>
                         <constraint firstItem="y6I-OV-U5f" firstAttribute="width" secondItem="IrM-e1-zVN" secondAttribute="width" id="clH-Ou-5CX"/>
-                        <constraint firstItem="FyE-Yi-S4O" firstAttribute="height" secondItem="3Bj-jw-hu1" secondAttribute="height" multiplier="1:5" id="dJ0-8W-BZD"/>
+                        <constraint firstItem="FyE-Yi-S4O" firstAttribute="height" secondItem="3Bj-jw-hu1" secondAttribute="height" multiplier="1:4.5" id="dJ0-8W-BZD"/>
                         <constraint firstItem="FyE-Yi-S4O" firstAttribute="leading" secondItem="Q0W-bW-9dH" secondAttribute="leading" constant="10" id="gam-YS-bbe"/>
                         <constraint firstItem="y6I-OV-U5f" firstAttribute="centerY" secondItem="3Bj-jw-hu1" secondAttribute="centerY" multiplier="1:0.9" id="gup-9j-zV8"/>
                         <constraint firstItem="pyH-uM-ikb" firstAttribute="centerX" secondItem="3Bj-jw-hu1" secondAttribute="centerX" id="kHj-pz-5mY"/>

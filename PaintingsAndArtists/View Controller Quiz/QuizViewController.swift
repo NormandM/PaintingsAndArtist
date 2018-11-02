@@ -8,8 +8,11 @@
 
 import UIKit
 import AVFoundation
+import GameKit
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
+
+    
     let labelTitle = UILabel(frame: CGRect(x:0, y:0, width:1000, height:50))
     
     @IBOutlet weak var visualEffect: UIVisualEffectView!
@@ -45,6 +48,9 @@ class QuizViewController: UIViewController {
     var goingForwards = Bool()
     var score = UserDefaults.standard.integer(forKey: "score")
     var credit = UserDefaults.standard.integer(forKey: "credit")
+    let localPlayer: GKLocalPlayer = GKLocalPlayer.local
+    var gcEnabled = Bool() // Check if the user has Game Center enabled
+    var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     var successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
     {
         didSet{
@@ -58,7 +64,15 @@ class QuizViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //UserDefaults.standard.set(false, forKey: "doesNotWantToLogInGameCanter")
+        //UserDefaults.standard.set(false, forKey: "isPlayerLogIn")
+        let doesNotWantToLogInGameCanter = UserDefaults.standard.bool(forKey: "doesNotWantToLogInGameCanter")
+        let isLogIn = UserDefaults.standard.bool(forKey: "isPlayerLogIn")
+        if doesNotWantToLogInGameCanter == false && isLogIn == false{
+            showAlertGamecenter()
+        }else if isLogIn {
+            authenticateLocalPlayer()
+        }
         effect = visualEffect.effect
         messageView.layer.cornerRadius = 5
         visualEffect.effect = nil
@@ -76,7 +90,7 @@ class QuizViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.black
         //UserDefaults.standard.set(0, forKey: "score")
         //UserDefaults.standard.set(4, forKey: "credit")
-        //UserDefaults.standard.set(139, forKey: "successiveRightAnswers")
+        //UserDefaults.standard.set(99, forKey: "successiveRightAnswers")
 
 
         credit = UserDefaults.standard.integer(forKey: "credit")
@@ -192,8 +206,8 @@ class QuizViewController: UIViewController {
                         Sorry...
                         The right answer is : \(self.artistList[self.indexPainting[self.selectedIndex]][0])
                         """
-                        self.successiveRightAnswers = 0
-                        self.successiveRightAnswers = SuccessiveAnswerIncrement.increment(successiveAnswer: self.successiveRightAnswers)
+                        self.successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+                        self.successiveRightAnswers = SuccessiveAnswer.afterMistake(successiveRightAnswers: self.successiveRightAnswers)
                         UserDefaults.standard.set(self.successiveRightAnswers, forKey: "successiveRightAnswers")
                         self.selectedIndex = self.selectedIndex + 1
                         UserDefaults.standard.set(self.selectedIndex, forKey: "selectedIndex")
@@ -232,8 +246,12 @@ class QuizViewController: UIViewController {
                 performSegue(withIdentifier: "showBuyCredits", sender: self)
             }
         }
+        if let buttonLabel = sender.titleLabel?.text{
+            if buttonLabel != HintLabel.buyCoins.rawValue{
+                LabelAndButton.disableHintButtons(hintItemButton: hintItemButton)
+            }
+        }
         
-        LabelAndButton.disableHintButtons(hintItemButton: hintItemButton)
         hintMenuAction()
 
     }
@@ -332,6 +350,45 @@ class QuizViewController: UIViewController {
     
     func showActionView() {
         performSegue(withIdentifier: "showBio", sender: self)
+    }
+    func showAlertGamecenter() {
+        let alert = UIAlertController(title:  "Are you logged in Game Center?", message:"To compare scores with other players you have to be logged in.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok, Make sure I am logged in", style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.authenticateLocalPlayer()}))
+        let okAction = UIAlertAction(title: "Just Start the Game", style: .cancel, handler: dismissAlert)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    func dismissAlert(_ sender: UIAlertAction) {
+         UserDefaults.standard.set(true, forKey: "doesNotWantToLogInGameCanter")
+    }
+
+    func authenticateLocalPlayer() {
+        localPlayer.authenticateHandler = {(QuizViewController, error) -> Void in
+            if((QuizViewController) != nil) {
+                //self.showAlertGamecenter()
+                self.present(QuizViewController!, animated: true, completion: self.showAlertGamecenter)
+            } else if (self.localPlayer.isAuthenticated) {
+                // 2. Player is already authenticated & logged in, load game center
+                self.gcEnabled = true
+                UserDefaults.standard.set(true, forKey: "isPlayerLogIn")
+                // Get the default leaderboard ID
+                self.localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
+                    if error != nil { print(error!)
+                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer! }
+                })
+                
+            } else {
+                // 3. Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated!")
+                print(error!)
+            }
+        }
+        UserDefaults.standard.set(true, forKey: "isAuthentificated")
+    }
+
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
     

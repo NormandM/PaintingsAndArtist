@@ -26,6 +26,13 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         adBannerView.rootViewController = self
         return adBannerView
     }()
+//    lazy var adBannerView: GADBannerView = {
+//        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+//        adBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        adBannerView.delegate = self
+//        adBannerView.rootViewController = self
+//        return adBannerView
+//    }()
     var provenance = String()
     
     var productID = ""
@@ -205,6 +212,7 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 default: break
                 }}}
     }
+
     
     @IBAction func buy200Coins(_ sender: UIButton) {
         purchaseMyProduct(product: iapProducts[0])

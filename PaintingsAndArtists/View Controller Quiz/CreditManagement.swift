@@ -23,26 +23,26 @@ class CreditManagment{
         let score = UserDefaults.standard.integer(forKey: "score") + 20
         UserDefaults.standard.set(score, forKey: "score")
     }
-    class func increaseFiftheenCredit(){
+    class func increaseForthyCredit(){
         let credit = UserDefaults.standard.integer(forKey: "credit") + 40
         UserDefaults.standard.set(credit, forKey: "credit")
         let score = UserDefaults.standard.integer(forKey: "score") + 40
         UserDefaults.standard.set(score, forKey: "score")
     }
-    class func increaseThirtyCredit(){
+    class func increaseSixtyCredit(){
         let credit = UserDefaults.standard.integer(forKey: "credit") + 60
         UserDefaults.standard.set(credit, forKey: "credit")
         let score = UserDefaults.standard.integer(forKey: "score") + 60
         UserDefaults.standard.set(score, forKey: "score")
     }
-    class func increseFiftyCredit() {
+    class func increseEightyCredit() {
         let credit = UserDefaults.standard.integer(forKey: "credit") + 80
         UserDefaults.standard.set(credit, forKey: "credit")
         let score = UserDefaults.standard.integer(forKey: "score") + 80
         UserDefaults.standard.set(score, forKey: "score")
         
     }
-    class func increseOneThousandCredit() {
+    class func increseOneHundredCredit() {
         let credit = UserDefaults.standard.integer(forKey: "credit") + 100
         UserDefaults.standard.set(credit, forKey: "credit")
         let score = UserDefaults.standard.integer(forKey: "score") + 100

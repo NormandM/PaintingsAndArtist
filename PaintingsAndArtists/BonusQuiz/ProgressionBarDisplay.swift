@@ -9,12 +9,6 @@
 import UIKit
 class QuizProgressionBar {
     class func barDisplay(successiveRightAnswers: Int,  quizProgressionBar: UIProgressView, totalQuestion: Int){
-       // var ajustedSuccessiveRightAnswers = Int()
-//        if totalQuestion == 5 {ajustedSuccessiveRightAnswers = successiveRightAnswers}
-//        if totalQuestion == 10 {ajustedSuccessiveRightAnswers = successiveRightAnswers - 5}
-//        if totalQuestion == 15 {ajustedSuccessiveRightAnswers = successiveRightAnswers - 15}
-//        if totalQuestion == 20 {ajustedSuccessiveRightAnswers = successiveRightAnswers - 30}
-//        if totalQuestion == 50 {ajustedSuccessiveRightAnswers = successiveRightAnswers - 50}
         let percentcompleted = Double(successiveRightAnswers)/Double(totalQuestion)
         quizProgressionBar.isUserInteractionEnabled = false
         quizProgressionBar.progressViewStyle = .bar
