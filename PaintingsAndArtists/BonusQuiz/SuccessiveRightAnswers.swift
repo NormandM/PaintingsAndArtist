@@ -19,7 +19,6 @@ class SuccessiveAnswer {
         let artScholarIsDone = UserDefaults.standard.bool(forKey: "artScholarIsDone")
         let artMasterIsDone = UserDefaults.standard.bool(forKey: "artMasterIsDone")
         var totalQuestion = Int()
-        print("successiveRightAnswers7: \(successiveRightAnswers)")
         switch successiveRightAnswers {
         case 0, 1, 2, 3, 4:
             if gaveUp{

@@ -131,7 +131,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         commentAfterResponse?.font = sizeInfoAndFonts?.fontSize2
         specialCommentAfterResponse.font = sizeInfoAndFonts?.fontSize2
         responseRatio.font = sizeInfoAndFonts?.fontSize7
-
         creditLabel.textColor = UIColor.white
         creditLabel.layer.borderColor = UIColor.white.cgColor
         creditLabel.layer.borderWidth = 2
@@ -139,8 +138,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         leaderBoardButton.titleLabel?.font = sizeInfoAndFonts?.fontSize2
         cellsAcross = CGFloat(totalNameArray[0].count)
         if UIDevice.current.orientation.isLandscape {isLanscape = true}
-        
-        
         setUpLayout()
     }
 
@@ -324,32 +321,25 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             soundPlayer = SoundPlayer()
             let isResponseGood = CheckingReponse.goodOrBad(indexResponse: indexResponse, painterName: nameArray)
             if isResponseGood{
-                if gaveUp {
-                    successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
-                    UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
-                    print("successiveRightAnswers1: \(successiveRightAnswers)")
-                }else{
+                if !gaveUp {
                     CreditManagment.increaseOneCredit(hintButton: nil)
                     soundPlayer?.playSound(soundName: "chime_clickbell_octave_up", type: "mp3")
                     successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers") + 1
-                     UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
+                    UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
                     if successiveRightAnswers == 100 {
                         quizProgressBar.isHidden = true
                         responseRatio.isHidden = true
                         nextLevelLabel.isHidden = true
                     }
                 }
-                let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, creditLabel: creditLabel, painterName: painterName, gaveUp: gaveUp)
-                totalQuestion = tuppleResponse.1
-               UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
+
+                UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
                 successiveRightAnswers =  UserDefaults.standard.integer(forKey: "successiveRightAnswers")
-                print("successiveRightAnswers2: \(successiveRightAnswers)")
                 let achievementArtAmateur = GKAchievement(identifier: "ASeriesOf5")
                 let achievementArtConoisseur = GKAchievement(identifier: "ASeriesOf10")
                 let achievementArtExpert = GKAchievement(identifier: "ASeriesOf15")
                 let achievementArtScholar = GKAchievement(identifier: "aSeriesOf20")
                 let achievementArtMaster = GKAchievement(identifier: "ASeriesOf50")
-                
                 switch successiveRightAnswers {
                 case 5, 15, 30, 50:
                     artAmateurIsDone = UserDefaults.standard.bool(forKey: "artAmateurIsDone")
@@ -365,12 +355,9 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                         specialCommentAfterResponse = tuppleResponse.0
                         specialViewOkButton.x = view.frame.width * 0.7/2 - specialViewOkButton.buttonHeight/2
                         specialViewOkButton.y =  view.frame.height * 0.7 * 0.8
-                        print("sound")
                         soundPlayer?.playSound(soundName: "music_harp_gliss_up", type: "wav")
                         MessageView.showMessageView(view: view, messageView: specialMessageView, button: specialViewOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                     }
-                    
-                    
                 case 100:
                     let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: finalCommentAfterResponse, creditLabel: creditLabel, painterName: painterName, gaveUp: gaveUp)
                     finalCommentAfterResponse = tuppleResponse.0
@@ -423,9 +410,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             }else{
                 CreditManagment.decreaseFourCredit(hintButton: hintButton)
                 gaveUp = true
-                print("successiveRightAnswers3: \(successiveRightAnswers)")
                 successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
-                print("successiveRightAnswers4: \(successiveRightAnswers)")
                 let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, creditLabel: creditLabel, painterName: painterName, gaveUp: gaveUp)
                 totalQuestion = tuppleResponse.1
                 soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
@@ -445,10 +430,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             }
     }
     func successiveResponseAdjustement(totalQuestion: Int) {
-        print("successiveRightAnswers5: \(successiveRightAnswers)")
         successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
-        print("successiveRightAnswers6: \(successiveRightAnswers)")
-        print("totalQuestion: \(totalQuestion)")
         var numerateur = Int()
         var denominateur = Int()
         if totalQuestion == 5 {
@@ -504,16 +486,13 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     func callDefault() {
         let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, creditLabel: creditLabel, painterName: painterName, gaveUp: gaveUp)
-        print("successiveRightAnswers8: \(successiveRightAnswers)")
         if gaveUp {
             successiveRightAnswers = SuccessiveAnswer.afterMistake(successiveRightAnswers: successiveRightAnswers)
             UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
         }
-        print("successiveRightAnswers9: \(successiveRightAnswers)")
         credit =  UserDefaults.standard.integer(forKey: "credit")
         score = UserDefaults.standard.integer(forKey: "score")
         totalQuestion = tuppleResponse.1
-        print("totalQuestion: \(totalQuestion)")
         commentAfterResponse = tuppleResponse.0
         creditLabel.text = """
         Credits: \(credit)

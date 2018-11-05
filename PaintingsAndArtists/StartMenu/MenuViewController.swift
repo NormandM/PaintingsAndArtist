@@ -74,7 +74,6 @@ class MenuViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             IntroductionMessage.showMessageView(view: self.view, messageView: self.menuView, visualEffect: self.visualEffect, effect: self.effect, learnArtLabel: self.learnArtLabel, slideShowButton: self.slideShowButton, starHereLabel: self.starHereLabel, quizButton: self.quizButton, testYourKnowledgeLabel: self.testYourKnowledgeLabel, allTheDataButton: self.allTheDataButton, consultAndLearnLabel: self.consultAndLearnLabel, manageYourCreditsButton: self.manageYourCreditsButton)
         }
-        //UserDefaults.standard.set(35, forKey: "successiveRightAnswers")
         if !(userAlreadyExist(credit: "credit")){
             credit = 40
             UserDefaults.standard.set(credit, forKey: "credit")
@@ -141,7 +140,6 @@ class MenuViewController: UIViewController {
             backItem.tintColor = UIColor.white
             let controller = segue.destination as! QuizViewController
             controller.artistList = artistList
-            //controller.artistsCount = artistsCount
         }
         if segue.identifier == "showBuyCredits"{
             let controller = segue.destination as! BuyCreditViewController

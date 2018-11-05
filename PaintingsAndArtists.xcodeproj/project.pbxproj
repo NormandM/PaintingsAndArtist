@@ -37,6 +37,7 @@
 		8EC8906120E0397A000BB518 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC8906020E0397A000BB518 /* SoundPlayer.swift */; };
 		8EC8906720E15B1E000BB518 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC8906620E15B1E000BB518 /* Translation.swift */; };
 		8ED0F569218A198800F10CF9 /* music_harp_gliss_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ED0F568218A198800F10CF9 /* music_harp_gliss_up.wav */; };
+		8ED0F56B219094CC00F10CF9 /* ApStoreFeedBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED0F56A219094CC00F10CF9 /* ApStoreFeedBack.swift */; };
 		8EDE7A162150544000DC320C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDE7A152150544000DC320C /* StoreKit.framework */; };
 		8EDE7A182150584E00DC320C /* IAPProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE7A172150584E00DC320C /* IAPProducts.swift */; };
 		8EDE7A1B2150609900DC320C /* ConnectionReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */; };
@@ -116,6 +117,7 @@
 		8EC8906020E0397A000BB518 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		8EC8906620E15B1E000BB518 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		8ED0F568218A198800F10CF9 /* music_harp_gliss_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music_harp_gliss_up.wav; sourceTree = "<group>"; };
+		8ED0F56A219094CC00F10CF9 /* ApStoreFeedBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApStoreFeedBack.swift; sourceTree = "<group>"; };
 		8EDE7A152150544000DC320C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8EDE7A172150584E00DC320C /* IAPProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProducts.swift; sourceTree = "<group>"; };
 		8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionReachable.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				8E57650420EAC722001FEF3D /* EnumForHints.swift */,
 				8EACF31420FD0A8B00F2E981 /* CreditManagement.swift */,
 				8E279BFC21470BF400A44B62 /* MessageViewOutOfCredits.swift */,
+				8ED0F56A219094CC00F10CF9 /* ApStoreFeedBack.swift */,
 			);
 			path = "View Controller Quiz";
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				8EDE7A1B2150609900DC320C /* ConnectionReachable.swift in Sources */,
 				8EE676E32110D0B00057392C /* ArrayManagement.swift in Sources */,
 				8EACF31920FE6FC100F2E981 /* ProgressionBarDisplay.swift in Sources */,
+				8ED0F56B219094CC00F10CF9 /* ApStoreFeedBack.swift in Sources */,
 				8E279C012149B11800A44B62 /* RoundButton.swift in Sources */,
 				8EFBE76C20B1B169008E7532 /* AppDelegate.swift in Sources */,
 				8EFBE7A320B5F5E1008E7532 /* infoAndImageViewController.swift in Sources */,

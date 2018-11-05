@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import GameKit
+import StoreKit
 
 class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
 
@@ -64,8 +65,6 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UserDefaults.standard.set(false, forKey: "doesNotWantToLogInGameCanter")
-        //UserDefaults.standard.set(false, forKey: "isPlayerLogIn")
         let doesNotWantToLogInGameCanter = UserDefaults.standard.bool(forKey: "doesNotWantToLogInGameCanter")
         let isLogIn = UserDefaults.standard.bool(forKey: "isPlayerLogIn")
         if doesNotWantToLogInGameCanter == false && isLogIn == false{
@@ -88,16 +87,12 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         }
         self.navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.black
-        //UserDefaults.standard.set(0, forKey: "score")
-        //UserDefaults.standard.set(4, forKey: "credit")
-        //UserDefaults.standard.set(99, forKey: "successiveRightAnswers")
-
-
         credit = UserDefaults.standard.integer(forKey: "credit")
         score = UserDefaults.standard.integer(forKey: "score")
         hintButton.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
         reinializePaintingsList()
         quizElementSelection()
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         goingForwards = false
@@ -128,6 +123,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
             nextButton.isHidden = true
             MessageOutOfCredits.showMessageView(view: self.view, messageView: messageView, visualEffect: visualEffect, effect: effect, messageLabel: messageLabel, okBuyCreditsButton: okBuyCreditsButton)
         }
+        AppStoreFeedBack.askForFeedback()
     }
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         if let theButton = movingButton {
@@ -155,6 +151,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         labelTitle.text = ""
         errorCounter = 0
         errorMessage.text = ""
+        
         ImageManager.choosImage(imageView: paintingImage, imageName: artistList[indexPainting[selectedIndex]][2])
     }
     @objc func nextQuizPainting(){

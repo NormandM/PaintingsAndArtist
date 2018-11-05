@@ -26,13 +26,6 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         adBannerView.rootViewController = self
         return adBannerView
     }()
-//    lazy var adBannerView: GADBannerView = {
-//        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-//        adBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        adBannerView.delegate = self
-//        adBannerView.rootViewController = self
-//        return adBannerView
-//    }()
     var provenance = String()
     
     var productID = ""
@@ -134,8 +127,7 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
 
     
     @IBAction func watchVideoHasBeenpressed(_ sender: UIButton) {
-       // UserDefaults.standard.set(credit + 20, forKey: "credit")
-        //credit = UserDefaults.standard.integer(forKey: "credit")
+
     }
     
     func showAlertNoInternet() {
@@ -199,8 +191,6 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         credit = credit + 200
                         UserDefaults.standard.set(credit, forKey: "credit")
                         credit = UserDefaults.standard.integer(forKey: "credit")
-                        //totalCreditLabel.text = "Your have a total of \(credit) credits"
-   
                     }
                 case .failed:
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
