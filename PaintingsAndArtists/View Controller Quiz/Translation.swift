@@ -27,7 +27,7 @@ class ButtonTranslation {
         fromButton.titleLabel!.lineBreakMode = .byWordWrapping
         fromButton.titleLabel!.textAlignment = .center
         fromButton.setTitle("\(painterName)\n1 coin was added", for: .normal)
-        fromButton.titleLabel?.font = fontsAndConstraints.size().1
+        fromButton.titleLabel?.font = fontsAndConstraints.size().2
         
     }
 }

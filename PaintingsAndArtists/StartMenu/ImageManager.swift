@@ -12,6 +12,4 @@ class ImageManager {
         let image = UIImage(named: imageName)
         imageView.image = image
     }
-
-    
 }

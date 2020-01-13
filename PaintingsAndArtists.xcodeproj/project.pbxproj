@@ -447,7 +447,7 @@
 				TargetAttributes = {
 					8EFBE76720B1B169008E7532 = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.GameCenter.iOS = {
 								enabled = 1;
@@ -459,12 +459,12 @@
 					};
 					8EFBE77E20B1B16E008E7532 = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						TestTargetID = 8EFBE76720B1B169008E7532;
 					};
 					8EFBE78920B1B16E008E7532 = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						TestTargetID = 8EFBE76720B1B169008E7532;
 					};
 				};
@@ -844,7 +844,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -863,7 +863,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -884,7 +884,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtistsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PaintingsAndArtists.app/PaintingsAndArtists";
 			};
@@ -906,7 +906,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtistsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PaintingsAndArtists.app/PaintingsAndArtists";
 			};
@@ -927,7 +927,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtistsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PaintingsAndArtists;
 			};
@@ -948,7 +948,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtistsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PaintingsAndArtists;
 			};

@@ -69,34 +69,30 @@ class SlideShowViewController: UIViewController {
             }else {
                 n = 0
             }
-            ImageManager.choosImage(imageView: slideShowUIImageView, imageName: artistList[indexPainting[n]][2])            
+            print("finished")
+             UIView.animate(withDuration: 1, animations: {
+            self.slideShowUIImageView.transform = CGAffineTransform.identity
+             })
+            ImageManager.choosImage(imageView: slideShowUIImageView, imageName: artistList[indexPainting[n]][2])
         }
  
     }
     @objc func zoomAnimation () {
         counterAnimation = counterAnimation + 1
-        if counterAnimation > 30 {
-            UIView.animate(withDuration: 1,
-                           delay: 0.0,
-                           options: .allowUserInteraction,
-                           animations: {
-                            self.slideShowUIImageView.frame.size.width += self.slideShowUIImageView.frame.size.width/50
-                            self.slideShowUIImageView.frame.size.height += self.slideShowUIImageView.frame.size.height/50
-                            self.slideShowUIImageView.frame =  CGRect(origin:  CGPoint(x: self.x, y: self.y), size: self.slideShowUIImageView.frame.size)
-                            self.x = self.x - self.slideShowUIImageView.frame.size.width/100
-                            self.y = self.y - self.slideShowUIImageView.frame.size.height/100
-            }, completion: {finished in self.changePainting()})
-        }
+        UIView.animate(withDuration: TimeInterval(5.0), delay: 3.0, options: .allowUserInteraction, animations: {
+            self.slideShowUIImageView.transform = CGAffineTransform.identity.scaledBy(x: 3, y: 3) // Scale your image
+        }, completion: {finished in
+            self.changePainting()
+        })
     }
     
     @IBAction func tapToIdentify(_ sender: UITapGestureRecognizer) {
-        slideShowUIImageView.stopAnimating()
+        print("tapped")
+       // slideShowUIImageView.stopAnimating()
         isFromSlideShow = true
         vueTimer.invalidate()
         performSegue(withIdentifier: "showPaintingInfo", sender: self)
     }
- 
-
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -113,8 +109,6 @@ class SlideShowViewController: UIViewController {
             controller.specificArtistInfo = indexPainting[n]
             controller.artistList = artistList
         }
-
-        
     }
     @IBAction func unwindToSlideShow(_ sender: UIStoryboardSegue) {
         vueTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(SlideShowViewController.zoomAnimation), userInfo: nil, repeats: true)
