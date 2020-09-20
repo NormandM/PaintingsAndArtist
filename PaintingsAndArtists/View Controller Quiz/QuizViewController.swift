@@ -94,8 +94,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         quizElementSelection()
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-        goingForwards = false
+    override func viewWillAppear(_ animated: Bool) {
         sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
         let navLabel = UILabel()
         let navTitle = NSMutableAttributedString(string: "Who painted this?", attributes:[
@@ -103,6 +102,10 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
             NSAttributedString.Key.font: sizeInfoAndFonts?.fontSize4 ?? UIFont(name: "HelveticaNeue-Bold", size: 12)!])
         navLabel.attributedText = navTitle
         self.navigationItem.titleView = navLabel
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        goingForwards = false
+        sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
         nextButton.layer.masksToBounds = true
         nextButton.layer.cornerRadius = nextButton.frame.width/2
         nextButton.backgroundColor = UIColor(displayP3Red: 27/255, green: 95/255, blue: 94/255, alpha: 1.0)

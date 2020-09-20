@@ -69,7 +69,6 @@ class SlideShowViewController: UIViewController {
             }else {
                 n = 0
             }
-            print("finished")
              UIView.animate(withDuration: 1, animations: {
             self.slideShowUIImageView.transform = CGAffineTransform.identity
              })
@@ -87,8 +86,6 @@ class SlideShowViewController: UIViewController {
     }
     
     @IBAction func tapToIdentify(_ sender: UITapGestureRecognizer) {
-        print("tapped")
-       // slideShowUIImageView.stopAnimating()
         isFromSlideShow = true
         vueTimer.invalidate()
         performSegue(withIdentifier: "showPaintingInfo", sender: self)

@@ -8,24 +8,15 @@
 
 import UIKit
 import StoreKit
-import GoogleMobileAds
 
-class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, GADBannerViewDelegate {
+
+class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     @IBOutlet weak var buyCreditViewTitle: SpecialLabel!
     @IBOutlet weak var buy200CoinsLabel: UILabel!
-    @IBOutlet weak var watchVideoLabel: UILabel!
     @IBOutlet weak var doneButton: RoundButton!
     @IBOutlet weak var coinsButton: UIButton!
-    @IBOutlet weak var videoButton: UIButton!
-    let request = GADRequest()
-    lazy var adBannerView: GADBannerView = {
-        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        adBannerView.adUnitID = "ca-app-pub-1437510869244180/6198209827"
-        adBannerView.delegate = self
-        adBannerView.rootViewController = self
-        return adBannerView
-    }()
+
     var provenance = String()
     
     var productID = ""
@@ -45,21 +36,9 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
             """
         }
     }
-    var priceCoins = String() {
-        didSet {
-            buy200CoinsLabel.text = """
-            Do you enjoy LEARN ART?
-            Buy 200 coins for \(priceCoins),
-            It will last you for ever!
-            """
-        }
-    }
-    
-    
+    var priceCoins = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-        adBannerView.load(GADRequest())
-        navigationItem.titleView = adBannerView
         self.navigationItem.setHidesBackButton(true, animated:true);
         let reachability = Reachability()
         let isConnected = reachability.isConnectedToNetwork()
@@ -73,6 +52,9 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.showNoConnection()
             }
         }
+        self.navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = UIColor.black
+
         credit = UserDefaults.standard.integer(forKey: "credit")
         
     }
@@ -85,11 +67,20 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         buyCreditViewTitle.font = sizeInfoAndFonts?.fontSize2
         buyCreditViewTitle.layer.borderColor = UIColor.white.cgColor
         buyCreditViewTitle.layer.borderWidth = 3.0
+        let navLabel = UILabel()
+        let navTitle = NSMutableAttributedString(string: "Buy Coins", attributes:[
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: sizeInfoAndFonts?.fontSize4 ?? UIFont(name: "HelveticaNeue-Bold", size: 12)!])
+        navLabel.attributedText = navTitle
+        self.navigationItem.titleView = navLabel
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
         credit = UserDefaults.standard.integer(forKey: "credit")
         buyCreditViewTitle.text = """
         CREDIT AVAILABLE: \(credit)
-        To preserve the visual integrity of the App,
-        except for this page, there are no adds in
+        To preserve the visual integrity
+        of the App, there are no adds in
         LEARN ART.
         """
         buy200CoinsLabel.text = """
@@ -97,16 +88,7 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         Buy 200 coins for \(priceCoins),
         It will last you for ever!
         """
-        buy200CoinsLabel.font = sizeInfoAndFonts?.fontSize1
-        watchVideoLabel.text = """
-        Not sure yet?
-        Watch a video and get
-        20 coins for free.
-        """
-        watchVideoLabel.font = sizeInfoAndFonts?.fontSize1
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
+        buy200CoinsLabel.font = sizeInfoAndFonts?.fontSize2
         doneButton.layer.masksToBounds = true
         doneButton.layer.cornerRadius = doneButton.frame.width/2
         doneButton.backgroundColor = UIColor(displayP3Red: 27/255, green: 95/255, blue: 94/255, alpha: 1.0)
@@ -135,9 +117,6 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         alert.addAction(UIAlertAction(title: "Go Back to Quiz", style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.goBackToQuizMenus()}))
         self.present(alert, animated: true, completion: nil)
     }
-    
-
-
     func showNoConnection() {
         let alert = UIAlertController(title: "Cannot connect to the App Store", message: "Please try later", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Go Back to Quiz", style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.goBackToQuizMenus()}))
@@ -214,9 +193,4 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
             
         }
     }
-    @IBAction func unwindToBuyCreditViewController(_ unwindSegue: UIStoryboardSegue) {
-        
-        
-    }
-
 }

@@ -49,7 +49,6 @@
 		8EE676E52110DE3C0057392C /* ChoosingPainterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE676E42110DE3C0057392C /* ChoosingPainterInfo.swift */; };
 		8EE676F32116008C0057392C /* LetterChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE676F22116008C0057392C /* LetterChoice.swift */; };
 		8EE676F521178B910057392C /* CheckingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE676F421178B910057392C /* CheckingResponse.swift */; };
-		8EFAE55E2151B8AF00DBB351 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFAE55D2151B8AF00DBB351 /* VideoViewController.swift */; };
 		8EFAE5602151EAD200DBB351 /* ArtistesAndPaintings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EFAE55F2151EAD200DBB351 /* ArtistesAndPaintings.plist */; };
 		8EFAE5622152A82A00DBB351 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFAE5612152A82A00DBB351 /* ActivityIndicator.swift */; };
 		8EFBE76C20B1B169008E7532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBE76B20B1B169008E7532 /* AppDelegate.swift */; };
@@ -129,7 +128,6 @@
 		8EE676E42110DE3C0057392C /* ChoosingPainterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingPainterInfo.swift; sourceTree = "<group>"; };
 		8EE676F22116008C0057392C /* LetterChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterChoice.swift; sourceTree = "<group>"; };
 		8EE676F421178B910057392C /* CheckingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingResponse.swift; sourceTree = "<group>"; };
-		8EFAE55D2151B8AF00DBB351 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		8EFAE55F2151EAD200DBB351 /* ArtistesAndPaintings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArtistesAndPaintings.plist; sourceTree = "<group>"; };
 		8EFAE5612152A82A00DBB351 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		8EFBE76820B1B169008E7532 /* PaintingsAndArtists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaintingsAndArtists.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,7 +273,6 @@
 				8EACF31A20FE812100F2E981 /* BuyCreditViewController.swift */,
 				8EDE7A172150584E00DC320C /* IAPProducts.swift */,
 				8EDE7A1A2150609900DC320C /* ConnectionReachable.swift */,
-				8EFAE55D2151B8AF00DBB351 /* VideoViewController.swift */,
 				8EFAE5612152A82A00DBB351 /* ActivityIndicator.swift */,
 			);
 			path = CreditManagement;
@@ -386,7 +383,6 @@
 				8EFBE76420B1B169008E7532 /* Sources */,
 				8EFBE76520B1B169008E7532 /* Frameworks */,
 				8EFBE76620B1B169008E7532 /* Resources */,
-				4ECAD55A47483BB23810AF91 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -442,7 +438,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Normand Martin";
 				TargetAttributes = {
 					8EFBE76720B1B169008E7532 = {
@@ -568,30 +564,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4ECAD55A47483BB23810AF91 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PaintingsAndArtists/Pods-PaintingsAndArtists-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaintingsAndArtists/Pods-PaintingsAndArtists-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FFB4A8DE4A3E99FA898D03F4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -626,7 +598,6 @@
 				8EFBE7A120B5CBF4008E7532 /* SlideShowViewController.swift in Sources */,
 				8E57650320EABD15001FEF3D /* Hint.swift in Sources */,
 				8EC8906120E0397A000BB518 /* SoundPlayer.swift in Sources */,
-				8EFAE55E2151B8AF00DBB351 /* VideoViewController.swift in Sources */,
 				8EACF31520FD0A8B00F2E981 /* CreditManagement.swift in Sources */,
 				8EACF31D20FFB71000F2E981 /* SuccessiveRightAnswers.swift in Sources */,
 				8EFBE76E20B1B169008E7532 /* QuizViewController.swift in Sources */,
@@ -742,6 +713,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -767,7 +739,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -802,6 +774,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -821,7 +794,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -842,6 +815,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -861,6 +835,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = NM.PaintingsAndArtists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
