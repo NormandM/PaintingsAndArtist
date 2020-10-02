@@ -328,6 +328,11 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
             controller.selectedIndex = selectedIndex
             controller.bioInfoImageName = artistList[indexPainting[selectedIndex]][2]
             LabelAndButton.enableHintButtons(hintItemButton: hintItemButton)
+            let backItem = UIBarButtonItem()
+            controller.navigationItem.hidesBackButton = true
+            backItem.title = ""
+            hintButton.isHidden = true
+            
         }
         if segue.identifier == "showBuyCredits" {
             goingForwards = true

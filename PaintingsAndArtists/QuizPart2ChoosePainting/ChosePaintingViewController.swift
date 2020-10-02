@@ -152,6 +152,9 @@ class ChosePaintingViewController: UIViewController {
         if segue.identifier == "showBonusQuiz" {
             let controller = segue.destination as! BonusQuizViewController
             controller.artistList = artistList
+            let backItem = UIBarButtonItem()
+            controller.navigationItem.hidesBackButton = true
+            backItem.title = ""
         }
     }
 
