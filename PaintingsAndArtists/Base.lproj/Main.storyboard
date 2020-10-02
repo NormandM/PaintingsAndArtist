@@ -611,13 +611,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you Enjoy LEARN ART?Buy 200 coins for $1.00" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ify-Up-kb2">
-                                <rect key="frame" x="10" y="262.5" width="394" height="107.5"/>
+                                <rect key="frame" x="10" y="233.5" width="394" height="179"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuI-7j-Mp8" customClass="RoundButton" customModule="PaintingsAndArtists" customModuleProvider="target">
-                                <rect key="frame" x="162" y="722.5" width="90" height="89.5"/>
+                                <rect key="frame" x="162" y="672.5" width="90" height="89.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iuI-7j-Mp8" secondAttribute="height" multiplier="1:1" id="smf-I8-ANz"/>
                                 </constraints>
@@ -644,7 +644,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRJ-Aa-xBz">
-                                <rect key="frame" x="149" y="390" width="116" height="116.5"/>
+                                <rect key="frame" x="149" y="422.5" width="116" height="116.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LRJ-Aa-xBz" secondAttribute="height" multiplier="1:1" id="kZL-7c-J89"/>
                                 </constraints>
@@ -658,20 +658,20 @@
                         <color key="backgroundColor" red="0.1058823529" green="0.37254901959999998" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="ify-Up-kb2" firstAttribute="height" secondItem="g8m-O6-5z6" secondAttribute="height" multiplier="0.12" id="6Wq-JI-Kro"/>
+                            <constraint firstItem="ify-Up-kb2" firstAttribute="height" secondItem="g8m-O6-5z6" secondAttribute="height" multiplier="0.2" id="6Wq-JI-Kro"/>
                             <constraint firstItem="bjC-kV-q1v" firstAttribute="height" secondItem="g8m-O6-5z6" secondAttribute="height" multiplier="0.18" id="8B8-Ps-wYA"/>
                             <constraint firstItem="iuI-7j-Mp8" firstAttribute="centerX" secondItem="g8m-O6-5z6" secondAttribute="centerX" id="8ax-lL-Xah"/>
                             <constraint firstItem="bjC-kV-q1v" firstAttribute="top" secondItem="5Ko-32-O2o" secondAttribute="top" constant="20" id="H7P-ZE-bpw"/>
-                            <constraint firstItem="5Ko-32-O2o" firstAttribute="bottom" secondItem="iuI-7j-Mp8" secondAttribute="bottom" constant="50" id="Lim-o7-3SO"/>
+                            <constraint firstItem="5Ko-32-O2o" firstAttribute="bottom" secondItem="iuI-7j-Mp8" secondAttribute="bottom" constant="100" id="Lim-o7-3SO"/>
                             <constraint firstItem="LRJ-Aa-xBz" firstAttribute="height" secondItem="g8m-O6-5z6" secondAttribute="height" multiplier="0.13" id="ccO-BT-zjG"/>
-                            <constraint firstItem="LRJ-Aa-xBz" firstAttribute="top" secondItem="ify-Up-kb2" secondAttribute="bottom" constant="20" id="f9O-kd-ARy"/>
+                            <constraint firstItem="LRJ-Aa-xBz" firstAttribute="top" secondItem="ify-Up-kb2" secondAttribute="bottom" constant="10" id="f9O-kd-ARy"/>
                             <constraint firstItem="ify-Up-kb2" firstAttribute="leading" secondItem="5Ko-32-O2o" secondAttribute="leading" constant="10" id="iFY-Dm-SfL"/>
                             <constraint firstItem="bjC-kV-q1v" firstAttribute="width" secondItem="g8m-O6-5z6" secondAttribute="width" multiplier="0.8" id="idn-Xx-7yS"/>
                             <constraint firstItem="bjC-kV-q1v" firstAttribute="centerX" secondItem="g8m-O6-5z6" secondAttribute="centerX" id="jTT-Cv-rAm"/>
                             <constraint firstItem="LRJ-Aa-xBz" firstAttribute="centerX" secondItem="g8m-O6-5z6" secondAttribute="centerX" id="luj-Cb-54c"/>
                             <constraint firstItem="iuI-7j-Mp8" firstAttribute="height" secondItem="g8m-O6-5z6" secondAttribute="height" multiplier="0.1:1" id="vf5-wQ-h8G"/>
                             <constraint firstItem="5Ko-32-O2o" firstAttribute="trailing" secondItem="ify-Up-kb2" secondAttribute="trailing" constant="10" id="yHh-CN-T9N"/>
-                            <constraint firstItem="LRJ-Aa-xBz" firstAttribute="centerY" secondItem="g8m-O6-5z6" secondAttribute="centerY" multiplier="0.85" constant="67.449999999999989" id="z0q-xA-aWd"/>
+                            <constraint firstItem="LRJ-Aa-xBz" firstAttribute="centerY" secondItem="g8m-O6-5z6" secondAttribute="centerY" multiplier="0.85" constant="100" id="z0q-xA-aWd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UXR-vD-AhE"/>
