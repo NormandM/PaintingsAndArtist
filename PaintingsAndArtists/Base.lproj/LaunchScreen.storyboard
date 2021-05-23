@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,32 +22,13 @@
                                     <constraint firstAttribute="width" secondItem="lC3-ut-MSo" secondAttribute="height" multiplier="1:1" id="NNs-w3-pU1"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Paintings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxU-si-iOA">
-                                <rect key="frame" x="0.0" y="635" width="414" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn Art" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHC-xA-RQx">
-                                <rect key="frame" x="0.0" y="114" width="414" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.37254901959999998" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="lC3-ut-MSo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QIJ-rg-qye"/>
-                            <constraint firstItem="wxU-si-iOA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="S9Q-Bn-XsG"/>
-                            <constraint firstItem="wxU-si-iOA" firstAttribute="top" secondItem="lC3-ut-MSo" secondAttribute="bottom" constant="30" id="Tap-V7-44Z"/>
-                            <constraint firstItem="aHC-xA-RQx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="i6G-xD-MFS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wxU-si-iOA" secondAttribute="trailing" id="lFz-eg-Bxw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aHC-xA-RQx" secondAttribute="trailing" id="t23-2s-T8P"/>
                             <constraint firstItem="lC3-ut-MSo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tdi-Ei-d0c"/>
                             <constraint firstItem="lC3-ut-MSo" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.35" id="u0u-uX-b38"/>
-                            <constraint firstItem="aHC-xA-RQx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vVh-RU-3pe"/>
-                            <constraint firstItem="wxU-si-iOA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zdc-9Z-0DW"/>
                         </constraints>
                     </view>
                 </viewController>

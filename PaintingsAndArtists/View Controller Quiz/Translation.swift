@@ -26,7 +26,8 @@ class ButtonTranslation {
         fromButton.titleLabel?.textColor = UIColor.white
         fromButton.titleLabel!.lineBreakMode = .byWordWrapping
         fromButton.titleLabel!.textAlignment = .center
-        fromButton.setTitle("\(painterName)\n1 coin was added", for: .normal)
+        let formatedString = NSLocalizedString("%@\n1 coin was added", comment: "")
+        fromButton.setTitle(String(format: formatedString, painterName), for: .normal)
         fromButton.titleLabel?.font = fontsAndConstraints.size().2
         
     }

@@ -1,0 +1,113 @@
+/* 
+  Localizable.strings
+  PaintingsAndArtists
+
+  Created by Normand Martin on 2021-04-23.
+  Copyright © 2021 Normand Martin. All rights reserved.
+*/
+"ArtMovements" = "MovementItalian";
+"EnglishPlist" = "ItalianPlist";
+"Mannerism" = "Manierismo";
+"Northern Renaissance" = "Rinascimento nordico";
+"Proto Renaissance" = "Proto-Rinascimento";
+"Expressionism" = "Espressionismo";
+"Neo-Impressionism" = "Puntinismo";
+"Rococo" = "Rococò";
+"Art Nouveau" = "Art Nouveau";
+"Orientalism" = "Orientalismo";
+"Symbolism" = "Simbolismo";
+"Romanticism" = "Romanticismo";
+"Early Renaissance" = "Rinascimento Quattrocento";
+"Neoclassicism" = "Neoclassicismo";
+"High Renaissance" = "Rinascimento Cinquecento";
+"Gothic Art" = "Gotico";
+"Realism" = "Realismo (arte)";
+"Avant-garde" = "Avanguardia";
+"Impressionism" = "Impressionismo";
+"Dutch Golden Age" = "Pittura del Secolo d'oro olandese";
+"De Stijl (Neoplasticism)" = "De Stijl";
+"Aestheticism" = "Estetismo";
+"Suprematism" = "Suprematismo";
+"Futurism" = "Futurismo";
+"Tonalism" = "Tonalismo";
+"Baroque" = "Pittura barocca";
+"Post-Impressionism" = "Post-impressionismo";
+"Abstract Art" = "Astrattismo";
+"CREDIT AVAILABLE: %lld
+To preserve the visual integrity
+of the App, there are no adds in
+LEARN ART." = "CREDITO DISPONIBILE: %lld
+Per preservare l'integrità visiva
+dell'App, non c'è pubblicità
+in IMPARARE L'ARTE.";
+"Do you enjoy LEARN ART?
+Buy 200 coins,
+It will last you for ever!" = "Ti piace IMPARARE L'ARTE?
+Acquista 200 monete,
+Ti durerà per sempre!";
+"200 coins" =  "200 monete";
+"Who painted this?" = "Chi ha dipinto questo?";
+"%lld Coins for Hints" =  "%lld Monete per suggerimenti";
+"  -  Score = %lld" = " - Punto = %lld";
+"%lld Coins for Hints" = "%lld Monete per suggerimenti";
+"Buy some Coins" = "Acquista delle monete";
+"Give me the answer!: 3 coins" = "Dammi la risposta!: 3 monete";
+"Drop two Painters: 2 coins" = "Rimuovere due dei pittori: 2 monete";
+"See Painter Bio: 1 coin" = "Vedere la biografia del pittore: 1 moneta";
+"I give up! What is the painter's name: 4 coins" = "Mi arrendo! Qual è il nome del pittore: 4 monete";
+"Give me one letter: 1 coin" = "Fammi vedere una lettera: 1 moneta";
+"Drop two Art Movements: 2 coins" = "Rimuovere due movimenti artistici: 2 monete";
+"See Art Movement Definitions: 1 coin" = "Vedere le descrizioni dei movimenti artistici: 1 moneta";
+"Great!\nYou recognized\n%@'s style.\n\n1 coin was added" = "Ben fatto!\nHai riconosciuto lo stile di\n%@\n\n1 moneta aggiunta";
+"Identify another painting\nof %@" = "Identifica un altro dipinto\ndi %@";
+"Sorry...\nThe right answer is : %@" = "Mi dispiace\nLa risposta giusta è : %@";
+"Can you identify the art movement(s) %@ was part of?" = "Riesci a identificare i movimenti artistici di cui %@ faceva parte?";
+"What is the Art movement?" = "Qual è il movimento artistico?";
+"Great, You are right!" = "Ben fatto!, Ha ragione";
+"%@\n1 coin was added" = "%@\n1 moneta aggiunta";
+"Painter Biography Quiz" = "Quiz sulla biografia del pittore";
+"Sorry you gave up!\nremember the name:\n%@" = "Mi dispiace\nRicorda il suo nome:\n%@";
+"Great!\n%@\nYou are right!\n\n1 coin was added" = "Ben fatto!\n%@\nHa ragione!\n\n1 moneta aggiunta";
+"Credits: %lld" = "Monete: %lld";
+"Score: %lld" = "Punto: %lld";
+"Sorry! It is not the right answer\nThe painter's name is \n%@" = "Mi dispiace. Non è la risposta giusta\nIl nome del pittore è \n%@";
+"You have reach the level\nART AMATEUR!\nYou have correctly answered 5 consecutive questions!\n\n20 coins were added" = "Hai raggiunto il livello\nAMANTE DELL'ARTE!\nHai risposto correttamente a 5 domande consecutive!\n\n20 monete aggiunte";
+"You have reach the level\nART CONNOISSEUR!\nYou have correctly answered 10 consecutive questions!\n\n40 coins were added" = "Hai raggiunto il livello\nCONOSCITORE D'ARTE!\nHai risposto correttamente a 10 domande consecutive!\n\n40 monete aggiunte";
+"You have reach the level\nART EXPERT!\nYou have correctly answered 15 consecutive questions!\n\n60 coins were added" = "Hai raggiunto il livello\nESPERTO D'ARTE!\nHai risposto correttamente a 15 domande consecutive!\n\n60 monete aggiunte";
+"You have reach the level\nART SCHOLAR!\nYou have correctly answered 30 consecutive questions!\n\n80 coins were added" = "Hai raggiunto il livello\nERUDITO D'ARTE!\nHai risposto correttamente a 30 domande consecutive!\n\n80 monete aggiunte";
+"\nYou have reach the level\nART MASTER!\n\n100 coins bonnus were added.\nYou know art and you know this game.\nAny ideas how I could improve it?\nIf you do I would like to hear from you!\n\nPlease write at nmartin1956@gmail.com.\n\nThank you!" = "\nHai raggiunto il livello\nMAESTRO D'ARTE!\n\n100 monete aggiunte.\nConosci l'arte e conosci questo gioco.\nForse hai idee per migliorare l'applicazione?\nSe è così, mi piacerebbe conoscere queste idee.\n\nSi prega di scrivere a nmartin1956@gmail.com.\n\nGrazie!";
+"Buy Coins" = "Comprare monete";
+"Do you enjoy LEARN ART?\nBuy 200 coins for" = "Ti piace IMPARARE L'ARTE?\nBene, compra 200 monete per";
+"\nIt will last you for ever! " = "\nE gioca quanto vuoi!";
+"Sorry ... Your choice was not the right one.\nThis is another\n%@ painting" = "Mi dispiace. La tua scelta non era corretta.\necco un altro altro dipinto di\n%@";
+"Are you logged in Game Center?" = "Hai effettuato l'accesso a Game Center?";
+"To compare scores with other players you have to be logged in." = "Per confrontare i tuoi punteggi\n con altri giocatori devi essere loggato.";
+"Ok, Make sure I am logged in" = "Ok, effettuare l'accesso";
+"Just Start the Game" = "Basta avviare il gioco";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

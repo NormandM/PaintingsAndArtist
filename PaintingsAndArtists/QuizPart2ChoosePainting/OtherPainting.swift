@@ -9,17 +9,19 @@
 import UIKit
 
 class OtherPaintings {
-    class func choose(artistList: [[String]], otherPaintingNameForSameArtist: String, bioInfoImageName: String) -> [String]{
+    class func choose(artistList: [[String]], painterName: String) -> [String]{
         var otherPaintingsChosen = [String]()
-        var allPaintings = [String]()
+        var randomSelectedOtherTwoPaintings = [String]()
         for paintings in artistList {
-            if paintings[2] != otherPaintingNameForSameArtist && paintings[2] != bioInfoImageName {
-                allPaintings.append(paintings[2])
+            if paintings[0] != painterName{
+                otherPaintingsChosen.append(paintings[2])
             }
         }
-        let  chooseRandomlyPaintingsName = RandomizeOrderOfArray(listNames: allPaintings)
-        let randomIndex = chooseRandomlyPaintingsName.generateRandomIndex(from: 0, to: allPaintings.count - 1, quantity: 2)
-        otherPaintingsChosen = [allPaintings[randomIndex[0]], allPaintings[randomIndex[1]]]
-        return otherPaintingsChosen
+
+        otherPaintingsChosen.shuffle()
+        for n in 0...1 {
+            randomSelectedOtherTwoPaintings.append(otherPaintingsChosen[n])
+        }
+        return randomSelectedOtherTwoPaintings
     }
 }

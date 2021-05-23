@@ -1,0 +1,225 @@
+
+/* Class = "UILabel"; text = "LEARN ART"; ObjectID = "03T-4U-dNR"; */
+"03T-4U-dNR.text" = "IMPARARE L'ARTE";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "08k-Yc-1Ax"; */
+"08k-Yc-1Ax.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Artist Three"; ObjectID = "0C9-WB-eEs"; */
+"0C9-WB-eEs.normalTitle" = "Artist Three";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1dn-wd-1G6"; */
+"1dn-wd-1G6.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "SlideShow"; ObjectID = "2OK-Mv-1F5"; */
+"2OK-Mv-1F5.normalTitle" = "Presentazione";
+
+/* Class = "UILabel"; text = "Consult and learn"; ObjectID = "3my-p8-8bp"; */
+"3my-p8-8bp.text" = "Consulta e impara";
+
+/* Class = "UILabel"; text = "Start here...enjoy!"; ObjectID = "4U9-uk-gAB"; */
+"4U9-uk-gAB.text" = "Per guardare, imparare e rilassarsi";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6hg-9r-nWB"; */
+"6hg-9r-nWB.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7sF-El-Sfd"; */
+"7sF-El-Sfd.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "80D-rb-1N1"; */
+"80D-rb-1N1.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "I give up! What is the painter's name: 4 coins"; ObjectID = "8y1-k7-OdJ"; */
+"8y1-k7-OdJ.normalTitle" = "Mi arrendo! Qual è il nome del pittore: 4 monete";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "9NR-K3-BdD"; */
+"9NR-K3-BdD.normalTitle" = "";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "9Qx-lk-LjP"; */
+"9Qx-lk-LjP.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "Ayd-Df-YVx"; */
+"Ayd-Df-YVx.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "BzD-e1-2Ob"; */
+"BzD-e1-2Ob.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "Artist One"; ObjectID = "EBA-uT-buB"; */
+"EBA-uT-buB.normalTitle" = "Artist One";
+
+/* Class = "UILabel"; text = "Who is the painter?"; ObjectID = "EEk-4R-qXg"; */
+"EEk-4R-qXg.text" = "Chi è questo pittore?";
+
+/* Class = "UILabel"; text = "Can you achiewve the next level?"; ObjectID = "ExV-VJ-w8x"; */
+"ExV-VJ-w8x.text" = "Riuscirai a raggiungere il livello successivo?";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "FCk-8v-C0a"; */
+"FCk-8v-C0a.normalTitle" = "";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FyE-Yi-S4O"; */
+"FyE-Yi-S4O.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "HES-zi-RmE"; */
+"HES-zi-RmE.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "See Art Movement Definitions: 1 coin"; ObjectID = "HiC-Z3-ueB"; */
+"HiC-Z3-ueB.normalTitle" = "Vedere le descrizioni dei movimenti artistici: 1 moneta";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "IrM-e1-zVN"; */
+"IrM-e1-zVN.text" = "Label";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "KmG-hR-O1D"; */
+"KmG-hR-O1D.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LLw-E4-ao3"; */
+"LLw-E4-ao3.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LRJ-Aa-xBz"; */
+"LRJ-Aa-xBz.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Manage your Credits"; ObjectID = "MAD-X4-oLO"; */
+"MAD-X4-oLO.normalTitle" = "Comprare monete";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MTb-Xd-MW4"; */
+"MTb-Xd-MW4.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Hint"; ObjectID = "OG9-IJ-bhN"; */
+"OG9-IJ-bhN.normalTitle" = "Suggerimenti";
+
+/* Class = "UIButton"; normalTitle = "See Painter Bio: 1 coin"; ObjectID = "PDE-qy-bu1"; */
+"PDE-qy-bu1.normalTitle" = "Vedere la biografia del pittore: 1 moneta";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QgU-VU-x9A"; */
+"QgU-VU-x9A.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "RE9-bd-rin"; */
+"RE9-bd-rin.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "Hint"; ObjectID = "Sds-pc-XeY"; */
+"Sds-pc-XeY.normalTitle" = "Suggerimenti";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "TCN-4w-GCd"; */
+"TCN-4w-GCd.normalTitle" = "Button";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "Tki-dj-tuM"; */
+"Tki-dj-tuM.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Uux-WT-48X"; */
+"Uux-WT-48X.text" = "Label";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "VUH-EP-Tnq"; */
+"VUH-EP-Tnq.text" = "Data";
+
+/* Class = "UIButton"; normalTitle = "Artist Two"; ObjectID = "Veq-qj-Q9D"; */
+"Veq-qj-Q9D.normalTitle" = "Artist Two";
+
+/* Class = "UILabel"; text = "Painter Name"; ObjectID = "W3W-md-Xut"; */
+"W3W-md-Xut.text" = "Nome del pittore";
+
+/* Class = "UIButton"; normalTitle = "All the data"; ObjectID = "Wgc-Cq-QJX"; */
+"Wgc-Cq-QJX.normalTitle" = "Tutti i dati";
+
+/* Class = "UILabel"; text = "Apps"; ObjectID = "WyF-oW-dNS"; */
+"WyF-oW-dNS.text" = "Apps";
+
+/* Class = "UILabel"; text = "You are out of Credits"; ObjectID = "X7R-4D-Xer"; */
+"X7R-4D-Xer.text" = "Hai finito le monete";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Zmw-j9-k5y"; */
+"Zmw-j9-k5y.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "aUa-BJ-xnm"; */
+"aUa-BJ-xnm.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "bKC-ls-QxI"; */
+"bKC-ls-QxI.normalTitle" = "";
+
+/* Class = "UILabel"; text = "The App is add free except for this page!"; ObjectID = "bjC-kV-q1v"; */
+"bjC-kV-q1v.text" = "The App is add free except for this page!";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cCD-7m-KMo"; */
+"cCD-7m-KMo.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Test your knowledge"; ObjectID = "cup-48-kqp"; */
+"cup-48-kqp.text" = "Prova la tua conoscenza";
+
+/* Class = "UIButton"; normalTitle = "Quiz"; ObjectID = "czf-VV-ikZ"; */
+"czf-VV-ikZ.normalTitle" = "Quiz";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dun-Gg-7d8"; */
+"dun-Gg-7d8.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "You are out of Credits"; ObjectID = "h20-iG-OuU"; */
+"h20-iG-OuU.text" = "Hai finito le monete";
+
+/* Class = "UIButton"; normalTitle = "Buy some Coins"; ObjectID = "hAb-3e-O7P"; */
+"hAb-3e-O7P.normalTitle" = "Acquista delle monete";
+
+/* Class = "UILabel"; text = "Do you Enjoy LEARN ART?Buy 200 coins for $1.00"; ObjectID = "ify-Up-kb2"; */
+"ify-Up-kb2.text" = "Do you Enjoy LEARN ART?Buy 200 coins for $1.00";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "iuI-7j-Mp8"; */
+"iuI-7j-Mp8.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "Artist Four"; ObjectID = "izc-Wa-t8a"; */
+"izc-Wa-t8a.normalTitle" = "Artist Four";
+
+/* Class = "UIButton"; normalTitle = "Artist Four"; ObjectID = "k2x-FM-6bx"; */
+"k2x-FM-6bx.normalTitle" = "Artist Four";
+
+/* Class = "UIButton"; normalTitle = "Buy some Coins"; ObjectID = "kUa-Ta-Z7g"; */
+"kUa-Ta-Z7g.normalTitle" = "Acquista delle monete";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "lAT-GF-SPy"; */
+"lAT-GF-SPy.normalTitle" = "";
+
+/* Class = "UILabel"; text = "25/50"; ObjectID = "lak-7A-fMm"; */
+"lak-7A-fMm.text" = "25/50";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mUd-JS-4Yf"; */
+"mUd-JS-4Yf.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Give me one letter: 1 coin"; ObjectID = "o4Q-Fw-6Ac"; */
+"o4Q-Fw-6Ac.normalTitle" = "Fammi vedere una lettera: 1 moneta";
+
+/* Class = "UIButton"; normalTitle = "Drop two Painters: 2 coins"; ObjectID = "os7-Wg-0Mg"; */
+"os7-Wg-0Mg.normalTitle" = "Rimuovere due dei pittori: 2 monete";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "r5E-xw-Qvo"; */
+"r5E-xw-Qvo.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Drop two Art Movements: 2 coins"; ObjectID = "rHG-yS-njT"; */
+"rHG-yS-njT.normalTitle" = "Rimuovere due movimenti artistici: 2 monete";
+
+/* Class = "UILabel"; text = "Paintings"; ObjectID = "rk7-o6-etl"; */
+"rk7-o6-etl.text" = "Dipinti";
+
+/* Class = "UIButton"; normalTitle = "Hint"; ObjectID = "tDb-8G-AHh"; */
+"tDb-8G-AHh.normalTitle" = "Suggerimenti";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uOb-R4-eQr"; */
+"uOb-R4-eQr.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Artist Three"; ObjectID = "uPh-G8-jdK"; */
+"uPh-G8-jdK.normalTitle" = "Artist Three";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "vjC-sX-EcN"; */
+"vjC-sX-EcN.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "Artist Two"; ObjectID = "vl0-Ht-EVe"; */
+"vl0-Ht-EVe.normalTitle" = "Artist Two";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "vyv-f1-i9a"; */
+"vyv-f1-i9a.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "Artist One"; ObjectID = "wYz-fJ-PPO"; */
+"wYz-fJ-PPO.normalTitle" = "Artist One";
+
+/* Class = "UIButton"; normalTitle = "Leaderboard"; ObjectID = "y6I-OV-U5f"; */
+"y6I-OV-U5f.normalTitle" = "Classifica";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zh3-f1-NrU"; */
+"zh3-f1-NrU.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zyS-Tj-6tc"; */
+"zyS-Tj-6tc.text" = "Label";

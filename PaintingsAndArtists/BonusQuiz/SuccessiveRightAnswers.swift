@@ -9,7 +9,7 @@
 import UIKit
 
 class SuccessiveAnswer {
-    class func progression (commentAfterResponse: SpecialLabel, creditLabel: SpecialLabel, painterName: String, gaveUp: Bool) -> (SpecialLabel, Int){
+    class func progression (commentAfterResponse: SpecialLabel, creditLabel: SpecialLabel, painterName: String, gaveUp: Bool) -> (SpecialLabel, Int, SpecialLabel){
         let successiveRightAnswers =  UserDefaults.standard.integer(forKey: "successiveRightAnswers")
         let credit = UserDefaults.standard.integer(forKey: "credit")
         let score = UserDefaults.standard.integer(forKey: "score")
@@ -22,49 +22,18 @@ class SuccessiveAnswer {
         switch successiveRightAnswers {
         case 0, 1, 2, 3, 4:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }else{
-                commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
             }
             totalQuestion = 5
         case 5:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }else if !artAmateurIsDone{
-            
-                commentAfterResponse.text = """
-                You have reach the level
-                    ART AMATEUR!
-                You were right with 5 consecutive
-                series of answers!
-                
-                20 coins was added
-                """
+                commentAfterResponse.text = "You have reach the level\nART AMATEUR!\nYou have correctly answered 5 consecutive questions!\n\n20 coins were added".localized
                 CreditManagment.increaseTwentyCredit()
             }
             if artAmateurIsDone {
@@ -74,64 +43,23 @@ class SuccessiveAnswer {
             }
         case 6 ... 14:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }else{
-            commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }
             totalQuestion = 10
         case 15:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
-                \(painterName)
-                
-                """
-
             }else if !artConoisseurIsDone{
-                commentAfterResponse.text = """
-                You have reach the level
-                    ART CONNOISSEUR!
-                You were right with 10 consecutive
-                series of answers!
-                
-                40 coins bonnus was added
-                """
+                commentAfterResponse.text = "You have reach the level\nART CONNOISSEUR!\nYou have correctly answered 10 consecutive questions!\n\n40 coins were added".localized
                 CreditManagment.increaseForthyCredit()
                 
             }else{
-                commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }
             
@@ -144,64 +72,22 @@ class SuccessiveAnswer {
             
         case 16 ... 29:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }else{
-            commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }
             totalQuestion = 15
         case 30:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }else if !artExpertIsDone{
-                commentAfterResponse.text = """
-                You have reach the level
-                    ART EXPERT!
-                You were right with 15 consecutive
-                series of answers!
-                
-                60 coins was added
-                """
+                commentAfterResponse.text = "You have reach the level\nART EXPERT!\nYou have correctly answered 15 consecutive questions!\n\n60 coins were added".localized
                 CreditManagment.increaseSixtyCredit()
             }else{
-                commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
-                
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
             }
             if artExpertIsDone {
                 totalQuestion = 20
@@ -210,142 +96,50 @@ class SuccessiveAnswer {
             }
         case 31 ... 49:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }else{
-                commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-
-                Score: \(score)
-                """
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }
             totalQuestion = 20
         case 50:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }else if !artScholarIsDone{
-                commentAfterResponse.text = """
-                You have reach the level
-                    ART SCHOLAR!
-                You were right with 30 consecutive
-                series of answers!
-                
-                80 coins bonnus was added
-                """
+                commentAfterResponse.text = "You have reach the level\nART SCHOLAR!\nYou have correctly answered 30 consecutive questions!\n\n80 coins were added".localized
                 CreditManagment.increseEightyCredit()
-               
+                
             }else{
-                commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }
             if artScholarIsDone {
                 totalQuestion = 50
             }else{
-               totalQuestion = 20
+                totalQuestion = 20
             }
             
         case 51 ... 99:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
-                
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
             }else{
-                commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
-                
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
             }
             totalQuestion = 50
             
             
         case 100:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                PrepareString.stringForCreditAndScoreIfGaveUp(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }else if !artMasterIsDone{
-            commentAfterResponse.text = """
-                
-                You have reach the level
-                ART MASTER!
-                
-                
-                100 coins bonnus was added.
-                
-                You know art and you know this game.
-                Any ideas how I could improve it?
-                If you do I would like to hear from you!
-                
-                Please write at nmartin1956@gmail.com.
-                
-                Thank you!
-                """
+                commentAfterResponse.text = "\nYou have reach the level\nART MASTER!\n\n100 coins bonnus were added.\nYou know art and you know this game.\nAny ideas how I could improve it?\nIf you do I would like to hear from you!\n\nPlease write at nmartin1956@gmail.com.\n\nThank you!".localized
                 CreditManagment.increseOneHundredCredit()
                 
             }else{
-                commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
                 
             }
             if artMasterIsDone {
@@ -353,36 +147,18 @@ class SuccessiveAnswer {
             }else{
                 totalQuestion = 50
             }
-
+            
         default:
             if gaveUp{
-                commentAfterResponse.text = """
-                Sorry you gave up!
-                remember the name:
-                
-                \(painterName)
-                
-                """
+                let formatedString = "Sorry you gave up!\nremember the name:\n%@".localized
+                commentAfterResponse.text = String(format: formatedString, painterName)
                 
             }else{
-                
-                commentAfterResponse.text = """
-                Great!
-                \(painterName)
-                You are right!
-                
-                1 coin was added
-                """
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
-                
+                PrepareString.stringForCreditAndScore(painterName: painterName, credit: credit, score: score, creditLabel: creditLabel, commentAfterResponse: commentAfterResponse)
             }
             totalQuestion = 51
         }
-        return (commentAfterResponse, totalQuestion)
+        return (commentAfterResponse, totalQuestion, creditLabel)
     }
     class func afterMistake(successiveRightAnswers: Int) -> Int{
         var adjustedSuccessiveAnswer = successiveRightAnswers

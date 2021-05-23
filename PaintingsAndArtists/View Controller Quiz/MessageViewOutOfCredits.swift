@@ -37,6 +37,7 @@ class MessageOutOfCredits{
         okBuyCreditsButton.x = messageViewWidth/2 - okBuyCreditsButton.buttonHeight/2
         okBuyCreditsButton.y = messageViewHeight * 0.8
         okBuyCreditsButton.backgroundColor = UIColor(displayP3Red: 27/255, green: 95/255, blue: 94/255, alpha: 1.0)
+        okBuyCreditsButton.includeArrow()
     }
     class func dismissMessageview(messageView: UIView, visualEffect: UIVisualEffectView, effect:UIVisualEffect) {
         UIView.animate(withDuration: 0.8, animations: {

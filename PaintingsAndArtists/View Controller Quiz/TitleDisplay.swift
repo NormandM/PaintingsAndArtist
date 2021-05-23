@@ -9,14 +9,14 @@
 import UIKit
 
 class TitleDisplay {
-    class func show(labelTitle: UILabel, titleText: String, nextButton: UIButton, view: QuizViewController) {
+    class func show(labelTitle: UILabel, titleText: String, nextButton: UIButton, view: UIViewController) {
         let fontsAndConstraints = FontsAndConstraints()
         labelTitle.backgroundColor = .clear
-        labelTitle.numberOfLines = 2
+        labelTitle.lineBreakMode = .byWordWrapping
+        labelTitle.numberOfLines = 0
         labelTitle.font = fontsAndConstraints.size().2
         labelTitle.textAlignment = .center
         labelTitle.textColor = .white
-        view.navigationItem.titleView = labelTitle
         labelTitle.text = titleText
         nextButton.isEnabled = true
         nextButton.isHidden = false

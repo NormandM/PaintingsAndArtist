@@ -1,0 +1,113 @@
+/* 
+  Localizable.strings
+  PaintingsAndArtists
+
+  Created by Normand Martin on 2021-04-23.
+  Copyright © 2021 Normand Martin. All rights reserved.
+*/
+"ArtMovements" = "MovementSpanish";
+"EnglishPlist" = "SpanishPlist";
+"Mannerism" = "Manierismo";
+"Northern Renaissance" = "Renacimiento nórdico";
+"Proto Renaissance" = "Proto-Renacentista";
+"Expressionism" = "Expresionismo";
+"Neo-Impressionism" = "Puntillismo";
+"Rococo" = "Rococó";
+"Art Nouveau" = "Modernismo";
+"Orientalism" = "Orientalismo";
+"Symbolism" = "Simbolismo";
+"Romanticism" = "Romanticismo";
+"Early Renaissance" = "Primer Renacimiento";
+"Neoclassicism" = "Neoclasicismo";
+"High Renaissance" = "Alto Renacimiento";
+"Gothic Art" = "Arte gótico";
+"Realism" = "Realismo artístico";
+"Avant-garde" = "Vanguardismo";
+"Impressionism" = "Impresionismo";
+"Dutch Golden Age" = "Pintura del Siglo de oro neerlandés";
+"De Stijl (Neoplasticism)" = "De Stijl";
+"Aestheticism" = "Esteticismo";
+"Suprematism" = "Suprematismo";
+"Futurism" = "Futurismo";
+"Tonalism" = "Tonalismo";
+"Baroque" = "Pintura del Barroco";
+"Post-Impressionism" = "Posimpresionismo";
+"Abstract Art" = "Arte abstracto";
+"CREDIT AVAILABLE: %lld
+To preserve the visual integrity
+of the App, there are no adds in
+LEARN ART." = "MONEDAS: %lld
+para preservar la integridad visual
+de la aplicación, no hay publicidad en
+APRENDER EL ARTE.";
+"Do you enjoy LEARN ART?
+Buy 200 coins for %.2f,
+It will last you for ever!" =
+"Vous appréciez APPRENDRE L'ART?
+Alors achetez 200 jetons pour %.2f,
+ça vous durera très longtemps!";
+"Do you enjoy LEARN ART?
+Buy 200 coins,
+It will last you for ever!" = "¿Te gusta APRENDER EL ARTE?
+Entonces compra 200 monedas.
+¡Podrás jugar todo lo que quieras!";
+"200 coins" = "200 monedas";
+"Who painted this?" = "¿Quién pintó este cuadro?";
+"%lld Coins for Hints" = "%lld monedas para pistas";
+"  -  Score = %lld" = " - Puntaje = %lld";
+"Buy some Coins" = "Comprar monedas";
+"Give me the answer!: 3 coins" = "Give me the answer!: 3 coins";
+"Drop two Painters: 2 coins" = "Eliminar a dos de los pintores: 2 monedas";
+"See Painter Bio: 1 coin" = "Ver biografía del pintor: 1 moneda";
+"I give up! What is the painter's name: 4 coins" = "¡Me rindo! ¿Cómo se llama el pintor? 4 monedas";
+"Give me one letter: 1 coin" = "Déjame ver una letra: 1 moneda";
+"Drop two Art Movements: 2 coins" = "Eliminar dos de los movimientos artísticos: 2 monedas";
+"See Art Movement Definitions: 1 coin" = "Ver la descripción del movimiento artístico: 1 moneda";
+"Great!\nYou recognized\n%@'s style.\n\n1 coin was added" = "¡Bien hecho!\nReconoció el estilo de\n%@.\n\n1 moneda agregada";
+"Identify another painting\nof %@" = "Identificar otra pintura\n de %@";
+"Sorry...\nThe right answer is : %@" = "Lo siento. La respuesta correcta es\n %@";
+"Can you identify the art movement(s) %@ was part of?" = "¿Puedes identificar los movimientos artísticos de los que %@ formó parte?";
+"What is the Art movement?" = "¿Cual es el movimiento artístico?";
+"Great, You are right!" = "¡Bien hecho, tiene razón!";
+"%@\n1 coin was added" = "%@\n 1 moneda agregada";
+"Painter Biography Quiz" = "Prueba sobre la biografía del pintor";
+"Sorry you gave up!\nremember the name:\n%@" = "Lo siento\nRecuerda su nombre:\n%@";
+"Great!\n%@\nYou are right!\n\n1 coin was added" = "¡Bien hecho!\n%@\n¡La respuesta es buena!\n\n1 moneda agregada";
+"Credits: %lld" = "Créditos: %lld";
+"Score: %lld" = "Puntaje: %lld";
+"Sorry! It is not the right answer\nThe painter's name is \n%@" = "Lo Siento. No es la respuesta correcta.\nEl nombre del pintor es \n%@";
+"You have reach the level\nART AMATEUR!\nYou have correctly answered 5 consecutive questions!\n\n20 coins were added" = "Ha alcanzado el nivel\nAMANTE DEL ARTE\nHa respondido correctamente 5 preguntas consecutivas\n\n20 monedas agregadas";
+"You have reach the level\nART CONNOISSEUR!\nYou have correctly answered 10 consecutive questions!\n\n40 coins were added" = "Ha alcanzado el nivel\nCONOCEDORE DE ARTE\nHa respondido correctamente 10 preguntas consecutivas\n\n40 monedas agregadas";
+"You have reach the level\nART EXPERT!\nYou have correctly answered 15 consecutive questions!\n\n60 coins were added" = "Ha alcanzado el nivel\nEXPERTO EN ARTE\nHa respondido correctamente 15 preguntas consecutivas\n\n60 monedas agregadas";
+"You have reach the level\nART SCHOLAR!\nYou have correctly answered 30 consecutive questions!\n\n80 coins were added" = "Ha alcanzado el nivel\nERUDITO DE ARTE\nHa respondido correctamente 30 preguntas consecutivas\n\n80 monedas agregadas";
+"\nYou have reach the level\nART MASTER!\n\n100 coins bonnus were added.\nYou know art and you know this game.\nAny ideas how I could improve it?\nIf you do I would like to hear from you!\n\nPlease write at nmartin1956@gmail.com.\n\nThank you!" = "Ha alcanzado el nivel\nMAESTRO DE ARTE\n\n100 monedas agregadas.\nConoce el arte y conoce este juego.\n¿Quizás tienes ideas para mejorar la aplicación?\nSi es así, me encantaría conocerlas.\Escribame a nmartin1956@gmail.com\n\nGracias!";
+"Buy Coins" = "Compre monedas";
+"Do you enjoy LEARN ART?\nBuy 200 coins for" = "¿Le gusta APRENDER EL ARTE?\nPues compre 200 monedas para";
+"\nIt will last you for ever! " = "\nJuegue todo lo que quiera";
+"Sorry ... Your choice was not the right one.\nThis is another\n%@ painting" = "Lo siento. Su elección no fue la correcta.\nAquí está otra otra pintura de\n%@";
+"Are you logged in ame Center?G" = "¿Ha iniciado sesión en Game Center?";
+"To compare scores with other players you have to be logged in." = "Para comparar su puntuaciones con otros jugadores tiene que iniciar sesión.";
+"Ok, Make sure I am logged in" = "Ok, iniciare sesión";
+"Just Start the Game" = "Solo comienza el juego";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

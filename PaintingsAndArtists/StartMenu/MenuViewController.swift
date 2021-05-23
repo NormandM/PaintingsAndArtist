@@ -22,6 +22,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var grandeJatte: UIImageView!
     let provenance = "menu"
     var artistList: [[String]] = []
+    var artMovementDic = [String: [String]]()
     var artistsCount = 0
     var isFromMenu = Bool()
     var isFromQuiz = Bool()
@@ -33,6 +34,7 @@ class MenuViewController: UIViewController {
     var credit = UserDefaults.standard.integer(forKey: "credit")
     var score = UserDefaults.standard.integer(forKey: "score")
     var successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
+    var soundState = UserDefaults.standard.string(forKey: "soundState")
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
@@ -41,7 +43,7 @@ class MenuViewController: UIViewController {
         menuView.layer.cornerRadius = 5
         visualEffect.effect = nil
         UserDefaults.standard.set(0, forKey: "cycleCount")
-        if let plistPath = Bundle.main.path(forResource: "ArtistesAndPaintings", ofType: "plist"),
+        if let plistPath = Bundle.main.path(forResource: "EnglishPlist".localized, ofType: "plist"),
             let artistListNSArray = NSArray(contentsOfFile: plistPath){
             artistList = artistListNSArray as! [[String]]
             artistsCount = artistList.count
@@ -54,7 +56,6 @@ class MenuViewController: UIViewController {
             listOfArtistName.append(artist[0])
 
         }
-
         for surname in listOfArtistName{
             listOfArtistSurname.append(surname.wordList.last!)
         }
@@ -62,7 +63,6 @@ class MenuViewController: UIViewController {
             return s1 < s2
         }
         listOfArtistSurname = listOfArtistSurname.sorted(by: alpha)
-        
         for surname in listOfArtistSurname {
             for artist in artistList {
                 if artist[0].contains(surname) && !sortedArtistList.contains(artist){
@@ -71,6 +71,10 @@ class MenuViewController: UIViewController {
             }
         }
         artistList = sortedArtistList
+        if let plistPath = Bundle.main.path(forResource: "ArtMovements".localized, ofType: "plist"),
+            let movement = NSDictionary(contentsOfFile: plistPath){
+            artMovementDic = movement as! [String: [String]]
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             IntroductionMessage.showMessageView(view: self.view, messageView: self.menuView, visualEffect: self.visualEffect, effect: self.effect, learnArtLabel: self.learnArtLabel, slideShowButton: self.slideShowButton, starHereLabel: self.starHereLabel, quizButton: self.quizButton, testYourKnowledgeLabel: self.testYourKnowledgeLabel, allTheDataButton: self.allTheDataButton, consultAndLearnLabel: self.consultAndLearnLabel, manageYourCreditsButton: self.manageYourCreditsButton)
         }
@@ -86,6 +90,11 @@ class MenuViewController: UIViewController {
             UserDefaults.standard.set(false, forKey: "artExpertIsDone")
             UserDefaults.standard.set(false, forKey: "artScholarIsDone")
             UserDefaults.standard.set(false, forKey: "artMasterIsDone")
+            
+        }
+        if !soundStateInitialized(soundState: "soundState"){
+            soundState = "speaker.slash"
+            UserDefaults.standard.setValue(soundState, forKey: "soundState")
         }
     }
    
@@ -117,6 +126,7 @@ class MenuViewController: UIViewController {
             let controller = segue.destination as! SlideShowViewController
             controller.artistList = artistList
             controller.artistsCount = artistsCount
+            
         }
         if segue.identifier == "showInfoAndImageViewController"{
             let backItem = UIBarButtonItem()
@@ -132,6 +142,7 @@ class MenuViewController: UIViewController {
             controller.isFromSlideShow = isFromSlideShow
             controller.artistList = artistList
             controller.artistsCount = artistsCount
+            controller.artMovementDic = artMovementDic
         }
         if segue.identifier == "showViewController"{
             let backItem = UIBarButtonItem()
@@ -140,6 +151,7 @@ class MenuViewController: UIViewController {
             backItem.tintColor = UIColor.white
             let controller = segue.destination as! QuizViewController
             controller.artistList = artistList
+            controller.artMovementDic = artMovementDic
         }
         if segue.identifier == "showBuyCredits"{
             let controller = segue.destination as! BuyCreditViewController
@@ -156,6 +168,11 @@ class MenuViewController: UIViewController {
     func userAlreadyExist(credit: String) -> Bool {
         return UserDefaults.standard.object(forKey: credit) != nil
     }
+    func soundStateInitialized(soundState: String) -> Bool {
+        return UserDefaults.standard.object(forKey: soundState) != nil
+    }
+    
+    
 }
 
 

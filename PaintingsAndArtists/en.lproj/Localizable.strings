@@ -1,0 +1,85 @@
+/* 
+  Localizable.strings
+  PaintingsAndArtists
+
+  Created by Normand Martin on 2021-04-23.
+  Copyright © 2021 Normand Martin. All rights reserved.
+*/
+"ArtMovements" = "ArtMovements";
+"EnglishPlist" = "EnglishPlist";
+"Mannerism" = "Mannerism";
+"Northern Renaissance" = "Northern Renaissance";
+"Proto Renaissance" = "Proto Renaissance";
+"Expressionism" = "Expressionism";
+"Neo-Impressionism" = "Neo-Impressionism";
+"Rococo" = "Rococo";
+"Art Nouveau" = "Art Nouveau";
+"Orientalism" = "Orientalism";
+"Symbolism" = "Symbolism";
+"Romanticism" = "Romanticism";
+"Early Renaissance" = "Early Renaissance";
+"Neoclassicism" = "Neoclassicism";
+"High Renaissance" = "High Renaissance";
+"Gothic Art" = "Gothic Art";
+"Realism" = "Realism";
+"Avant-garde" = "Avant-garde";
+"Impressionism" = "Impressionism";
+"Dutch Golden Age" = "Dutch Golden Age";
+"De Stijl (Neoplasticism)" = "De Stijl (Neoplasticism)";
+"Aestheticism" = "Aestheticism";
+"Suprematism" = "Suprematism";
+"Futurism" = "Futurism";
+"Tonalism" = "Tonalism";
+"Baroque" = "Baroque";
+"Post-Impressionism" = "Post-Impressionism";
+"Abstract Art" = "Abstract Art";
+"CREDIT AVAILABLE: %lld
+To preserve the visual integrity
+of the App, there are no adds in
+LEARN ART." = "CREDIT AVAILABLE: %lld
+To preserve the visual integrity
+of the App, there are no adds in
+LEARN ART.";
+"Do you enjoy LEARN ART?
+Buy 200 coins,
+It will last you for ever!" = "Do you enjoy LEARN ART?
+Buy 200 coins,
+It will last you for ever!";
+"200 coins" =  "200 coins";
+"Who painted this?" = "Who painted this?";
+"%lld Coins for Hints - Score = %lld" =  "%lld Coins for Hints - Score = %lld";
+"%lld Coins for Hints" = "%lld Coins for Hints";
+"Buy some Coins" = "Buy some Coins";
+"Give me the answer!: 3 coins" = "Give me the answer!: 3 coins";
+"Drop two Painters: 2 coins" = "Drop two Painters: 2 coins";
+"See Painter Bio: 1 coin" = "See Painter Bio: 1 coin";
+"I give up! What is the painter's name: 4 coins" = "I give up! What is the painter's name: 4 coins";
+"Give me one letter: 1 coin" = "Give me one letter: 1 coin";
+"Drop two Art Movements: 2 coins" = "Drop two Art Movements: 2 coins";
+"See Art Movement Definitions: 1 coin" = "See Art Movement Definitions: 1 coin";
+"Great!\nYou recognized\n%@'s style.\n\n1 coin was added" = "Great!\nYou recognized\n%@'s style.\n\n1 coin was added";
+"Identify another painting\nof %@" = "Identify another painting\nof %@";
+"Sorry...\nThe right answer is : %@" = "Sorry...\nThe right answer is : %@";
+"Can you identify the art movement(s) %@ was part of?" = "Can you identify the art movement(s) %@ was part of?";
+"What is the Art movement?" = "What is the Art movement?";
+"Great, You are right!" = "Great, You are right!";
+"%@\n1 coin was added" = "%@\n1 coin was added";
+"Painter Biography Quiz" = "Painter Biography Quiz";
+"Sorry you gave up!\nremember the name:\n%@" = "Sorry you gave up!\nremember the name:\n%@";
+"Great!\n%@\nYou are right!\n\n1 coin was added" = "Great!\n%@\nYou are right!\n\n1 coin was added";
+"Credits: %lld" = "Credits: %lld";
+"Score: %lld" = "Score: %lld";
+"Sorry! It is not the right answer\nThe painter's name is \n%@" = "Sorry! It is not the right answer\nThe painter's name is \n%@";
+"You have reach the level\nART AMATEUR!\nYou have correctly answered 5 consecutive questions!\n\n20 coins were added" = "You have reached the level\nART AMATEUR!\nYou have correctly answered 5 consecutive questions!\n\n20 coins were added";
+"You have reach the level\nART CONNOISSEUR!\nYou have correctly answered 10 consecutive questions!\n\n40 coins were added" = "You have reached the level\nART CONNOISSEUR!\nYou have correctly answered 10 consecutive questions!\n\n40 coins were added";
+"You have reach the level\nART EXPERT!\nYou have correctly answered 15 consecutive questions!\n\n60 coins were added" = "You have reached the level\nART EXPERT!\nYou have correctly answered 15 consecutive questions!\n\n60 coins were added";
+"You have reach the level\nART SCHOLAR!\nYou have correctly answered 30 consecutive questions!\n\n80 coins were added" = "You have reached the level\nART SCHOLAR!\nYou have correctly answered 30 consecutive questions!\n\n80 coins were added";
+"\nYou have reach the level\nART MASTER!\n\n100 coins bonnus were added.\nYou know art and you know this game.\nAny ideas how I could improve it?\nIf you do I would like to hear from you!\n\nPlease write at nmartin1956@gmail.com.\n\nThank you!" = "\nYou have reached the level\nART MASTER!\n\n100 coins bonnus were added.\nYou know art and you know this game.\nAny ideas how I could improve it?\nIf you do I would like to hear from you!\n\nPlease write at nmartin1956@gmail.com.\n\nThank you!";
+"Buy Coins" = "Buy Coins";
+"Do you enjoy LEARN ART?\nBuy 200 coins for" = "Do you enjoy LEARN ART?\nBuy 200 coins for";
+"\nIt will last you for ever! " = "\nIt will last you for ever! ";
+"Sorry ... Your choice was not the right one.\nThis is another\n%@ painting" = "Sorry ... Your choice was not the right one.\nThis is another\n%@ painting";
+"Are you logged in Game Center?" = "Are you logged in Game Center?";
+"To compare scores with other players you have to be logged in." = "To compare scores with other players\n you have to be logged in.";
+"Ok, Make sure I am logged in" = "Ok, Make sure I am logged in";
+"Just Start the Game" = "Just Start the Game";

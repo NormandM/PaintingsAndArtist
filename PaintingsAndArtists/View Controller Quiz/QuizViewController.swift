@@ -13,9 +13,8 @@ import StoreKit
 
 class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
 
-    
-    let labelTitle = UILabel(frame: CGRect(x:0, y:0, width:1000, height:50))
-    
+    @IBOutlet weak var labelForTitle: UILabel!
+    var navLabel = UILabel()
     @IBOutlet weak var visualEffect: UIVisualEffectView!
     @IBOutlet weak var buyCreditsButton: UIButton!
     @IBOutlet weak var paintingImage: UIImageView!
@@ -29,31 +28,32 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet var messageView: UIView!
     weak var movingButton: UIButton?
-
-    
-    
     let fontsAndConstraints = FontsAndConstraints()
     lazy var sizeInfo = fontsAndConstraints.size()
     var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
     var effect: UIVisualEffect!
-    var partTwoOfQuizDone: Bool = false
+    var partThreeOfQuizDone: Bool = false
     var soundPlayer: SoundPlayer?
     var finalArrayOfButtonNames = [String]()
     var artistList: [[String]] = []
     var indexPainting: [Int] = []
+    var artMovementDic = [String: [String]]()
     var selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
     var errorCounter = 0
     var isFromQuiz = Bool()
     var isFromMenu = Bool()
     var isFromSlideShow = Bool()
+    var isFromFinalBonusQuiz = Bool()
     var goingForwards = Bool()
     var score = UserDefaults.standard.integer(forKey: "score")
-    var credit = UserDefaults.standard.integer(forKey: "credit")
     let localPlayer: GKLocalPlayer = GKLocalPlayer.local
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     var successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
-    {
+    let formatedString = NSLocalizedString("%lld Coins for Hints", comment: "")
+    let formatedString2 = NSLocalizedString("  -  Score = %lld", comment: "")
+    var isFromView = IsFromView.quizController
+    var credit = UserDefaults.standard.integer(forKey: "credit"){
         didSet{
             if credit < 1 {
                 nextButton.isEnabled = false
@@ -63,14 +63,32 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
             }
         }
     }
+    var soundState = ""{
+        didSet{
+            if #available(iOS 13.0, *) {
+                navigationItem.rightBarButtonItems = [UIBarButtonItem(
+                    image: UIImage(systemName: soundState),
+                    style: .plain,
+                    target: self,
+                    action: #selector(soundOnOff)
+                )]
+            } else {
+                // Fallback on earlier versions
+            }
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let doesNotWantToLogInGameCanter = UserDefaults.standard.bool(forKey: "doesNotWantToLogInGameCanter")
         let isLogIn = UserDefaults.standard.bool(forKey: "isPlayerLogIn")
         if doesNotWantToLogInGameCanter == false && isLogIn == false{
             showAlertGamecenter()
+            
         }else if isLogIn {
             authenticateLocalPlayer()
+            
         }
         effect = visualEffect.effect
         messageView.layer.cornerRadius = 5
@@ -87,21 +105,26 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         }
         self.navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.black
-        credit = UserDefaults.standard.integer(forKey: "credit")
-        score = UserDefaults.standard.integer(forKey: "score")
-        hintButton.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
+        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
+            soundState = soundStateTrans
+        }
         reinializePaintingsList()
         quizElementSelection()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
-        let navLabel = UILabel()
-        let navTitle = NSMutableAttributedString(string: "Who painted this?", attributes:[
+        
+        let navTitle = NSMutableAttributedString(string: "Who painted this?".localized, attributes:[
             NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font: sizeInfoAndFonts?.fontSize4 ?? UIFont(name: "HelveticaNeue-Bold", size: 12)!])
         navLabel.attributedText = navTitle
+        navLabel.lineBreakMode = .byWordWrapping
+        navLabel.numberOfLines = 0
         self.navigationItem.titleView = navLabel
+        credit = UserDefaults.standard.integer(forKey: "credit")
+        score = UserDefaults.standard.integer(forKey: "score")
+        Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
     }
     override func viewDidAppear(_ animated: Bool) {
         goingForwards = false
@@ -121,12 +144,19 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         errorMessage.font = sizeInfoAndFonts?.fontSize1
         messageLabel.font = sizeInfoAndFonts?.fontSize2
         credit = UserDefaults.standard.integer(forKey: "credit")
+       
         if credit < 1 {
             nextButton.isEnabled = false
             nextButton.isHidden = true
             MessageOutOfCredits.showMessageView(view: self.view, messageView: messageView, visualEffect: visualEffect, effect: effect, messageLabel: messageLabel, okBuyCreditsButton: okBuyCreditsButton)
         }
         AppStoreFeedBack.askForFeedback()
+        labelForTitle.lineBreakMode = .byWordWrapping
+        labelForTitle.numberOfLines = 0
+        labelForTitle.textColor = .white
+        labelForTitle.text = ""
+        nextButton.includeArrow()
+
     }
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         if let theButton = movingButton {
@@ -139,6 +169,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
 
         nextButton.layer.masksToBounds = true
         nextButton.layer.cornerRadius = nextButton.frame.width/2
+        nextButton.includeArrow()
     }
     override func viewWillDisappear(_ animated: Bool) {
         if goingForwards == false {
@@ -150,20 +181,18 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         reinializePaintingsList()
         selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
         finalArrayOfButtonNames = PainterSelection.buttonsNameSelection(artistList: artistList, indexPainting: indexPainting, painterButton: painterButton, selectedIndex: selectedIndex)
-
-        labelTitle.text = ""
+        navLabel.text = ""
         errorCounter = 0
         errorMessage.text = ""
-        
         ImageManager.choosImage(imageView: paintingImage, imageName: artistList[indexPainting[selectedIndex]][2])
     }
     @objc func nextQuizPainting(){
-        if partTwoOfQuizDone{
+        if partThreeOfQuizDone{
             quizElementSelection()
         }else{
             performSegue(withIdentifier: "showChosePainting", sender: self)
         }
-       partTwoOfQuizDone = false
+       partThreeOfQuizDone = false
     }
 
     func indexPaintingAlreadyExist(indexPainting: String) -> Bool {
@@ -184,15 +213,18 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
                     }
                 }
                 movingButton = sender
-                soundPlayer?.playSound(soundName: "chime_clickbell_octave_up", type: "mp3")
+                soundPlayer?.playSound(soundName: "chime_clickbell_octave_up", type: "mp3", soundState: soundState)
                 ButtonTranslation.translate(fromButton: sender, toButton: placeHolderButton, painterName: painterButtonTitle)
-                TitleDisplay.show(labelTitle: labelTitle, titleText: artistList[indexPainting[selectedIndex]][2], nextButton: nextButton, view: self)
+                labelForTitle.text = artistList[indexPainting[selectedIndex]][14]
+                navLabel.text = ""
+                TitleDisplay.show(labelTitle: labelForTitle, titleText: artistList[indexPainting[selectedIndex]][14], nextButton: nextButton, view: self)
                 CreditManagment.increaseOneCredit(hintButton: hintButton)
                 credit =  UserDefaults.standard.integer(forKey: "credit")
+                score = UserDefaults.standard.integer(forKey: "score")
             }else{
                 let shake = Shake()
                 shake.shakeViewHorizontal(vw: sender)
-                soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
+                soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3", soundState: soundState)
                 CreditManagment.decreaseTwoCredit(hintButton: hintButton)
                 credit =  UserDefaults.standard.integer(forKey: "credit")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -202,10 +234,8 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
                     if self.errorCounter > 2 {
                         LabelAndButton.buttonInvisible(painterButton: self.painterButton, errorMessage: self.errorMessage)
                         self.errorMessage.isHidden = false
-                        self.errorMessage.text = """
-                        Sorry...
-                        The right answer is : \(self.artistList[self.indexPainting[self.selectedIndex]][0])
-                        """
+                        let formatedString3 = NSLocalizedString("Sorry...\nThe right answer is : %@", comment: "")
+                        self.errorMessage.text = String(format: formatedString3, self.artistList[self.indexPainting[self.selectedIndex]][0])
                         self.successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
                         self.successiveRightAnswers = SuccessiveAnswer.afterMistake(successiveRightAnswers: self.successiveRightAnswers)
                         UserDefaults.standard.set(self.successiveRightAnswers, forKey: "successiveRightAnswers")
@@ -216,8 +246,8 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
                             self.nextButton.isHidden = false
                         }
 
-                        self.nextButton.setTitle("Next", for: .normal)
-                        self.partTwoOfQuizDone = true
+                        self.nextButton.includeArrow()
+                        self.partThreeOfQuizDone = true
                         LabelAndButton.disableHintButtons(hintItemButton: self.hintItemButton)
                     }
                 }
@@ -225,6 +255,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
                 
             }
         }
+        Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
     }
     @IBAction func hintSelectionPress(_ sender: UIButton) {
         hintMenuAction()
@@ -236,23 +267,25 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
             nextButton.isHidden = true
             MessageOutOfCredits.showMessageView(view: self.view, messageView: messageView, visualEffect: visualEffect, effect: effect, messageLabel: messageLabel, okBuyCreditsButton: okBuyCreditsButton)
         }else if let buttonLabel = sender.titleLabel?.text {
-            if buttonLabel != HintLabel.buyCoins.rawValue {
-                Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: finalArrayOfButtonNames, painterName: artistList[indexPainting[selectedIndex]][0], painterButton: painterButton, placeHolderButton: placeHolderButton, labelTitle: labelTitle, view: self, nextButton: nextButton, titleText: artistList[indexPainting[selectedIndex]][2], hintButton: hintButton, showActionView: showActionView)
+            if buttonLabel != HintLabel.buyCoins.rawValue.localized {
+                
+                let dropTwoPaintersCount = Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: finalArrayOfButtonNames, painterName: artistList[indexPainting[selectedIndex]][0], painterButton: painterButton, placeHolderButton: placeHolderButton, labelTitle: labelForTitle, view: self, nextButton: nextButton, titleText: artistList[indexPainting[selectedIndex]][14], hintButton: hintButton, showActionView: showActionView)
                 credit =  UserDefaults.standard.integer(forKey: "credit")
                 score = UserDefaults.standard.integer(forKey: "score")
-                hintButton.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
-                
+                Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
+                errorCounter = errorCounter + dropTwoPaintersCount
             }else{
                 performSegue(withIdentifier: "showBuyCredits", sender: self)
             }
         }
         if let buttonLabel = sender.titleLabel?.text{
-            if buttonLabel != HintLabel.buyCoins.rawValue{
+            if buttonLabel != HintLabel.buyCoins.rawValue.localized{
                 LabelAndButton.disableHintButtons(hintItemButton: hintItemButton)
             }
         }
         
         hintMenuAction()
+        Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
 
     }
     @IBAction func nextButtonPressed(_ sender: UIButton) {
@@ -284,16 +317,14 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
     }
     func reinializePaintingsList() {
         if !(indexPaintingAlreadyExist(indexPainting: "indexPainting")){
-            let randomizeOrderOfPaintings = RandomizeOrderOfIndexArray(artistList: artistList)
-            indexPainting = randomizeOrderOfPaintings.generateRandomIndex(from: 0, to: artistList.count - 1, quantity: nil)
+            indexPainting = RandomizeOrderOfIndexArray.generateRandomIndex(from: 0, to: artistList.count - 1, quantity: nil)
             UserDefaults.standard.set(indexPainting, forKey: "indexPainting")
             UserDefaults.standard.set(0, forKey: "selectedIndex")
         }
         selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
         indexPainting = UserDefaults.standard.array(forKey: "indexPainting") as! [Int]
         if selectedIndex >= indexPainting.count {
-            let randomizeOrderOfPaintings = RandomizeOrderOfIndexArray(artistList: artistList)
-            indexPainting = randomizeOrderOfPaintings.generateRandomIndex(from: 0, to: artistList.count - 1, quantity: nil)
+            indexPainting = RandomizeOrderOfIndexArray.generateRandomIndex(from: 0, to: artistList.count - 1, quantity: nil)
             UserDefaults.standard.set(indexPainting, forKey: "indexPainting")
             UserDefaults.standard.set(0, forKey: "selectedIndex")
         }
@@ -312,13 +343,16 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
             isFromQuiz = true
             isFromMenu = false
             isFromSlideShow = false
+            isFromFinalBonusQuiz = false
             controller.goingForwards = goingForwards
             controller.isFromQuiz = isFromQuiz
             controller.isFromMenu = isFromMenu
             controller.isFromSlideShow = isFromSlideShow
             controller.bioInfoEra = artistList[indexPainting[selectedIndex]][1]
             controller.bioInfoImageName = artistList[indexPainting[selectedIndex]][2]
+            
             controller.bioInfoBio = artistList[indexPainting[selectedIndex]][3]
+            controller.isFromView = isFromView
         }
         if segue.identifier == "showChosePainting" {
             goingForwards = true
@@ -326,10 +360,11 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
             controller.indexPainting = indexPainting
             controller.artistList = artistList
             controller.selectedIndex = selectedIndex
-            controller.bioInfoImageName = artistList[indexPainting[selectedIndex]][2]
+            controller.bioInfoImageName = artistList[indexPainting[selectedIndex]][14]
             LabelAndButton.enableHintButtons(hintItemButton: hintItemButton)
             let backItem = UIBarButtonItem()
             controller.navigationItem.hidesBackButton = true
+            controller.artMovementDic = artMovementDic
             backItem.title = ""
             hintButton.isHidden = true
             
@@ -348,18 +383,16 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
     @IBAction func unwindToViewController(_ sender: UIStoryboardSegue) {
         hintButton.isHidden = false
         CreditManagment.displayCredit(hintButton: hintButton)
-        partTwoOfQuizDone = true
+        partThreeOfQuizDone = true
         nextQuizPainting()
     }
-
-    
     func showActionView() {
         performSegue(withIdentifier: "showBio", sender: self)
     }
     func showAlertGamecenter() {
-        let alert = UIAlertController(title:  "Are you logged in Game Center?", message:"To compare scores with other players you have to be logged in.", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok, Make sure I am logged in", style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.authenticateLocalPlayer()}))
-        let okAction = UIAlertAction(title: "Just Start the Game", style: .cancel, handler: dismissAlert)
+        let alert = UIAlertController(title:  "Are you logged in Game Center?".localized, message:"To compare scores with other players you have to be logged in.".localized, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok, Make sure I am logged in".localized, style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.authenticateLocalPlayer()}))
+        let okAction = UIAlertAction(title: "Just Start the Game".localized, style: .cancel, handler: dismissAlert)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
@@ -368,6 +401,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
     }
 
     func authenticateLocalPlayer() {
+       
         localPlayer.authenticateHandler = {(QuizViewController, error) -> Void in
             if((QuizViewController) != nil) {
                 //self.showAlertGamecenter()
@@ -379,23 +413,51 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
                 // Get the default leaderboard ID
                 self.localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
                     if error != nil { print(error!)
-                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer! }
+                    } else {
+                        self.gcDefaultLeaderBoard = leaderboardIdentifer!
+                        self.retrieveBestScore()
+                    }
                 })
-                
             } else {
                 // 3. Game center is not enabled on the users device
                 self.gcEnabled = false
                 print("Local player could not be authenticated!")
                 print(error!)
             }
+            
         }
+        
         UserDefaults.standard.set(true, forKey: "isAuthentificated")
     }
+    func retrieveBestScore() {
+        if GKLocalPlayer.local.isAuthenticated {
+
+                // Initialize the leaderboard for the current local player
+            let gkLeaderboard = GKLeaderboard(players: [GKLocalPlayer.local])
+                gkLeaderboard.identifier = self.gcDefaultLeaderBoard
+            gkLeaderboard.timeScope = GKLeaderboard.TimeScope.allTime
+
+                // Load the scores
+                gkLeaderboard.loadScores(completionHandler: { (scores, error) -> Void in
+
+                    // Get current score
+                    var currentScore: Int64 = 0
+                    if error == nil, let scores = scores {
+                        if scores.count > 0 {
+                            currentScore = (scores[0] ).value
+                            UserDefaults.standard.setValue(Int(currentScore), forKey: "score")
+                            Prepare.stringForHinLabel(formatedString: self.formatedString, formatedString2: self.formatedString2, credit: self.credit, score: Int(currentScore), hintButton: self.hintButton)
+                        }
+                    }
+                })
+            }
+        }
 
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
          gameCenterViewController.dismiss(animated: true, completion: nil)
     }
-    
-    
+    @objc func soundOnOff() {
+        soundState = SoundOption.soundOnOff()
+    }
 }
 

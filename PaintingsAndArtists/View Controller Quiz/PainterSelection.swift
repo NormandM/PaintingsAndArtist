@@ -10,27 +10,21 @@ import UIKit
 class PainterSelection {
     class func buttonsNameSelection(artistList: [[String]], indexPainting: [Int], painterButton: [UIButton], selectedIndex: Int) -> [String]{
         var otherPainters = [String]()
-        var chosenOtherPaintersIndex = [Int]()
-        var i = 0
-        for artist in artistList {
-            if artist[0] != artistList[indexPainting[selectedIndex]][0] && !otherPainters.contains(artist[0]) {
-                otherPainters.append(artist[0])
+        var painterNamesForQuiz = [String]()
+            for artist in artistList {
+            let searchedPainter = artist[0].trimmingCharacters(in: .whitespacesAndNewlines)
+            let rightPainter = artistList[indexPainting[selectedIndex]][0].trimmingCharacters(in: .whitespacesAndNewlines)
+            if searchedPainter != rightPainter && !otherPainters.contains(searchedPainter) {
+                otherPainters.append(searchedPainter)
             }
             
         }
-        let otherPaintersCount = otherPainters.count
-        i = 0
-        while chosenOtherPaintersIndex.count < 3 {
-            let newIndexPainter = Int(arc4random_uniform(UInt32(otherPaintersCount)))
-            if !chosenOtherPaintersIndex.contains(newIndexPainter){
-                chosenOtherPaintersIndex.append(newIndexPainter)
-            }
-            i = i + 1
+        otherPainters.shuffle()
+        for n in 0...2{
+            painterNamesForQuiz.append(otherPainters[n])
         }
-        let painterNamesForQuiz = [artistList[indexPainting[selectedIndex]][0], otherPainters[chosenOtherPaintersIndex[0]], otherPainters[chosenOtherPaintersIndex[1]] ,otherPainters[chosenOtherPaintersIndex[2]]]
-        let randomizeOrderOfButtonNames = RandomizeOrderOfArray(listNames: painterNamesForQuiz)
-        let indexOrderForButtonNames = randomizeOrderOfButtonNames.generateRandomIndex(from: 0, to: painterNamesForQuiz.count - 1, quantity: nil)
-        let finalArrayOfButtonNames = [painterNamesForQuiz[indexOrderForButtonNames[0]], painterNamesForQuiz[indexOrderForButtonNames[1]], painterNamesForQuiz[indexOrderForButtonNames[2]], painterNamesForQuiz[indexOrderForButtonNames[3]]]
+        painterNamesForQuiz.append(artistList[indexPainting[selectedIndex]][0])
+        let finalArrayOfButtonNames: [String] = painterNamesForQuiz.shuffled()
         LabelAndButton.buttonVisible(painterButton: painterButton, finalArrayOfButtonNames: finalArrayOfButtonNames)
         return finalArrayOfButtonNames
     }

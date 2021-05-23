@@ -24,6 +24,7 @@ class SlideShowViewController: UIViewController {
     var isFromMenu = Bool()
     var isFromQuiz = Bool()
     var goingForwards = Bool()
+    var isFromView = IsFromView.slideShow
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
@@ -39,8 +40,7 @@ class SlideShowViewController: UIViewController {
         } catch {
             // couldn't load file :(
         }
-        let randomizeOrderOfPaintings = RandomizeOrderOfIndexArray(artistList: artistList)
-        indexPainting = randomizeOrderOfPaintings.generateRandomIndex(from: 0, to: artistList.count - 1, quantity: nil)
+        indexPainting = RandomizeOrderOfIndexArray.generateRandomIndex(from: 0, to: artistList.count - 1, quantity: nil)
         ImageManager.choosImage(imageView: slideShowUIImageView, imageName: artistList[indexPainting[n]][2])
         vueTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(SlideShowViewController.zoomAnimation), userInfo: nil, repeats: true)
     }
@@ -50,9 +50,6 @@ class SlideShowViewController: UIViewController {
         if goingForwards == false{
             performSegue(withIdentifier: "goToMenu", sender: self)
         }
-        
-        
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         goingForwards = false
@@ -105,6 +102,7 @@ class SlideShowViewController: UIViewController {
             controller.isFromMenu = isFromMenu
             controller.specificArtistInfo = indexPainting[n]
             controller.artistList = artistList
+            controller.isFromView = isFromView
         }
     }
     @IBAction func unwindToSlideShow(_ sender: UIStoryboardSegue) {

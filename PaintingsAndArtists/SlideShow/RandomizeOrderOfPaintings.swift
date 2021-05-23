@@ -9,63 +9,15 @@
 import UIKit
 
 struct RandomizeOrderOfIndexArray {
-    var artistList: [[String]]
-    func generateRandomIndex(from: Int, to: Int, quantity: Int?) -> [Int] {
-        var numberOfNumbers = quantity
+   static func generateRandomIndex(from: Int, to: Int, quantity: Int?) -> [Int] {
         var randomNumbers: [Int] = []
-        let lower = UInt32(from)
-        let higher = UInt32(to+1)
-        if numberOfNumbers == nil || numberOfNumbers! > (to - from) + 1 {
-            numberOfNumbers = (to - from) + 1
+        for n in from...to {
+            randomNumbers.append(n)
         }
-        while randomNumbers.count != numberOfNumbers {
-            let numbers = arc4random_uniform(higher - lower) + lower
-            if !randomNumbers.contains(Int(numbers)){
-                randomNumbers.append(Int(numbers))
-            }
-        }
+        randomNumbers.shuffle()
+        
         return randomNumbers
     }
-}
-struct RandomizeOrderOfArray {
-    var listNames: [String]
-    func generateRandomIndex(from: Int, to: Int, quantity: Int?) -> [Int] {
-        var numberOfNumbers = quantity
-        var randomNumbers: [Int] = []
-        let lower = UInt32(from)
-        let higher = UInt32(to+1)
-        if numberOfNumbers == nil || numberOfNumbers! > (to - from) + 1 {
-            numberOfNumbers = (to - from) + 1
-        }
-        while randomNumbers.count != numberOfNumbers {
-            let numbers = arc4random_uniform(higher - lower) + lower
-            if !randomNumbers.contains(Int(numbers)){
-                randomNumbers.append(Int(numbers))
-            }
-        }
-        return randomNumbers
-    }
-
-}
-struct RandomizeOrderOfArrayOfCharacter {
-    var listNames: [Character]
-    func generateRandomIndex(from: Int, to: Int, quantity: Int?) -> [Int] {
-        var numberOfNumbers = quantity
-        var randomNumbers: [Int] = []
-        let lower = UInt32(from)
-        let higher = UInt32(to+1)
-        if numberOfNumbers == nil || numberOfNumbers! > (to - from) + 1 {
-            numberOfNumbers = (to - from) + 1
-        }
-        while randomNumbers.count != numberOfNumbers {
-            let numbers = arc4random_uniform(higher - lower) + lower
-            if !randomNumbers.contains(Int(numbers)){
-                randomNumbers.append(Int(numbers))
-            }
-        }
-        return randomNumbers
-    }
-    
 }
 extension Array{
     public mutating func shuffle() {

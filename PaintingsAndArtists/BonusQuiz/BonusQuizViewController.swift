@@ -11,8 +11,6 @@ import MobileCoreServices
 import AVFoundation
 import GameKit
 class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate,   UICollectionViewDelegateFlowLayout, GKGameCenterControllerDelegate{
-
-    
     @IBOutlet var messageView: UIView!
     @IBOutlet var specialMessageView: UIView!
     @IBOutlet weak var diplomaImageView: UIImageView!
@@ -38,14 +36,12 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var nextLevelLabel: UILabel!
     @IBOutlet weak var okButton: RoundButton!
     @IBOutlet weak var finalOkButton: RoundButton!
-    
-    
+    let formatedString = NSLocalizedString("%lld Coins for Hints", comment: "")
+    let formatedString2 = NSLocalizedString("  -  Score = %lld", comment: "")
     var spaceBetweenCells = CGFloat()
     var totalQuestion = Int()
     var soundPlayer: SoundPlayer?
     var painterName = String()
-    var credit = UserDefaults.standard.integer(forKey: "credit")
-    var score = UserDefaults.standard.integer(forKey: "score")
     var successiveRightAnswers =  UserDefaults.standard.integer(forKey: "successiveRightAnswers")
     var effect: UIVisualEffect!
     var totalNameArray = [[String]]()
@@ -74,6 +70,34 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     let localPlayer: GKLocalPlayer = GKLocalPlayer.local
+    var soundState = ""{
+        didSet{
+            if #available(iOS 13.0, *) {
+                navigationItem.rightBarButtonItems = [UIBarButtonItem(
+                    image: UIImage(systemName: soundState),
+                    style: .plain,
+                    target: self,
+                    action: #selector(soundOnOff)
+                )]
+            } else {
+                // Fallback on earlier versions
+            }
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        }
+    }
+    var credit = UserDefaults.standard.integer(forKey: "credit"){
+        didSet{
+            Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
+        }
+        
+    }
+    var score = UserDefaults.standard.integer(forKey: "score"){
+        didSet{
+            Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
+        }
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if localPlayer.isAuthenticated {
@@ -82,7 +106,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         effect = visualEffect.effect
         messageView.layer.cornerRadius = 5
         visualEffect.effect = nil
-        titleLable.text = "Painter Biography Quiz"
+        titleLable.text = "Painter Biography Quiz".localized
         hintButton.layer.cornerRadius = hintButton.frame.height / 2.0
         hintItemButton.forEach {(eachButton) in
             eachButton.layer.cornerRadius = eachButton.frame.height / 2.0
@@ -109,6 +133,9 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         indexShuffledName = indexNames.1
         bioTextView.layer.borderWidth = 2
 
+        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
+            soundState = soundStateTrans
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -124,7 +151,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         hintItemButton.forEach {(eachButton) in
             eachButton.titleLabel?.font = sizeInfoAndFonts?.fontSize1
         }
-        hintButton.titleLabel?.font = sizeInfoAndFonts?.fontSize2
+        hintButton.titleLabel?.font = sizeInfoAndFonts?.fontSize6
         bioTextView.layer.borderColor = UIColor.white.cgColor
         bioTextView.textContainerInset = UIEdgeInsets.init(top: 10, left: 20, bottom: 20, right: 20)
         bioTextView.font = sizeInfoAndFonts?.fontSize1
@@ -138,7 +165,14 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         leaderBoardButton.titleLabel?.font = sizeInfoAndFonts?.fontSize2
         cellsAcross = CGFloat(totalNameArray[0].count)
         if UIDevice.current.orientation.isLandscape {isLanscape = true}
+        credit = UserDefaults.standard.integer(forKey: "credit")
+        score = UserDefaults.standard.integer(forKey: "score")
+        Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
         setUpLayout()
+        okButton.includeArrow()
+        specialViewOkButton.includeArrow()
+        finalOkButton.includeArrow()
+        
     }
 
     @IBOutlet weak var answerCollectioView: UICollectionView!{
@@ -161,9 +195,10 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBAction func specificHintPressed(_ sender: UIButton) {
         n = 0
         if let buttonLabel = sender.titleLabel?.text {
+
             let countLetter = nameArray.count
-            if buttonLabel != HintLabel.buyCoins.rawValue {
-                if buttonLabel == HintLabel.showLetter.rawValue {
+            if buttonLabel != HintLabel.buyCoins.rawValue.localized {
+                if buttonLabel == HintLabel.showLetter.rawValue.localized {
                     var cell =  answerCollectioView.cellForItem(at: [0, 0]) as! AnswerCollectionViewCell
                         for i in 0 ..< countLetter{
                         cell = answerCollectioView.cellForItem(at: [0, i]) as! AnswerCollectionViewCell
@@ -212,13 +247,14 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                         hintItemButton[1].isEnabled = false
                         hintItemButton[1].setTitleColor(UIColor.lightGray, for:UIControl.State.normal)
                     }
-                    Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: nil, painterName: nil, painterButton: nil, placeHolderButton: nil, labelTitle: nil, view: nil, nextButton: nil, titleText: nil, hintButton: hintButton, showActionView: showActionView)
+                    _ = Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: nil, painterName: nil, painterButton: nil, placeHolderButton: nil, labelTitle: nil, view: nil, nextButton: nil, titleText: nil, hintButton: hintButton, showActionView: showActionView)
 
-                }else if buttonLabel == HintLabel.showPainterName.rawValue{
+                }else if buttonLabel == HintLabel.showPainterName.rawValue.localized{
                     gaveUp = true
-                    Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: nil, painterName: nil, painterButton: nil, placeHolderButton: nil, labelTitle: nil, view: nil, nextButton: nil, titleText: nil, hintButton: hintButton, showActionView: showActionView)
+                    _ = Hint.manageHints(buttonLabel: buttonLabel, finalArrayOfButtonNames: nil, painterName: nil, painterButton: nil, placeHolderButton: nil, labelTitle: nil, view: nil, nextButton: nil, titleText: nil, hintButton: hintButton, showActionView: showActionView)
                     var i = 0
                     var j = 0
+                    
                     for letter in nameArray {
                         
                         let cell = answerCollectioView.cellForItem(at: [0, i]) as! AnswerCollectionViewCell
@@ -239,10 +275,12 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 }
                 credit =  UserDefaults.standard.integer(forKey: "credit")
                 score = UserDefaults.standard.integer(forKey: "score")
-                hintButton.setTitle("\(credit) Coins for Hints - Score = \(score)", for: .normal)
                 hintMenuAction()
             }
         }
+        credit =  UserDefaults.standard.integer(forKey: "credit")
+        score = UserDefaults.standard.integer(forKey: "score")
+        Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
     }
     func showActionView () {
         
@@ -323,7 +361,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             if isResponseGood{
                 if !gaveUp {
                     CreditManagment.increaseOneCredit(hintButton: nil)
-                    soundPlayer?.playSound(soundName: "chime_clickbell_octave_up", type: "mp3")
+                    soundPlayer?.playSound(soundName: "chime_clickbell_octave_up", type: "mp3", soundState: soundState)
                     successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers") + 1
                     UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
                     if successiveRightAnswers == 100 {
@@ -355,7 +393,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                         specialCommentAfterResponse = tuppleResponse.0
                         specialViewOkButton.x = view.frame.width * 0.7/2 - specialViewOkButton.buttonHeight/2
                         specialViewOkButton.y =  view.frame.height * 0.7 * 0.8
-                        soundPlayer?.playSound(soundName: "music_harp_gliss_up", type: "wav")
+                        soundPlayer?.playSound(soundName: "music_harp_gliss_up", type: "wav", soundState: soundState)
                         MessageView.showMessageView(view: view, messageView: specialMessageView, button: specialViewOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, commentAfterResponse: commentAfterResponse!, nextLevel: nextLevelLabel, responseRatio: responseRatio)
                     }
                 case 100:
@@ -364,7 +402,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     finalOkButton.x = view.frame.width * 0.7/2 - finalOkButton.buttonHeight/2
                     finalOkButton.y =   view.frame.height * 0.7 * 0.8
                     MessageView.showMessageView(view: view, messageView: finalView, button: finalOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, commentAfterResponse: finalCommentAfterResponse, nextLevel: nextLevelLabel, responseRatio: responseRatio)
-                    soundPlayer?.playSound(soundName: "music_harp_gliss_up", type: "wav")
+               //     soundPlayer?.playSound(soundName: "music_harp_gliss_up", type: "wav")
                 default:
                     callDefault()
                 }
@@ -413,15 +451,16 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
                 let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, creditLabel: creditLabel, painterName: painterName, gaveUp: gaveUp)
                 totalQuestion = tuppleResponse.1
-                soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
+             //   soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
                 credit =  UserDefaults.standard.integer(forKey: "credit")
                 score = UserDefaults.standard.integer(forKey: "score")
-                commentAfterResponse?.text = "Sorry! It is not the right answer\nThe painter's name is \n\(painterName)"
-                creditLabel.text = """
-                Credits: \(credit)
-                
-                Score: \(score)
-                """
+                let formatedString3 = "Sorry! It is not the right answer\nThe painter's name is \n%@".localized
+                commentAfterResponse?.text = String(format: formatedString3, painterName)
+                let formatedString4 = "Credits: %lld".localized
+                let firstString = String(format: formatedString4, credit)
+                let formatedString5 = "Score: %lld".localized
+                let secondString = String(format: formatedString5, score)
+                creditLabel.text = firstString + "\n" + secondString
                 successiveRightAnswers =  UserDefaults.standard.integer(forKey: "successiveRightAnswers")
                 successiveRightAnswers = SuccessiveAnswer.afterMistake(successiveRightAnswers: successiveRightAnswers)
                 UserDefaults.standard.set(successiveRightAnswers, forKey: "successiveRightAnswers")
@@ -494,12 +533,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         score = UserDefaults.standard.integer(forKey: "score")
         totalQuestion = tuppleResponse.1
         commentAfterResponse = tuppleResponse.0
-        creditLabel.text = """
-        Credits: \(credit)
-        
-        Score: \(score)
-        """
-
+        creditLabel = tuppleResponse.2
         successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
         successiveResponseAdjustement(totalQuestion: totalQuestion)
         
@@ -676,8 +710,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
             addScoreAndSubmitToGC()
             let vc = GKGameCenterViewController()
             vc.gameCenterDelegate = self
-            vc.viewState = .achievements
-            vc.leaderboardIdentifier = leaderboardID
             present(vc, animated: true, completion: nil)
         }else{
             authenticateLocalPlayer()
@@ -735,6 +767,10 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
+    @objc func soundOnOff() {
+        soundState = SoundOption.soundOnOff()
+    }
+
 }
 
 extension String {

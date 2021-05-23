@@ -16,25 +16,26 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     @IBOutlet weak var buy200CoinsLabel: UILabel!
     @IBOutlet weak var doneButton: RoundButton!
     @IBOutlet weak var coinsButton: UIButton!
-
+    @IBOutlet weak var coinNumberLabel: UILabel!
     var provenance = String()
-    
     var productID = ""
     var productsRequest = SKProductsRequest()
     var iapProducts = [SKProduct]()
     var isNotConnectedNoReason = false
+    let formatedString = NSLocalizedString("""
+    CREDIT AVAILABLE: %lld
+    To preserve the visual integrity
+    of the App, there are no adds in
+    LEARN ART.
+    """, comment: "")
     let fontsAndConstraints = FontsAndConstraints()
     lazy var sizeInfo = fontsAndConstraints.size()
     var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
     var credit = UserDefaults.standard.integer(forKey: "credit"){
         didSet {
-            buyCreditViewTitle.text = """
-            CREDIT AVAILABLE: \(credit)
-            To preserve the visual integrity of the App,
-            except for this page, there are no adds in
-            LEARN ART.
-            """
+            buyCreditViewTitle.text = String(format: formatedString, credit)
         }
+
     }
     var priceCoins = String()
     override func viewDidLoad() {
@@ -54,13 +55,8 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }
         self.navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.black
-
         credit = UserDefaults.standard.integer(forKey: "credit")
-        
     }
-
-
-
     override func viewWillAppear(_ animated: Bool) {
         sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)
 
@@ -68,7 +64,7 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
         buyCreditViewTitle.layer.borderColor = UIColor.white.cgColor
         buyCreditViewTitle.layer.borderWidth = 3.0
         let navLabel = UILabel()
-        let navTitle = NSMutableAttributedString(string: "Buy Coins", attributes:[
+        let navTitle = NSMutableAttributedString(string: "Buy Coins".localized, attributes:[
             NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font: sizeInfoAndFonts?.fontSize4 ?? UIFont(name: "HelveticaNeue-Bold", size: 12)!])
         navLabel.attributedText = navTitle
@@ -77,26 +73,20 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     }
     override func viewDidAppear(_ animated: Bool) {
         credit = UserDefaults.standard.integer(forKey: "credit")
-        buyCreditViewTitle.text = """
-        CREDIT AVAILABLE: \(credit)
-        To preserve the visual integrity
-        of the App, there are no adds in
-        LEARN ART.
-        """
-        buy200CoinsLabel.text = """
-        Do you enjoy LEARN ART?
-        Buy 200 coins for \(priceCoins),
-        It will last you for ever!
-        """
+        buy200CoinsLabel.text = "Do you enjoy LEARN ART?\nBuy 200 coins for".localized + " \(priceCoins)".localized + "\nIt will last you for ever! ".localized
+        coinNumberLabel.text = "200 coins".localized
+        coinNumberLabel.font = sizeInfoAndFonts?.fontSize2
         buy200CoinsLabel.font = sizeInfoAndFonts?.fontSize2
         doneButton.layer.masksToBounds = true
         doneButton.layer.cornerRadius = doneButton.frame.width/2
         doneButton.backgroundColor = UIColor(displayP3Red: 27/255, green: 95/255, blue: 94/255, alpha: 1.0)
         doneButton.titleLabel?.font = sizeInfoAndFonts?.fontSize6
+        doneButton.includeArrow()
     }
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         doneButton.layer.masksToBounds = true
         doneButton.layer.cornerRadius = doneButton.frame.width/2
+        doneButton.includeArrow()
     }
 
     @IBAction func doneHasBeenPressed(_ sender: RoundButton) {
@@ -104,6 +94,8 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
             performSegue(withIdentifier: "menu", sender: self)
         }else if provenance == "quiz"{
             performSegue(withIdentifier: "quiz", sender: self)
+        }else if provenance == "finalBonusQuiz"{
+            performSegue(withIdentifier: "showFinalBonusQuiz", sender: self)
         }
     }
 
