@@ -62,7 +62,11 @@ class ChosePaintingViewController: UIViewController {
             }
             i = i + 1
         }
+        print(otherPaintingNameForSameArtist)
         i = 0
+        imageNameOtherPaintings = OtherPaintings.choose(artistList: artistList, painterName: painterName)
+        imageNameOtherPaintings.append(otherPaintingNameForSameArtist)
+        imageNameOtherPaintings.shuffle()
         for imageName in imageNameOtherPaintings{
             ImageManager.choosImage(imageView: paintingImage[i], imageName: imageName)
             i = i + 1
