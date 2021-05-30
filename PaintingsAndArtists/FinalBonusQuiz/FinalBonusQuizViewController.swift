@@ -104,9 +104,7 @@ class FinalBonusQuizViewController: UIViewController {
         ImageManager.choosImage(imageView: paintingImage1, imageName: artistList[indexPainting[selectedIndex]][2])
         ImageManager.choosImage(imageView: paintingImage2, imageName: otherPaintingNameForSameArtist)
         arrayButtonLabels = ArtMovementSelection.buttonsNameSelection(artistList: artistList, indexPainting: indexPainting, button: artMovementButton, selectedIndex: selectedIndex)
-        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
-            soundState = soundStateTrans
-        }
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -125,6 +123,9 @@ class FinalBonusQuizViewController: UIViewController {
         }
 
         Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
+        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
+            soundState = soundStateTrans
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         sizeInfoAndFonts = (screenDimension: sizeInfo.0, fontSize1: sizeInfo.1, fontSize2: sizeInfo.2, fontSize3: sizeInfo.3, fontSize4: sizeInfo.4, fontSize5: sizeInfo.5, fontSize6: sizeInfo.6, fontSize7: sizeInfo.7, bioTextConstraint: sizeInfo.8,        collectionViewTopConstraintConstant: sizeInfo.9)

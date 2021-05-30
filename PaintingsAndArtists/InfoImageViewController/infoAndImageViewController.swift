@@ -135,7 +135,7 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
         case .infoAndImage, .slideShow:
             bioTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             artMovementButton.setTitle(artistList[n][10], for: .normal)
-            labelTitle.text =  artistList[n][2]
+            labelTitle.text =  artistList[n][14]
             artistName.text = artistList[n][0]
             dateLabel.text = artistList[n][1]
             trimedArrayMovement = artistList[n][10].components(separatedBy: ",")
@@ -180,54 +180,10 @@ class infoAndImageViewController: UIViewController, UIScrollViewDelegate {
         
 
         }
-        if !isFromQuiz && !isFromFinalBonusQuiz{
-//            bioTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-//            artMovementButton.setTitle(artistList[n][10], for: .normal)
-//            labelTitle.text =  artistList[n][2]
-//            artistName.text = artistList[n][0]
-//            dateLabel.text = artistList[n][1]
-//            trimedArrayMovement = artistList[n][10].components(separatedBy: ",")
-//
-//            for movement in trimedArrayMovement {
-//               let str =  movement.trimmingCharacters(in: .whitespacesAndNewlines)
-//                noWhiteSpaceArrayMovement.append(str)
-//            }
-//
-//            artMovementDescriptionTextView.text = """
-//                    \(artMovementDic[noWhiteSpaceArrayMovement[0]]![0])
-//                    Ref: \(artMovementDic[noWhiteSpaceArrayMovement[0]]![1])
-//                """
-//            bioTextView.text = """
-//            \(artistList[n][3])
-//            Ref: \(artistList[n][4])
-//            """
-//            ImageManager.choosImage(imageView: slideShowUIImageView, imageName: artistList[n][2])
-//            titleArtMovementLabel.text = noWhiteSpaceArrayMovement[0]
-//            switch trimedArrayMovement.count {
-//            case 1:
-//                secondArtMovementButton.isHidden = true
-//                thirdArtMovementButton.isHidden = true
-//            case 2:
-//                secondArtMovementButton.isHidden = false
-//                thirdArtMovementButton.isHidden = true
-//                secondArtMovementButton.setTitle(noWhiteSpaceArrayMovement[1], for: .normal)
-//            default:
-//                secondArtMovementButton.isHidden = false
-//                thirdArtMovementButton.isHidden = false
-//                secondArtMovementButton.setTitle(noWhiteSpaceArrayMovement[1], for: .normal)
-//                thirdArtMovementButton.setTitle(noWhiteSpaceArrayMovement[2], for: .normal)
-//            }
-        }else{
-            artMovementButton.isHidden = true
-            dateLabel.text = bioInfoEra
-            bioTextView.text = """
-            \(bioInfoBio)
-            """
-            artistName.text = ""
-            ImageManager.choosImage(imageView: slideShowUIImageView, imageName: bioInfoImageName)
 
-        }
-
+        
+        
+        
         
     }
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

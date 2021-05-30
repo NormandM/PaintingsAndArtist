@@ -81,6 +81,13 @@ que vous le voulez!";
 "To compare scores with other players you have to be logged in." = "Pour comparer votre score avec d'autres joueurs,\n vous devez être connecté.";
 "Ok, Make sure I am logged in" = "Ok, s'assurer que je suis connecté";
 "Just Start the Game" = "Commencez le jeu maintenant";
+"There is no internet connection" = "Il n'y a pas de connexion Internet";
+"You can only purchase credits if you are connected to the internet" = "Vous ne pouvez acheter des jetons que si vous êtes connecté à Internet";
+"Go Back to Quiz" = "Revenir au quiz";
+"Cannot connect to the App Store" = "Impossible de se connecter à l'App Store";
+"Please try later" = "Merci d'essayer plus tard";
+"The purchase option is disabled on your device" = "L'option d'achat est désactivée sur votre appareil";
+
 
 
 

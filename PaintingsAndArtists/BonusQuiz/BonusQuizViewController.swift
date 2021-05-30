@@ -133,9 +133,6 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         indexShuffledName = indexNames.1
         bioTextView.layer.borderWidth = 2
 
-        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
-            soundState = soundStateTrans
-        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -172,6 +169,10 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
         okButton.includeArrow()
         specialViewOkButton.includeArrow()
         finalOkButton.includeArrow()
+        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
+            soundState = soundStateTrans
+        }
+
         
     }
 

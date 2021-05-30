@@ -85,7 +85,14 @@ Entonces compra 200 monedas.
 "Do you enjoy LEARN ART?\nBuy 200 coins for" = "¿Le gusta APRENDER EL ARTE?\nPues compre 200 monedas para";
 "\nIt will last you for ever! " = "\nJuegue todo lo que quiera";
 "Sorry ... Your choice was not the right one.\nThis is another\n%@ painting" = "Lo siento. Su elección no fue la correcta.\nAquí está otra otra pintura de\n%@";
-"Are you logged in ame Center?G" = "¿Ha iniciado sesión en Game Center?";
+"Are you logged in Game Center?" = "¿Ha iniciado sesión en Game Center?";
 "To compare scores with other players you have to be logged in." = "Para comparar su puntuaciones con otros jugadores tiene que iniciar sesión.";
 "Ok, Make sure I am logged in" = "Ok, iniciare sesión";
 "Just Start the Game" = "Solo comienza el juego";
+"There is no internet connection" = "No hay conexión a internet";
+"You can only purchase credits if you are connected to the internet" = "Solo puede comprar monedas si está conectado a Internet";
+"Go Back to Quiz" = "Volver";
+"Cannot connect to the App Store" = "No se puede conectar a la App Store";
+"Please try later" = "Por favor intente mas tarde";
+"The purchase option is disabled on your device" = "La opción de compra está deshabilitada en su dispositivo";
+

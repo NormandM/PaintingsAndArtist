@@ -62,7 +62,6 @@ class ChosePaintingViewController: UIViewController {
             }
             i = i + 1
         }
-        print(otherPaintingNameForSameArtist)
         i = 0
         imageNameOtherPaintings = OtherPaintings.choose(artistList: artistList, painterName: painterName)
         imageNameOtherPaintings.append(otherPaintingNameForSameArtist)
@@ -74,9 +73,7 @@ class ChosePaintingViewController: UIViewController {
          paintingImage1.isUserInteractionEnabled = true
          paintingImage2.isUserInteractionEnabled = true
          paintingImage3.isUserInteractionEnabled = true
-        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
-            soundState = soundStateTrans
-        }
+
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +84,9 @@ class ChosePaintingViewController: UIViewController {
         infoLabel.font = sizeInfoAndFonts?.fontSize2
         commentOnResponse.font = sizeInfoAndFonts?.fontSize5
         nextButton.isHidden = true
+        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
+            soundState = soundStateTrans
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         nextButton.titleLabel?.font = sizeInfoAndFonts?.fontSize6

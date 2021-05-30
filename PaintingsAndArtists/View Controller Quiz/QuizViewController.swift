@@ -65,6 +65,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
     }
     var soundState = ""{
         didSet{
+            print("soundState = \(soundState)")
             if #available(iOS 13.0, *) {
                 navigationItem.rightBarButtonItems = [UIBarButtonItem(
                     image: UIImage(systemName: soundState),
@@ -105,11 +106,9 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         }
         self.navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.black
-        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
-            soundState = soundStateTrans
-        }
         reinializePaintingsList()
         quizElementSelection()
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -125,6 +124,9 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         credit = UserDefaults.standard.integer(forKey: "credit")
         score = UserDefaults.standard.integer(forKey: "score")
         Prepare.stringForHinLabel(formatedString: formatedString, formatedString2: formatedString2, credit: credit, score: score, hintButton: hintButton)
+        if let soundStateTrans = UserDefaults.standard.string(forKey: "soundState"){
+            soundState = soundStateTrans
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         goingForwards = false
@@ -323,7 +325,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
         }
         selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
         indexPainting = UserDefaults.standard.array(forKey: "indexPainting") as! [Int]
-        if selectedIndex >= indexPainting.count {
+        if selectedIndex >= indexPainting.count - 1 {
             indexPainting = RandomizeOrderOfIndexArray.generateRandomIndex(from: 0, to: artistList.count - 1, quantity: nil)
             UserDefaults.standard.set(indexPainting, forKey: "indexPainting")
             UserDefaults.standard.set(0, forKey: "selectedIndex")
@@ -431,7 +433,6 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
     }
     func retrieveBestScore() {
         if GKLocalPlayer.local.isAuthenticated {
-
                 // Initialize the leaderboard for the current local player
             let gkLeaderboard = GKLeaderboard(players: [GKLocalPlayer.local])
                 gkLeaderboard.identifier = self.gcDefaultLeaderBoard

@@ -33,11 +33,18 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     var sizeInfoAndFonts: (screenDimension: String, fontSize1: UIFont, fontSize2: UIFont, fontSize3: UIFont, fontSize4: UIFont, fontSize5: UIFont, fontSize6: UIFont, fontSize7: UIFont, bioTextConstraint: CGFloat, collectionViewTopConstraintConstant: CGFloat)?
     var credit = UserDefaults.standard.integer(forKey: "credit"){
         didSet {
+            
             buyCreditViewTitle.text = String(format: formatedString, credit)
         }
 
     }
-    var priceCoins = String()
+    var priceCoins = String(){
+        didSet{
+            DispatchQueue.main.async {
+                self.buy200CoinsLabel.text = "Do you enjoy LEARN ART?\nBuy 200 coins for".localized + " \(self.priceCoins)".localized + "\nIt will last you for ever! ".localized
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated:true);
@@ -100,18 +107,14 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
     }
 
     
-    @IBAction func watchVideoHasBeenpressed(_ sender: UIButton) {
-
-    }
-    
     func showAlertNoInternet() {
-        let alert = UIAlertController(title: "There is no internet connection", message: "You can only purchase credits if you are connected to the internet", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Go Back to Quiz", style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.goBackToQuizMenus()}))
+        let alert = UIAlertController(title: "There is no internet connection".localized, message: "You can only purchase credits if you are connected to the internet".localized, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Go Back to Quiz".localized, style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.goBackToQuizMenus()}))
         self.present(alert, animated: true, completion: nil)
     }
     func showNoConnection() {
-        let alert = UIAlertController(title: "Cannot connect to the App Store", message: "Please try later", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Go Back to Quiz", style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.goBackToQuizMenus()}))
+        let alert = UIAlertController(title: "Cannot connect to the App Store".localized, message: "Please try later".localized, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Go Back to Quiz".localized, style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in self.goBackToQuizMenus()}))
         self.present(alert, animated: true, completion: nil)
     }
     @IBAction func goBackToQuizMenus() {
@@ -145,8 +148,8 @@ class BuyCreditViewController: UIViewController, SKProductsRequestDelegate, SKPa
             SKPaymentQueue.default().add(payment)
             productID = product.productIdentifier
         } else {
-            let alert = UIAlertController(title: "Learn Art", message: "The purchase option is disabled on your device", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: "Learn Art".localized, message: "The purchase option is disabled on your device".localized, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
         }
