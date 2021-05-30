@@ -65,7 +65,6 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
     }
     var soundState = ""{
         didSet{
-            print("soundState = \(soundState)")
             if #available(iOS 13.0, *) {
                 navigationItem.rightBarButtonItems = [UIBarButtonItem(
                     image: UIImage(systemName: soundState),
@@ -378,9 +377,7 @@ class QuizViewController: UIViewController,  GKGameCenterControllerDelegate {
             let backItem = UIBarButtonItem()
             controller.navigationItem.hidesBackButton = true
             backItem.title = ""
-
         }
-
     }
     @IBAction func unwindToViewController(_ sender: UIStoryboardSegue) {
         hintButton.isHidden = false

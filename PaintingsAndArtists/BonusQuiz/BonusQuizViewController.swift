@@ -403,7 +403,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                     finalOkButton.x = view.frame.width * 0.7/2 - finalOkButton.buttonHeight/2
                     finalOkButton.y =   view.frame.height * 0.7 * 0.8
                     MessageView.showMessageView(view: view, messageView: finalView, button: finalOkButton, visualEffect: visualEffect, effect: effect, diplomaImageView: diplomaImageView, commentAfterResponse: finalCommentAfterResponse, nextLevel: nextLevelLabel, responseRatio: responseRatio)
-               //     soundPlayer?.playSound(soundName: "music_harp_gliss_up", type: "wav")
+                    soundPlayer?.playSound(soundName: "music_harp_gliss_up", type: "wav", soundState: soundState)
                 default:
                     callDefault()
                 }
@@ -452,7 +452,7 @@ class BonusQuizViewController: UIViewController, UICollectionViewDataSource, UIC
                 successiveRightAnswers = UserDefaults.standard.integer(forKey: "successiveRightAnswers")
                 let tuppleResponse = SuccessiveAnswer.progression(commentAfterResponse: commentAfterResponse!, creditLabel: creditLabel, painterName: painterName, gaveUp: gaveUp)
                 totalQuestion = tuppleResponse.1
-             //   soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3")
+                soundPlayer?.playSound(soundName: "etc_error_drum", type: "mp3", soundState: soundState)
                 credit =  UserDefaults.standard.integer(forKey: "credit")
                 score = UserDefaults.standard.integer(forKey: "score")
                 let formatedString3 = "Sorry! It is not the right answer\nThe painter's name is \n%@".localized
